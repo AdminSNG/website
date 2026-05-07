@@ -166,7 +166,8 @@ h3 { font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 700; }
   position: fixed; top: 0; left: 0;
   width: 44px; height: 44px;
   pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
+  /* Anchor: ujung kepala palu kiri-atas = mouse position */
+  transform: translate(calc(-50% + 25px), calc(-50% + 11px));
   transition: opacity 0.25s;
   will-change: transform, left, top;
   opacity: 0;
@@ -1781,25 +1782,17 @@ setInterval(updateHoursStatus, 60000);
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
-  let cursorX = mouseX, cursorY = mouseY;
-  const lerpFactor = 0.22;
   let isReady = false;
 
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
     if (!isReady) { isReady = true; cursor.classList.add('ready'); }
   });
   document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
   document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
 
-  function animate() {
-    cursorX += (mouseX - cursorX) * lerpFactor;
-    cursorY += (mouseY - cursorY) * lerpFactor;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    requestAnimationFrame(animate);
-  }
-  animate();
+  // Animation loop removed — direct tracking via mousemove
 
   const interactiveSelector = 'a, button, input, select, textarea, .leaflet-marker-icon, [role="button"]';
   document.addEventListener('mouseover', (e) => {
@@ -1818,7 +1811,7 @@ setInterval(updateHoursStatus, 60000);
     void cursor.offsetWidth;
     cursor.classList.add('striking');
 
-    const impactX = e.clientX, impactY = e.clientY + 8;
+    const impactX = e.clientX + 18, impactY = e.clientY + 2;
     const ripple = document.createElement('div');
     ripple.className = 'hammer-impact';
     ripple.style.left = impactX + 'px';

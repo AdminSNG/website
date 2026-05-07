@@ -291,9 +291,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   height: 44px;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  /* Anchor: ujung kepala palu kiri-atas (paling kiri visual) = mouse position
+     Calculated from SVG tip (10, 8) + rotate(-25deg) at origin 30% 70% */
+  transform: translate(calc(-50% + 25px), calc(-50% + 11px));
   transition: opacity 0.25s;
-  will-change: transform, left, top;
+  will-change: left, top;
   opacity: 0;
 }
 .hammer-cursor.ready { opacity: 1; }
@@ -3372,14 +3374,14 @@ counters.forEach(c => counterIO.observe(c));
       why_eyebrow: 'Why Choose Sinar Nadi',
       why_title: 'More Than Just a Building Supply Store.',
       why_sub: 'We are your project partner — from material consultation, quantity calculations, to on-time delivery to your site.',
-      why_1_title: 'Complete Stock, One-Stop Shopping',
-      why_1_desc: 'Building materials, paint, electrical, tools — all in one place. No need to visit multiple stores.',
-      why_2_title: 'Competitive Prices, Transparent',
-      why_2_desc: 'Clear price list via WhatsApp. Contractor discounts for regular or volume purchases.',
-      why_3_title: 'Same Day / Next Day Delivery',
-      why_3_desc: 'Our own fleet: pickup trucks, colt diesels, large trucks. Free shipping in nearby areas with minimum purchase.',
-      why_4_title: 'Open Daily, 07.00 – 21.00',
-      why_4_desc: 'Including holidays. Urgent project needs? You can still order.',
+      why_1_title: 'One-Stop Shopping, Fully Stocked',
+      why_1_desc: 'Building materials, paint, electrical, tools — everything under one roof. Skip the store-hopping.',
+      why_2_title: 'Fair Prices, No Surprises',
+      why_2_desc: 'Transparent price list via WhatsApp. Special rates for business owners, contractors, and bulk buyers.',
+      why_3_title: 'Same-Day & Next-Day Delivery',
+      why_3_desc: 'Our own fleet — pickup trucks, colt diesels, large trucks. Free delivery nearby with minimum purchase.',
+      why_4_title: 'Open Daily, 7AM – 9PM',
+      why_4_desc: 'Holidays included. Got an urgent project? We\'ve still got you.',
 
       // === STATS ===
       stats_eyebrow: 'Track Record',
@@ -3743,17 +3745,16 @@ counters.forEach(c => counterIO.observe(c));
 
   document.body.classList.add('has-hammer');
 
-  // Smooth follow with lerp
+  // Direct tracking — cursor follows mouse 1:1 (no lag)
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
-  let cursorX = mouseX;
-  let cursorY = mouseY;
-  const lerpFactor = 0.22;
   let isReady = false;
 
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
     if (!isReady) {
       isReady = true;
       cursor.classList.add('ready');
@@ -3762,15 +3763,6 @@ counters.forEach(c => counterIO.observe(c));
 
   document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
   document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
-
-  function animate() {
-    cursorX += (mouseX - cursorX) * lerpFactor;
-    cursorY += (mouseY - cursorY) * lerpFactor;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    requestAnimationFrame(animate);
-  }
-  animate();
 
   // Hover state on interactive elements
   const interactiveSelector = 'a, button, .cat-card, .area-chip, .testi-card, .gallery-item, [role="button"]';
@@ -3791,9 +3783,9 @@ counters.forEach(c => counterIO.observe(c));
     void cursor.offsetWidth; // force reflow for re-trigger
     cursor.classList.add('striking');
 
-    // Impact ripple at click position
-    const impactX = e.clientX;
-    const impactY = e.clientY + 8;
+    // Impact ripple at hammer head center (offset from mouse position = tip)
+    const impactX = e.clientX + 18;
+    const impactY = e.clientY + 2;
 
     const ripple = document.createElement('div');
     ripple.className = 'hammer-impact';

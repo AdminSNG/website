@@ -114,7 +114,8 @@ h3 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 700; }
   position: fixed; top: 0; left: 0;
   width: 44px; height: 44px;
   pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
+  /* Anchor: ujung kepala palu kiri-atas = mouse position */
+  transform: translate(calc(-50% + 25px), calc(-50% + 11px));
   transition: opacity 0.25s;
   will-change: transform, left, top;
   opacity: 0;
@@ -1289,7 +1290,7 @@ h3 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 700; }
           </svg>
         </div>
         <h3 data-i18n="bn_4_title">Training & Jenjang Karier</h3>
-        <p data-i18n="bn_4_desc">Mulai dari posisi entry-level, bisa naik ke supervisor atau kepala toko. Kami investasi di karyawan jangka panjang.</p>
+        <p data-i18n="bn_4_desc">Mulai dari posisi entry-level, bisa naik ke supervisor atau kepala toko. Kami investasi di Team jangka panjang.</p>
         <div class="benefit-bg-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
@@ -1461,7 +1462,7 @@ h3 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 700; }
           <div class="gr-num">04</div>
           <div class="gr-content">
             <h4 data-i18n="gr_4_title">Attitude Kerja yang Baik</h4>
-            <p data-i18n="gr_4_desc">Tidak toxic, bisa kerja tim, mau saling bantu antar karyawan. Skill bisa diajarkan, tapi attitude tidak.</p>
+            <p data-i18n="gr_4_desc">Tidak toxic, bisa kerja tim, mau saling bantu sesama anggota Team. Skill bisa diajarkan, tapi attitude tidak.</p>
           </div>
         </div>
 
@@ -1718,7 +1719,7 @@ reveals.forEach(r => io.observe(r));
       bn_3_title: 'Lembur Dibayar',
       bn_3_desc: 'Kerja lebih lama = bayaran lebih. Tidak ada lembur "gratis" — kerja keras Anda dihargai sesuai aturan.',
       bn_4_title: 'Training & Jenjang Karier',
-      bn_4_desc: 'Mulai dari posisi entry-level, bisa naik ke supervisor atau kepala toko. Kami investasi di karyawan jangka panjang.',
+      bn_4_desc: 'Mulai dari posisi entry-level, bisa naik ke supervisor atau kepala toko. Kami investasi di Team jangka panjang.',
       js_eyebrow: 'Lowongan Aktif',
       js_title_1: 'Posisi yang Sedang', js_title_2: 'Kami Cari', js_title_3: '.',
       js_sub: 'Klik "Lamar Sekarang" pada posisi yang Anda minati — chat WA akan terbuka dengan pesan yang sudah terisi otomatis.',
@@ -1762,7 +1763,7 @@ reveals.forEach(r => io.observe(r));
       gr_3_title: 'Bersedia Ditempatkan di Cabang Mana Saja',
       gr_3_desc: 'Bisa di seluruh cabang Sinar Nadi Group — namun akan diusahakan ditempatkan di lokasi terdekat dari tempat tinggal.',
       gr_4_title: 'Attitude Kerja yang Baik',
-      gr_4_desc: 'Tidak toxic, bisa kerja tim, mau saling bantu antar karyawan. Skill bisa diajarkan, tapi attitude tidak.',
+      gr_4_desc: 'Tidak toxic, bisa kerja tim, mau saling bantu sesama anggota Team. Skill bisa diajarkan, tapi attitude tidak.',
       gr_5_title: 'Siap Kerja Full-Time',
       gr_5_desc: 'Mengikuti jam operasional toko (07.00–21.00 WITA). Untuk posisi kasir, ada sistem shift yang akan diatur tim.',
       gr_6_title: 'Tidak Terlibat Masalah Hukum',
@@ -1834,7 +1835,7 @@ reveals.forEach(r => io.observe(r));
       bn_3_title: 'Paid Overtime',
       bn_3_desc: 'Work longer = earn more. No "free" overtime — your hard work is compensated according to regulations.',
       bn_4_title: 'Training & Career Path',
-      bn_4_desc: 'Start at entry-level, grow to supervisor or store head. We invest in long-term employees.',
+      bn_4_desc: 'Start at entry-level, grow to supervisor or store head. We invest in our team for the long run.',
       js_eyebrow: 'Open Positions',
       js_title_1: 'Positions We', js_title_2: 'Are Hiring', js_title_3: '.',
       js_sub: 'Click "Apply Now" on the position you are interested in — WhatsApp chat will open with a pre-filled message.',
@@ -1878,7 +1879,7 @@ reveals.forEach(r => io.observe(r));
       gr_3_title: 'Willing to Be Placed in Any Branch',
       gr_3_desc: 'Can be at any Sinar Nadi Group branch — but we will try to assign you to the location closest to your home.',
       gr_4_title: 'Good Work Attitude',
-      gr_4_desc: 'Not toxic, can work in a team, willing to help fellow employees. Skills can be taught, attitude cannot.',
+      gr_4_desc: 'Not toxic, can work in a team, willing to help fellow team members. Skills can be taught, attitude cannot.',
       gr_5_title: 'Ready to Work Full-Time',
       gr_5_desc: 'Following store operating hours (07.00–21.00 WITA). For cashier positions, there is a shift system arranged by the team.',
       gr_6_title: 'No Legal Issues',
@@ -1950,7 +1951,7 @@ reveals.forEach(r => io.observe(r));
       bn_3_title: 'Оплачиваемые сверхурочные',
       bn_3_desc: 'Дольше работаешь = больше зарабатываешь. Никаких "бесплатных" сверхурочных — ваша работа оплачивается по правилам.',
       bn_4_title: 'Обучение и карьерный рост',
-      bn_4_desc: 'Начинайте с начальной позиции, растите до супервайзера или начальника магазина. Мы инвестируем в долгосрочных сотрудников.',
+      bn_4_desc: 'Начинайте с начальной позиции, растите до супервайзера или начальника магазина. Мы инвестируем в свою команду надолго.',
       js_eyebrow: 'Открытые вакансии',
       js_title_1: 'Позиции, которые мы', js_title_2: 'ищем', js_title_3: '.',
       js_sub: 'Нажмите "Подать заявку" на интересующую позицию — откроется WhatsApp с готовым сообщением.',
@@ -2127,25 +2128,17 @@ reveals.forEach(r => io.observe(r));
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
-  let cursorX = mouseX, cursorY = mouseY;
-  const lerpFactor = 0.22;
   let isReady = false;
 
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
     if (!isReady) { isReady = true; cursor.classList.add('ready'); }
   });
   document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
   document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
 
-  function animate() {
-    cursorX += (mouseX - cursorX) * lerpFactor;
-    cursorY += (mouseY - cursorY) * lerpFactor;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    requestAnimationFrame(animate);
-  }
-  animate();
+  // Animation loop removed — direct tracking via mousemove
 
   const interactiveSelector = 'a, button, summary, [role="button"]';
   document.addEventListener('mouseover', (e) => {
@@ -2164,7 +2157,7 @@ reveals.forEach(r => io.observe(r));
     void cursor.offsetWidth;
     cursor.classList.add('striking');
 
-    const impactX = e.clientX, impactY = e.clientY + 8;
+    const impactX = e.clientX + 18, impactY = e.clientY + 2;
     const ripple = document.createElement('div');
     ripple.className = 'hammer-impact';
     ripple.style.left = impactX + 'px';
