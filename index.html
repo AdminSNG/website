@@ -856,27 +856,18 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   opacity: 1;
   transform: translateY(-3px);
 }
-/* Placeholder logo — circle dengan letter awal brand */
-.brand-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--accent);
-  display: grid;
-  place-items: center;
-  font-family: 'Archivo', sans-serif;
-  font-weight: 900;
-  font-size: 22px;
+/* Brand logo images — actual brand logos */
+.brand-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
   flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s var(--ease);
+  transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
+  filter: grayscale(0.15);
 }
-.brand-logo::before {
-  content: attr(data-letter);
-  position: relative;
-  z-index: 1;
+.brand-item:hover .brand-logo-img {
+  transform: scale(1.1);
+  filter: grayscale(0);
 }
 .brand-logo::after {
   content: '';
@@ -962,6 +953,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
+/* Client logo images — actual klien logos */
+.client-logo-img {
+  max-width: 75%;
+  max-height: 70%;
+  object-fit: contain;
+  filter: grayscale(0.6) opacity(0.75);
+  transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.client-card:hover .client-logo-img {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.05);
+}
+
 /* Client card — placeholder yang enak dipandang, tinggi medium */
 .client-card {
   width: 200px;
@@ -2011,158 +2015,157 @@ section { padding: 120px 0; }
   <div class="brand-marquee reveal" aria-label="Daftar brand yang tersedia di Sinar Nadi">
     <div class="brand-marquee-track">
       <!-- Set 1 (asli) -->
-      <!-- Saat punya logo asli, ganti div.brand-logo dengan: <img src="logo-brand.png" alt="Brand"/> -->
       <div class="brand-item">
-        <div class="brand-logo" data-letter="D"></div>
+        <img src="assets/brands/dulux.png" alt="Dulux" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Dulux</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="N"></div>
+        <img src="assets/brands/nippon-paint.png" alt="Nippon Paint" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Nippon Paint</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="A"></div>
+        <img src="assets/brands/avian.png" alt="Avian" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Avian</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="M"></div>
+        <img src="assets/brands/mowilex.png" alt="Mowilex" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Mowilex</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="R"></div>
+        <img src="assets/brands/rucika.png" alt="Rucika" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Rucika</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/shimitzu.png" alt="Shimitzu" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Shimitzu</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/schneider.png" alt="Schneider" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Schneider</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="B"></div>
+        <img src="assets/brands/broco.png" alt="Broco" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Broco</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="P"></div>
+        <img src="assets/brands/philips.png" alt="Philips" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Philips</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="C"></div>
+        <img src="assets/brands/clipsal.png" alt="Clipsal" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Clipsal</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="A"></div>
+        <img src="assets/brands/alderon.png" alt="Alderon" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Alderon</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="B"></div>
+        <img src="assets/brands/bosch.png" alt="Bosch" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Bosch</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="T"></div>
+        <img src="assets/brands/tekiro.png" alt="Tekiro" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Tekiro</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="R"></div>
+        <img src="assets/brands/ryu.png" alt="Ryu" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Ryu</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="M"></div>
+        <img src="assets/brands/mortar-utama.png" alt="Mortar Utama" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Mortar Utama</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="3"></div>
+        <img src="assets/brands/3m.png" alt="3M" class="brand-logo-img" loading="lazy">
         <span class="brand-name">3M</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/semen-indonesia.png" alt="Semen Indonesia Group" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Semen Indonesia Group</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/semen-rajawali.png" alt="Semen Rajawali" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Semen Rajawali</span>
       </div>
       <div class="brand-item">
-        <div class="brand-logo" data-letter="O"></div>
+        <img src="assets/brands/onda.png" alt="Onda" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Onda</span>
       </div>
       <!-- Set 2 (duplikat untuk seamless loop) -->
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="D"></div>
+        <img src="assets/brands/dulux.png" alt="Dulux" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Dulux</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="N"></div>
+        <img src="assets/brands/nippon-paint.png" alt="Nippon Paint" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Nippon Paint</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="A"></div>
+        <img src="assets/brands/avian.png" alt="Avian" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Avian</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="M"></div>
+        <img src="assets/brands/mowilex.png" alt="Mowilex" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Mowilex</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="R"></div>
+        <img src="assets/brands/rucika.png" alt="Rucika" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Rucika</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/shimitzu.png" alt="Shimitzu" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Shimitzu</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/schneider.png" alt="Schneider" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Schneider</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="B"></div>
+        <img src="assets/brands/broco.png" alt="Broco" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Broco</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="P"></div>
+        <img src="assets/brands/philips.png" alt="Philips" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Philips</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="C"></div>
+        <img src="assets/brands/clipsal.png" alt="Clipsal" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Clipsal</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="A"></div>
+        <img src="assets/brands/alderon.png" alt="Alderon" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Alderon</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="B"></div>
+        <img src="assets/brands/bosch.png" alt="Bosch" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Bosch</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="T"></div>
+        <img src="assets/brands/tekiro.png" alt="Tekiro" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Tekiro</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="R"></div>
+        <img src="assets/brands/ryu.png" alt="Ryu" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Ryu</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="M"></div>
+        <img src="assets/brands/mortar-utama.png" alt="Mortar Utama" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Mortar Utama</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="3"></div>
+        <img src="assets/brands/3m.png" alt="3M" class="brand-logo-img" loading="lazy">
         <span class="brand-name">3M</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/semen-indonesia.png" alt="Semen Indonesia Group" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Semen Indonesia Group</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="S"></div>
+        <img src="assets/brands/semen-rajawali.png" alt="Semen Rajawali" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Semen Rajawali</span>
       </div>
       <div class="brand-item" aria-hidden="true">
-        <div class="brand-logo" data-letter="O"></div>
+        <img src="assets/brands/onda.png" alt="Onda" class="brand-logo-img" loading="lazy">
         <span class="brand-name">Onda</span>
       </div>
     </div>
@@ -2184,38 +2187,40 @@ section { padding: 120px 0; }
   <!-- Row 1: kiri ke kanan -->
   <div class="client-marquee reveal" data-direction="right">
     <div class="client-marquee-track">
-      <div class="client-card">Logo Klien 1</div>
-      <div class="client-card">Logo Klien 2</div>
-      <div class="client-card">Logo Klien 3</div>
-      <div class="client-card">Logo Klien 4</div>
-      <div class="client-card">Logo Klien 5</div>
-      <div class="client-card">Logo Klien 6</div>
+      <div class="client-card"><img src="assets/clients/client1.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client2.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client3.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client4.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client5.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client6.png" alt="" class="client-logo-img" loading="lazy"></div>
       <!-- Duplikat untuk seamless loop -->
-      <div class="client-card" aria-hidden="true">Logo Klien 1</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 2</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 3</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 4</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 5</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 6</div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client1.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client2.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client3.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client4.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client5.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client6.png" alt="" class="client-logo-img" loading="lazy"></div>
     </div>
+  </div>
   </div>
 
   <!-- Row 2: kanan ke kiri (arah berlawanan supaya visually dynamic) -->
   <div class="client-marquee reveal" data-delay="1" data-direction="left">
     <div class="client-marquee-track">
-      <div class="client-card">Logo Klien 7</div>
-      <div class="client-card">Logo Klien 8</div>
-      <div class="client-card">Logo Klien 9</div>
-      <div class="client-card">Logo Klien 10</div>
-      <div class="client-card">Logo Klien 11</div>
-      <div class="client-card">Logo Klien 12</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 7</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 8</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 9</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 10</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 11</div>
-      <div class="client-card" aria-hidden="true">Logo Klien 12</div>
+      <div class="client-card"><img src="assets/clients/client7.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client8.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client9.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client10.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client11.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card"><img src="assets/clients/client12.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client7.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client8.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client9.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client10.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client11.png" alt="" class="client-logo-img" loading="lazy"></div>
+      <div class="client-card" aria-hidden="true"><img src="assets/clients/client12.png" alt="" class="client-logo-img" loading="lazy"></div>
     </div>
+  </div>
   </div>
 </section>
 
