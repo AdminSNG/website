@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<meta name="theme-color" content="#0F0F0F" />
+
+<!-- ============ SEO ============ -->
+<title>Karier — Sinar Nadi | Lowongan Kerja Toko Bangunan Bali</title>
+<meta name="description" content="Bergabung dengan tim Sinar Nadi — toko bahan bangunan terbesar di Bali. Lowongan kasir, sopir, dan posisi lainnya. Gaji kompetitif, training, jenjang karier." />
+<meta name="robots" content="index, follow" />
+<meta name="geo.region" content="ID-BA" />
+
+<!-- Schema.org JobPosting akan ditambahkan dynamically per posisi nanti -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F2;
+  --bg-dark: #0F0F0F;
+  --ink: #0F0F0F;
+  --ink-soft: #4A4A4A;
+  --ink-muted: #8A8A8A;
+  --line: #E8E8E5;
+  --accent: #E14425;
+  --accent-hover: #C5391C;
+  --accent-soft: #FCEAE5;
+  --yellow: #F6B618;
+  --yellow-soft: #FEF7B5;
+  --accent-mid: #F6B618;
+  --sunrise: linear-gradient(135deg, #E14425 0%, #F6B618 100%);
+  --sunrise-soft: linear-gradient(135deg, #FCEAE5 0%, #FEF7B5 100%);
+  --wa: #25D366;
+  --wa-hover: #1EB853;
+  --container: 1240px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.has-hammer, body.has-hammer * { cursor: none !important; }
+  body.has-hammer input, body.has-hammer textarea { cursor: text !important; }
+}
+
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 700; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+}
+.eyebrow::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 16px 26px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 15px;
+  border-radius: 100px;
+  transition: all 0.25s var(--ease);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--wa); color: white; }
+.btn-primary:hover { background: var(--wa-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.5); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(225, 68, 37, 0.5); }
+.btn-sm { padding: 11px 18px; font-size: 13.5px; }
+
+/* HAMMER CURSOR */
+.hammer-cursor {
+  position: fixed; top: 0; left: 0;
+  width: 44px; height: 44px;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s;
+  will-change: transform, left, top;
+  opacity: 0;
+}
+.hammer-cursor.ready { opacity: 1; }
+.hammer-inner {
+  width: 100%; height: 100%;
+  transform: rotate(-25deg);
+  transform-origin: 30% 70%;
+  transition: transform 0.2s var(--ease);
+}
+.hammer-cursor.hover-link .hammer-inner { transform: rotate(-10deg) scale(1.15); }
+.hammer-cursor.striking .hammer-inner {
+  animation: hammerStrike 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes hammerStrike {
+  0%   { transform: rotate(-10deg) scale(1.05); }
+  35%  { transform: rotate(-120deg) scale(1.1); }
+  60%  { transform: rotate(-105deg) scale(1.08); }
+  100% { transform: rotate(-25deg) scale(1); }
+}
+.hammer-cursor svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+.hammer-cursor:not(.striking):not(.hover-link) .hammer-inner { animation: hammerIdle 3.5s ease-in-out infinite; }
+@keyframes hammerIdle {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-30deg); }
+}
+.hammer-impact {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  animation: impactRipple 0.55s var(--ease-out) forwards;
+}
+@keyframes impactRipple {
+  0%   { width: 8px; height: 8px; opacity: 1; border-width: 3px; }
+  100% { width: 70px; height: 70px; opacity: 0; border-width: 1px; }
+}
+.hammer-spark {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 4px; height: 4px;
+  background: var(--yellow); border-radius: 50%;
+  animation: sparkFly 0.5s var(--ease-out) forwards;
+}
+@keyframes sparkFly {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900; font-size: 20px;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-mark {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+.logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+.logo-mark img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.logo-text {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+}
+.logo-text .name-1 { color: var(--ink); }
+.logo-text .name-2 {
+  background: var(--sunrise);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { display: flex; gap: 10px; align-items: center; }
+
+/* LANG TOGGLE */
+.lang-toggle { position: relative; display: flex; align-items: center; }
+.lang-current {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.lang-current:hover { border-color: var(--ink); background: white; }
+.lang-current::after {
+  content: '▾'; font-size: 10px; margin-left: 2px;
+  opacity: 0.6; transition: transform 0.25s;
+}
+.lang-toggle.open .lang-current::after { transform: rotate(180deg); }
+.lang-flag { font-size: 16px; line-height: 1; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  min-width: 160px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.15);
+  padding: 6px;
+  opacity: 0; transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 110;
+}
+.lang-toggle.open .lang-dropdown { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.lang-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: 'Archivo';
+  font-size: 13.5px; font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  width: 100%; text-align: left;
+  background: none; border: none;
+  transition: all 0.15s;
+}
+.lang-option:hover { background: var(--bg-soft); color: var(--ink); }
+.lang-option.active { background: var(--ink); color: var(--accent); }
+.lang-option .check { margin-left: auto; opacity: 0; font-size: 14px; color: var(--accent); }
+.lang-option.active .check { opacity: 1; }
+
+@media (max-width: 880px) { .lang-toggle.desktop-only { display: none; } }
+.drawer-lang { display: none; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+@media (max-width: 880px) { .drawer-lang { display: flex; gap: 8px; } }
+.drawer-lang button {
+  flex: 1; padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: 'Archivo';
+  font-weight: 600; font-size: 13px;
+  background: white; color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.drawer-lang button.active { background: var(--ink); color: var(--accent); border-color: var(--ink); }
+
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  background: var(--ink);
+  border-radius: 10px; position: relative;
+}
+.menu-toggle span {
+  position: absolute; left: 50%; top: 50%;
+  width: 18px; height: 2px;
+  background: white;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s;
+}
+.menu-toggle span:first-child { transform: translate(-50%, calc(-50% - 5px)); }
+.menu-toggle span:last-child { transform: translate(-50%, calc(-50% + 5px)); }
+
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .nav-cta .btn:not(.btn-primary) { display: none; }
+}
+
+/* ============================================
+   PAGE HERO — Karier
+   ============================================ */
+.career-hero {
+  padding: 140px 0 60px;
+  background: radial-gradient(900px 500px at 80% 0%, rgba(225, 68, 37, 0.07), transparent 60%), var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.career-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.career-hero-inner { position: relative; max-width: 820px; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Archivo';
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.breadcrumb a { color: var(--ink-soft); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span { color: var(--ink); }
+
+.career-hero h1 {
+  margin-bottom: 20px;
+}
+.career-hero h1 .accent { color: var(--accent); font-style: italic; }
+.career-hero h1 .underline {
+  display: inline-block;
+  position: relative;
+}
+.career-hero h1 .underline::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: 4px;
+  height: 14px;
+  background: var(--yellow);
+  z-index: -1;
+  border-radius: 2px;
+  transform: skew(-2deg);
+}
+.career-hero p.lead {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 32px;
+}
+.career-hero-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.career-hero-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--ink-soft);
+}
+.career-hero-meta-item strong { color: var(--ink); font-weight: 700; }
+.dot {
+  width: 8px; height: 8px;
+  background: var(--wa);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+.career-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 880px) {
+  .career-hero { padding: 110px 0 40px; }
+}
+
+/* ============================================
+   "KENAPA KERJA DI SINI" SECTION
+   ============================================ */
+.benefits-section {
+  padding: 80px 0;
+  background: var(--bg-soft);
+}
+.section-head-narrow {
+  max-width: 720px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+.section-head-narrow h2 {
+  margin-top: 16px;
+}
+.section-head-narrow h2 .accent { color: var(--accent); font-style: italic; }
+.section-head-narrow p {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.benefit-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+}
+.benefit-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.benefit-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -12px rgba(0,0,0,0.1);
+}
+.benefit-card:hover::before { opacity: 1; }
+.benefit-card > * { position: relative; z-index: 1; }
+
+.benefit-icon {
+  width: 52px; height: 52px;
+  background: var(--ink);
+  color: var(--accent);
+  border-radius: 12px;
+  display: grid; place-items: center;
+  transition: all 0.3s var(--ease);
+}
+.benefit-icon svg { width: 26px; height: 26px; }
+.benefit-card:hover .benefit-icon {
+  background: var(--sunrise);
+  color: white;
+  transform: rotate(-8deg) scale(1.05);
+  box-shadow: 0 8px 20px -6px rgba(225, 68, 37, 0.5);
+}
+.benefit-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.benefit-card p {
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.benefit-bg-icon {
+  position: absolute;
+  bottom: -15px; right: -15px;
+  width: 110px; height: 110px;
+  color: var(--ink);
+  opacity: 0.05;
+  pointer-events: none;
+  transition: all 0.4s var(--ease);
+  z-index: 0;
+}
+.benefit-card:hover .benefit-bg-icon {
+  opacity: 0.14;
+  color: var(--accent);
+  transform: scale(1.1) rotate(-6deg);
+}
+.benefit-bg-icon svg { width: 100%; height: 100%; }
+
+@media (max-width: 980px) {
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .benefit-card { min-height: auto; }
+}
+
+/* ============================================
+   JOB LISTINGS
+   ============================================ */
+.jobs-section {
+  padding: 100px 0;
+  scroll-margin-top: 90px; /* Offset untuk fixed nav saat anchor scroll */
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 50px;
+}
+.section-head h2 { line-height: 1.05; }
+.section-head h2 .accent { color: var(--accent); font-style: italic; }
+.section-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+@media (max-width: 880px) {
+  .section-head { grid-template-columns: 1fr; gap: 16px; }
+}
+
+.jobs-list {
+  display: grid;
+  gap: 16px;
+}
+.job-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.job-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+}
+.job-card > * { position: relative; z-index: 1; }
+
+/* Two-column inner content for responsibilities & qualifications */
+.job-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 48px;
+  margin-top: 4px;
+}
+.job-content-col {
+  position: relative;
+  overflow: hidden;
+}
+/* Bg watermark icon — di overlay pojok kanan bawah kolom Kualifikasi */
+.job-content-col.has-bg-icon { padding-bottom: 8px; }
+.job-content-col h4 {
+  font-family: 'Archivo';
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.job-content-col h4::before {
+  content: '';
+  width: 16px; height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.job-content-col ul { position: relative; z-index: 1; }
+
+.job-col-bg-icon {
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  width: 130px; height: 130px;
+  color: var(--ink);
+  opacity: 0.05;
+  pointer-events: none;
+  transition: all 0.4s var(--ease);
+  z-index: 0;
+}
+.job-card:hover .job-col-bg-icon {
+  opacity: 0.12;
+  color: var(--accent);
+  transform: scale(1.05) rotate(-6deg);
+}
+.job-col-bg-icon svg { width: 100%; height: 100%; }
+
+/* Action area di bawah, full width */
+.job-action {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.job-action .btn { padding: 13px 22px; font-size: 14px; }
+.job-action-info {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.job-action-info::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--wa);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.18);
+}
+
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.job-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Archivo';
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--wa);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.job-status::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--wa);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.job-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: 'Archivo';
+  font-weight: 700;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 100px;
+}
+.job-tag.full-time { background: rgba(37, 211, 102, 0.12); color: var(--wa); }
+.job-tag.location {
+  background: var(--bg-soft);
+  color: var(--ink-soft);
+}
+.job-tag.location::before { content: '📍'; font-size: 11px; }
+
+.job-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  margin-bottom: 12px;
+}
+.job-desc {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.job-requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.job-requirements li {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+.job-requirements li::before {
+  content: '';
+  width: 16px; height: 16px;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 6l2 2 4-4' stroke='%23E14425' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 880px) {
+  .job-card { padding: 28px 24px; }
+  .job-content-grid { grid-template-columns: 1fr; gap: 24px; }
+  .job-action { flex-direction: column; align-items: stretch; }
+  .job-action .btn { width: 100%; }
+  .job-action-info { margin-left: 0; justify-content: center; margin-top: 4px; }
+  .job-col-bg-icon { display: none; }
+}
+
+/* ============================================
+   GENERAL REQUIREMENTS (Syarat Umum)
+   ============================================ */
+.general-req-section {
+  padding: 100px 0;
+  background: var(--bg-soft);
+}
+.general-req-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.general-req-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+.general-req-head h2 .accent { color: var(--accent); font-style: italic; }
+.general-req-head p {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.general-req-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.general-req-item {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.general-req-item:hover {
+  border-color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -12px rgba(0,0,0,0.08);
+}
+
+.gr-num {
+  font-family: 'Archivo';
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  padding-top: 4px;
+  width: 44px;
+}
+
+.gr-content { flex: 1; min-width: 0; }
+.gr-content h4 {
+  font-family: 'Archivo';
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.gr-content p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+@media (max-width: 880px) {
+  .general-req-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   APPLY PROCESS / CHANNELS
+   ============================================ */
+.apply-section {
+  padding: 100px 0;
+  background: var(--ink);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.apply-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(225, 68, 37, 0.18), transparent 35%),
+    radial-gradient(circle at 85% 70%, rgba(246, 182, 24, 0.1), transparent 40%);
+}
+.apply-section::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.apply-section .container { position: relative; z-index: 1; }
+.apply-section .eyebrow {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+}
+.apply-section h2 { color: white; margin-top: 16px; }
+.apply-section h2 .accent { color: var(--accent); font-style: italic; }
+.apply-section p.lead {
+  color: rgba(255,255,255,0.7);
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin-top: 16px;
+}
+
+.apply-channels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 50px;
+}
+.apply-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  transition: all 0.3s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.apply-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.apply-card-icon {
+  width: 48px; height: 48px;
+  background: var(--accent);
+  color: white;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  transition: all 0.3s;
+}
+.apply-card:hover .apply-card-icon { transform: rotate(-6deg) scale(1.05); }
+.apply-card-icon svg { width: 22px; height: 22px; }
+.apply-card-tag {
+  font-family: 'Archivo';
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.55);
+}
+.apply-card-value {
+  font-family: 'Archivo';
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  word-break: break-word;
+}
+.apply-card-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.apply-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Archivo';
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 6px;
+}
+.apply-card-arrow::after { content: '→'; transition: transform 0.3s; }
+.apply-card:hover .apply-card-arrow::after { transform: translateX(4px); }
+
+@media (max-width: 980px) {
+  .apply-channels { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .apply-channels { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   FAQ MINI
+   ============================================ */
+.career-faq {
+  padding: 80px 0;
+  background: var(--bg);
+}
+.faq-grid {
+  max-width: 800px;
+  margin: 40px auto 0;
+  display: grid;
+  gap: 12px;
+}
+.faq-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.faq-item summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  font-family: 'Archivo';
+  font-weight: 700;
+  font-size: 15.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  transition: background 0.2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { background: rgba(225, 68, 37, 0.04); }
+.faq-item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--accent);
+  transition: transform 0.25s;
+  margin-left: 16px;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item-content {
+  padding: 0 24px 22px;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ============================================
+   FINAL CTA
+   ============================================ */
+.cta-strip { padding: 80px 0; }
+.cta-box {
+  background: var(--ink);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 60px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(225, 68, 37, 0.3), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(246, 182, 24, 0.15), transparent 40%);
+}
+.cta-box::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-box > * { position: relative; z-index: 1; }
+.cta-box h2 { color: white; max-width: 720px; margin: 0 auto 16px; }
+.cta-box h2 .accent { color: var(--accent); font-style: italic; }
+.cta-box p { color: rgba(255,255,255,0.7); font-size: 16px; max-width: 540px; margin: 0 auto 32px; }
+.cta-box-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 880px) { .cta-box { padding: 48px 24px; } }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg-soft);
+  padding: 60px 0 28px;
+  border-top: 1px solid var(--line);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 50px;
+}
+.footer-brand p { color: var(--ink-soft); font-size: 14.5px; margin: 16px 0; max-width: 340px; }
+.footer-col h4 {
+  font-family: 'Archivo'; font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 18px; font-weight: 700;
+}
+.footer-col ul { list-style: none; display: grid; gap: 10px; }
+.footer-col li { font-size: 14.5px; color: var(--ink-soft); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+  font-size: 13.5px; color: var(--ink-muted);
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-brand { grid-column: span 2; }
+}
+
+/* FAB */
+.fab-wa {
+  position: fixed; bottom: 24px; right: 24px;
+  z-index: 90;
+  width: 60px; height: 60px;
+  background: var(--wa); color: white;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 30px;
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: all 0.3s var(--ease);
+  animation: bounce-in 0.6s var(--ease-out) 1s both;
+}
+.fab-wa::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%;
+  background: var(--wa); opacity: 0.4;
+  animation: pingFab 2s infinite;
+  z-index: -1;
+}
+.fab-wa:hover { transform: scale(1.08) rotate(-5deg); background: var(--wa-hover); }
+@keyframes bounce-in {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes pingFab {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.fab-wa-label {
+  position: absolute; right: 70px;
+  background: var(--ink); color: white;
+  padding: 8px 14px; border-radius: 8px;
+  font-family: 'Archivo'; font-size: 13px; font-weight: 600;
+  white-space: nowrap;
+  opacity: 0; transform: translateX(10px);
+  transition: all 0.25s;
+  pointer-events: none;
+}
+.fab-wa:hover .fab-wa-label { opacity: 1; transform: translateX(0); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+.reveal[data-delay="4"] { transition-delay: 0.4s; }
+
+.drawer {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 200;
+  padding: 24px;
+  transform: translateY(-100%);
+  transition: transform 0.4s var(--ease);
+  display: flex; flex-direction: column;
+}
+.drawer.open { transform: translateY(0); }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.drawer-close {
+  width: 44px; height: 44px;
+  background: var(--ink); color: white;
+  border-radius: 10px; font-size: 24px;
+}
+.drawer-links { list-style: none; display: grid; gap: 4px; }
+.drawer-links a {
+  display: block;
+  font-family: 'Archivo'; font-weight: 700;
+  font-size: 28px; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.drawer-cta { margin-top: auto; display: grid; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hammer-cursor, .hammer-impact, .hammer-spark { display: none !important; }
+  body.has-hammer, body.has-hammer * { cursor: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HAMMER CURSOR ============ -->
+<div class="hammer-cursor" id="hammerCursor" aria-hidden="true">
+  <div class="hammer-inner">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect x="29" y="22" width="6" height="38" rx="2" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="1.2"/>
+      <line x1="30" y1="28" x2="30" y2="56" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <line x1="33" y1="26" x2="33" y2="58" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <rect x="28" y="50" width="8" height="10" rx="2" fill="#5C3A1E"/>
+      <path d="M 12 8 L 52 8 L 54 22 L 48 26 L 40 22 L 24 22 L 16 26 L 10 22 Z"
+            fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M 14 10 L 50 10 L 51 14 L 13 14 Z" fill="#6A6A6A" opacity="0.7"/>
+      <rect x="13" y="11" width="38" height="1.5" fill="#FFFFFF" opacity="0.3"/>
+      <path d="M 12 8 L 10 22 L 14 20 L 14 10 Z" fill="#2A2A2A"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span>
+      <span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="tentang.html" data-i18n="nav_tentang">Tentang</a></li>
+      <li><a href="area-pengiriman.html" data-i18n="nav_area">Area Layanan</a></li>
+      <li><a href="karier.html" style="color:var(--ink); font-weight: 700;" data-i18n="nav_karier">Karier</a></li>
+      <li><a href="kontak.html" data-i18n="nav_kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle desktop-only" id="langToggle">
+        <button class="lang-current" id="langCurrent" aria-label="Pilih bahasa" aria-expanded="false">
+          <span class="lang-flag" id="langFlag">🇮🇩</span>
+          <span id="langLabel">ID</span>
+        </button>
+        <div class="lang-dropdown" role="menu">
+          <button class="lang-option active" data-lang="id" role="menuitem">
+            <span class="lang-flag">🇮🇩</span>
+            <span>Indonesia</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="en" role="menuitem">
+            <span class="lang-flag">🇬🇧</span>
+            <span>English</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="ru" role="menuitem">
+            <span class="lang-flag">🇷🇺</span>
+            <span>Русский</span>
+            <span class="check">✓</span>
+          </button>
+        </div>
+      </div>
+      <a href="tel:+6289526262727" class="btn btn-outline" data-i18n="nav_call">📞 Telepon</a>
+      <a href="https://wa.me/6289526262727" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="nav_wa">💬 WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+    <button class="drawer-close" id="drawerClose" aria-label="Tutup">×</button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="tentang.html" class="drawer-link" data-i18n="nav_tentang">Tentang</a></li>
+    <li><a href="area-pengiriman.html" class="drawer-link" data-i18n="nav_area">Area Layanan</a></li>
+    <li><a href="karier.html" class="drawer-link" data-i18n="nav_karier">Karier</a></li>
+    <li><a href="kontak.html" class="drawer-link" data-i18n="nav_kontak">Kontak</a></li>
+  </ul>
+  <div class="drawer-lang" id="drawerLang">
+    <button data-lang="id" class="active">🇮🇩 ID</button>
+    <button data-lang="en">🇬🇧 EN</button>
+    <button data-lang="ru">🇷🇺 RU</button>
+  </div>
+  <div class="drawer-cta">
+    <a href="https://wa.me/6281337572288" class="btn btn-primary">💬 Lamar via WhatsApp</a>
+    <a href="tel:+6289526262727" class="btn btn-outline">📞 0895-2626-2727</a>
+  </div>
+</div>
+
+<!-- ============ CAREER HERO ============ -->
+<header class="career-hero">
+  <div class="container career-hero-inner">
+    <div class="breadcrumb reveal">
+      <a href="index.html" data-i18n="bc_home">Beranda</a>
+      <span>›</span>
+      <span data-i18n="bc_karier">Karier</span>
+    </div>
+    <span class="eyebrow reveal" data-delay="1" data-i18n="ch_eyebrow">Bergabung dengan Tim Kami</span>
+    <h1 class="reveal" data-delay="2" style="margin-top: 20px;">
+      <span data-i18n="ch_title_1">Kerja di</span> <span class="underline" data-i18n="ch_title_underline">Sinar Nadi</span><span data-i18n="ch_title_2">.</span> <br/>
+      <span class="accent" data-i18n="ch_title_3">Tumbuh Bersama Kami</span><span data-i18n="ch_title_4">.</span>
+    </h1>
+    <p class="lead reveal" data-delay="3" data-i18n="ch_lead">
+      Sinar Nadi sedang berkembang. Kami selalu cari talenta baru yang jujur, rajin, dan ingin tumbuh bersama. Mulai dari kasir, sopir, sampai posisi lain — pintu kami terbuka.
+    </p>
+    <div class="career-hero-meta reveal" data-delay="4">
+      <div class="career-hero-meta-item"><span class="dot"></span> <strong data-i18n="ch_meta_1">Sedang membuka beberapa posisi</strong></div>
+      <div class="career-hero-meta-item">🏪 <strong data-i18n="ch_meta_2">Beberapa cabang di Bali</strong></div>
+      <div class="career-hero-meta-item">📈 <strong data-i18n="ch_meta_3">Sejak 2001 — bisnis stabil</strong></div>
+    </div>
+    <div class="career-hero-actions reveal" data-delay="4">
+      <a href="#lowongan" class="btn btn-accent" data-i18n="ch_btn_jobs">📋 Lihat Lowongan</a>
+      <a href="https://wa.me/6281337572288?text=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20pekerjaan%20di%20Sinar%20Nadi.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20posisi%20yang%20tersedia%3F" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="ch_btn_wa">💬 Lamar via WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BENEFITS / WHY WORK HERE ============ -->
+<section class="benefits-section">
+  <div class="container">
+    <div class="section-head-narrow">
+      <span class="eyebrow reveal" data-i18n="bn_eyebrow">Kenapa Kerja di Sini?</span>
+      <h2 class="reveal" data-delay="1"><span data-i18n="bn_title_1">Bukan Sekadar</span> <span class="accent" data-i18n="bn_title_2">Pekerjaan</span><span data-i18n="bn_title_3">.</span></h2>
+      <p class="reveal" data-delay="2" data-i18n="bn_sub">
+        Kami percaya tim yang dihargai akan melayani customer dengan baik. Berikut yang bisa Anda dapatkan saat bergabung dengan Sinar Nadi.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <!-- Benefit 1: Gaji Kompetitif -->
+      <div class="benefit-card reveal" data-delay="1">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+        </div>
+        <h3 data-i18n="bn_1_title">Gaji Kompetitif</h3>
+        <p data-i18n="bn_1_desc">UMR Bali atau di atasnya, sesuai posisi & pengalaman. Bayaran rutin, tepat waktu.</p>
+        <div class="benefit-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Benefit 2: Bonus Performance -->
+      <div class="benefit-card reveal" data-delay="2">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="bn_2_title">Bonus Performance</h3>
+        <p data-i18n="bn_2_desc">Performa bagus = imbalan langsung. Bukan janji kosong, ada bonus rutin sesuai kontribusi Anda.</p>
+        <div class="benefit-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Benefit 3: Lembur Dibayar -->
+      <div class="benefit-card reveal" data-delay="3">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+        <h3 data-i18n="bn_3_title">Lembur Dibayar</h3>
+        <p data-i18n="bn_3_desc">Kerja lebih lama = bayaran lebih. Tidak ada lembur "gratis" — kerja keras Anda dihargai sesuai aturan.</p>
+        <div class="benefit-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Benefit 4: Training & Career -->
+      <div class="benefit-card reveal" data-delay="4">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <polyline points="22,4 12,14.01 9,11.01"/>
+          </svg>
+        </div>
+        <h3 data-i18n="bn_4_title">Training & Jenjang Karier</h3>
+        <p data-i18n="bn_4_desc">Mulai dari posisi entry-level, bisa naik ke supervisor atau kepala toko. Kami investasi di karyawan jangka panjang.</p>
+        <div class="benefit-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <polyline points="22,4 12,14.01 9,11.01"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOB LISTINGS ============ -->
+<section class="jobs-section" id="lowongan">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow reveal" data-i18n="js_eyebrow">Lowongan Aktif</span>
+        <h2 class="reveal" data-delay="1" style="margin-top: 16px;"><span data-i18n="js_title_1">Posisi yang Sedang</span> <span class="accent" data-i18n="js_title_2">Kami Cari</span><span data-i18n="js_title_3">.</span></h2>
+      </div>
+      <p class="reveal" data-delay="2" data-i18n="js_sub">
+        Klik "Lamar Sekarang" pada posisi yang Anda minati — chat WA akan terbuka dengan pesan yang sudah terisi otomatis.
+      </p>
+    </div>
+
+    <div class="jobs-list">
+      <!-- ===== JOB 1: KASIR ===== -->
+      <article class="job-card reveal" data-delay="1">
+        <div class="job-meta">
+          <span class="job-status" data-i18n="js_status_open">Sedang Membuka</span>
+          <span class="job-tag full-time" data-i18n="js_tag_full">Full-Time · Sistem Shift</span>
+          <span class="job-tag location" data-i18n="js_tag_location_kasir">Beberapa cabang di Bali</span>
+        </div>
+        <h3 class="job-title" data-i18n="job_kasir_title">Kasir Toko</h3>
+        <p class="job-desc" data-i18n="job_kasir_desc">
+          Bertanggung jawab atas transaksi penjualan, pelayanan customer, dan operasional area kasir. Bekerja dengan sistem shift sesuai jam operasional toko (07.00–21.00 WITA).
+        </p>
+
+        <div class="job-content-grid">
+          <div class="job-content-col">
+            <h4 data-i18n="job_kasir_resp_title">Tanggung Jawab Utama</h4>
+            <ul class="job-requirements">
+              <li data-i18n="job_kasir_resp_1">Melayani transaksi penjualan dengan akurat & ramah</li>
+              <li data-i18n="job_kasir_resp_2">Menjaga kerapian dan ketertiban area kasir</li>
+              <li data-i18n="job_kasir_resp_3">Berkoordinasi dengan tim toko terkait stok & harga</li>
+              <li data-i18n="job_kasir_resp_4">Membuat laporan harian transaksi</li>
+            </ul>
+          </div>
+          <div class="job-content-col has-bg-icon">
+            <h4 data-i18n="job_kasir_req_title">Kualifikasi</h4>
+            <ul class="job-requirements">
+              <li data-i18n="job_kasir_req_1">Lulusan SMA/SMK (fresh graduate dipersilakan)</li>
+              <li data-i18n="job_kasir_req_2">Bisa operate komputer adalah nilai plus — kalau belum bisa, akan ditraining</li>
+              <li data-i18n="job_kasir_req_3">Bersedia bekerja dengan sistem shift</li>
+              <li data-i18n="job_kasir_req_4">Teliti, ramah, dan komunikatif dengan customer</li>
+            </ul>
+            <div class="job-col-bg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <line x1="6" y1="9" x2="18" y2="9"/>
+                <line x1="6" y1="13" x2="14" y2="13"/>
+                <line x1="6" y1="17" x2="11" y2="17"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-action">
+          <a href="https://wa.me/6281337572288?text=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20posisi%20Kasir%20Toko.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20proses%20rekrutmen%3F" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="job_btn_apply">💬 Lamar Sekarang</a>
+          <a href="mailto:admin@sinarnadi.com?subject=Lamaran%20Kasir%20-%20Sinar%20Nadi&body=Halo%20Sinar%20Nadi%2C%0A%0ASaya%20tertarik%20melamar%20posisi%20Kasir%20Toko%20di%20Sinar%20Nadi.%20Berikut%20data%20saya%3A%0A%0ANama%3A%20%0AUmur%3A%20%0ALokasi%20domisili%3A%20%0ANo.%20WhatsApp%3A%20%0AKualifikasi%2FPengalaman%3A%20%0A%0ABisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20proses%20rekrutmen%3F%0A%0ATerima%20kasih." class="btn btn-outline btn-sm" data-i18n="job_btn_email">✉️ Lamar via Email</a>
+          <span class="job-action-info" data-i18n="job_action_info">Tim HR balas cepat saat jam kerja</span>
+        </div>
+      </article>
+
+      <!-- ===== JOB 2: SOPIR ===== -->
+      <article class="job-card reveal" data-delay="2">
+        <div class="job-meta">
+          <span class="job-status" data-i18n="js_status_open">Sedang Membuka</span>
+          <span class="job-tag full-time" data-i18n="js_tag_full">Full-Time</span>
+          <span class="job-tag location" data-i18n="js_tag_location_sopir">Beberapa cabang di Bali</span>
+        </div>
+        <h3 class="job-title" data-i18n="job_sopir_title">Sopir Armada</h3>
+        <p class="job-desc" data-i18n="job_sopir_desc">
+          Posisi sopir di Sinar Nadi tidak hanya mengemudi — tugasnya serabutan: bantu loading, kirim barang, sampai bongkar muatan di lokasi customer. Cocok untuk yang fisiknya kuat dan tangguh.
+        </p>
+
+        <div class="job-content-grid">
+          <div class="job-content-col">
+            <h4 data-i18n="job_sopir_resp_title">Tanggung Jawab Utama</h4>
+            <ul class="job-requirements">
+              <li data-i18n="job_sopir_resp_1">Mengangkat & loading material di gudang</li>
+              <li data-i18n="job_sopir_resp_2">Mengantar barang ke lokasi customer</li>
+              <li data-i18n="job_sopir_resp_3">Bongkar muatan saat sampai di tujuan</li>
+              <li data-i18n="job_sopir_resp_4">Memastikan kendaraan dalam kondisi siap pakai</li>
+            </ul>
+          </div>
+          <div class="job-content-col has-bg-icon">
+            <h4 data-i18n="job_sopir_req_title">Kualifikasi</h4>
+            <ul class="job-requirements">
+              <li data-i18n="job_sopir_req_1">Punya SIM A (mobil) — wajib · SIM B (truk) lebih disukai</li>
+              <li data-i18n="job_sopir_req_2">Pengalaman bawa kendaraan minimal 2 tahun</li>
+              <li data-i18n="job_sopir_req_3">Terbiasa membawa material bangunan (berat & besar)</li>
+              <li data-i18n="job_sopir_req_4">Bisa Google Maps untuk navigasi</li>
+              <li data-i18n="job_sopir_req_5">Mengerti dasar perawatan kendaraan</li>
+              <li data-i18n="job_sopir_req_6">Fisik sehat untuk membantu loading & bongkar material</li>
+            </ul>
+            <div class="job-col-bg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+                <rect x="1" y="3" width="15" height="13"/>
+                <polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="job-action">
+          <a href="https://wa.me/6281337572288?text=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20posisi%20Sopir%20Armada.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20proses%20rekrutmen%3F" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="job_btn_apply">💬 Lamar Sekarang</a>
+          <a href="mailto:admin@sinarnadi.com?subject=Lamaran%20Sopir%20-%20Sinar%20Nadi&body=Halo%20Sinar%20Nadi%2C%0A%0ASaya%20tertarik%20melamar%20posisi%20Sopir%20Armada%20di%20Sinar%20Nadi.%20Berikut%20data%20saya%3A%0A%0ANama%3A%20%0AUmur%3A%20%0ALokasi%20domisili%3A%20%0ANo.%20WhatsApp%3A%20%0AJenis%20SIM%20yang%20dimiliki%3A%20%0APengalaman%20mengemudi%3A%20%0A%0ABisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20proses%20rekrutmen%3F%0A%0ATerima%20kasih." class="btn btn-outline btn-sm" data-i18n="job_btn_email">✉️ Lamar via Email</a>
+          <span class="job-action-info" data-i18n="job_action_info">Tim HR balas cepat saat jam kerja</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYARAT UMUM (WAJIB SEMUA POSISI) ============ -->
+<section class="general-req-section">
+  <div class="container">
+    <div class="general-req-wrapper">
+      <div class="general-req-head">
+        <span class="eyebrow reveal" data-i18n="gr_eyebrow">Wajib Semua Posisi</span>
+        <h2 class="reveal" data-delay="1" style="margin-top: 16px;"><span data-i18n="gr_title_1">Syarat</span> <span class="accent" data-i18n="gr_title_2">Umum</span><span data-i18n="gr_title_3">.</span></h2>
+        <p class="reveal" data-delay="2" data-i18n="gr_sub">
+          Selain kualifikasi teknis per posisi, ada beberapa hal mendasar yang wajib dipenuhi semua pelamar — apapun posisinya.
+        </p>
+      </div>
+
+      <div class="general-req-grid reveal" data-delay="3">
+        <!-- Item 1: Kejujuran -->
+        <div class="general-req-item">
+          <div class="gr-num">01</div>
+          <div class="gr-content">
+            <h4 data-i18n="gr_1_title">Jujur adalah Prioritas Utama</h4>
+            <p data-i18n="gr_1_desc">Akan ada evaluasi & pengawasan rutin. Kejujuran tidak bisa dinegosiasikan di Sinar Nadi.</p>
+          </div>
+        </div>
+
+        <!-- Item 2: SOP -->
+        <div class="general-req-item">
+          <div class="gr-num">02</div>
+          <div class="gr-content">
+            <h4 data-i18n="gr_2_title">Bersedia Mengikuti SOP Perusahaan</h4>
+            <p data-i18n="gr_2_desc">Kami punya prosedur kerja yang jelas. Pelamar harus siap mengikuti aturan main yang berlaku.</p>
+          </div>
+        </div>
+
+        <!-- Item 3: Penempatan -->
+        <div class="general-req-item">
+          <div class="gr-num">03</div>
+          <div class="gr-content">
+            <h4 data-i18n="gr_3_title">Bersedia Ditempatkan di Cabang Mana Saja</h4>
+            <p data-i18n="gr_3_desc">Bisa di seluruh cabang Sinar Nadi Group — namun akan diusahakan ditempatkan di lokasi terdekat dari tempat tinggal.</p>
+          </div>
+        </div>
+
+        <!-- Item 4: Attitude -->
+        <div class="general-req-item">
+          <div class="gr-num">04</div>
+          <div class="gr-content">
+            <h4 data-i18n="gr_4_title">Attitude Kerja yang Baik</h4>
+            <p data-i18n="gr_4_desc">Tidak toxic, bisa kerja tim, mau saling bantu antar karyawan. Skill bisa diajarkan, tapi attitude tidak.</p>
+          </div>
+        </div>
+
+        <!-- Item 5: Full Time -->
+        <div class="general-req-item">
+          <div class="gr-num">05</div>
+          <div class="gr-content">
+            <h4 data-i18n="gr_5_title">Siap Kerja Full-Time</h4>
+            <p data-i18n="gr_5_desc">Mengikuti jam operasional toko (07.00–21.00 WITA). Untuk posisi kasir, ada sistem shift yang akan diatur tim.</p>
+          </div>
+        </div>
+
+        <!-- Item 6: Hukum -->
+        <div class="general-req-item">
+          <div class="gr-num">06</div>
+          <div class="gr-content">
+            <h4 data-i18n="gr_6_title">Tidak Terlibat Masalah Hukum</h4>
+            <p data-i18n="gr_6_desc">Pelamar harus bersih dari catatan kriminal. Background check akan dilakukan saat proses rekrutmen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLY CHANNELS ============ -->
+<section class="apply-section">
+  <div class="container">
+    <div style="max-width: 720px;">
+      <span class="eyebrow reveal" data-i18n="ap_eyebrow">Cara Melamar</span>
+      <h2 class="reveal" data-delay="1"><span data-i18n="ap_title_1">Hubungi Kami</span> <span class="accent" data-i18n="ap_title_2">Melalui</span><span data-i18n="ap_title_3">.</span></h2>
+      <p class="lead reveal" data-delay="2" data-i18n="ap_lead">
+        Kami terima lamaran lewat berbagai jalur — mulai dari WhatsApp yang paling cepat, sampai datang langsung ke toko Sinar Nadi.
+      </p>
+    </div>
+
+    <div class="apply-channels">
+      <!-- Channel 1: WA HR (Primary) -->
+      <a href="https://wa.me/6281337572288?text=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20pekerjaan%20di%20Sinar%20Nadi.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20posisi%20yang%20tersedia%3F" class="apply-card reveal" target="_blank" rel="noopener" data-delay="1">
+        <div class="apply-card-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span class="apply-card-tag" data-i18n="ap_wa_tag">Paling Cepat</span>
+        <span class="apply-card-value">0813-3757-2288</span>
+        <span class="apply-card-meta" data-i18n="ap_wa_meta">WhatsApp khusus tim HR. Balas cepat saat jam kerja.</span>
+        <span class="apply-card-arrow" data-i18n="ap_wa_arrow">Chat sekarang</span>
+      </a>
+
+      <!-- Channel 2: WA Umum -->
+      <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20ingin%20menanyakan%20info%20lowongan%20kerja%20di%20Sinar%20Nadi.%20Bisakah%20Anda%20memberikan%20info%20lebih%20lanjut%3F" class="apply-card reveal" target="_blank" rel="noopener" data-delay="2">
+        <div class="apply-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <span class="apply-card-tag" data-i18n="ap_wa2_tag">Tanya Info Dulu</span>
+        <span class="apply-card-value">0895-2626-2727</span>
+        <span class="apply-card-meta" data-i18n="ap_wa2_meta">WhatsApp umum kalau mau tanya-tanya dulu sebelum lamar.</span>
+        <span class="apply-card-arrow" data-i18n="ap_wa2_arrow">Tanya sekarang</span>
+      </a>
+
+      <!-- Channel 3: Email -->
+      <a href="mailto:admin@sinarnadi.com?subject=Lamaran%20Kerja%20-%20Sinar%20Nadi&body=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20pekerjaan%20di%20Sinar%20Nadi.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20posisi%20yang%20tersedia%3F.%0A%0APosisi%20yang%20diminati%3A%20%0ANama%3A%20%0AUmur%3A%20%0ALokasi%20domisili%3A%20%0ANo.%20WhatsApp%3A%20%0AKualifikasi%2FPengalaman%3A%20%0A%0AMohon%20info%20lebih%20lanjut.%20Terima%20kasih." class="apply-card reveal" data-delay="3">
+        <div class="apply-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <span class="apply-card-tag" data-i18n="ap_email_tag">Email Resmi</span>
+        <span class="apply-card-value">admin@sinarnadi.com</span>
+        <span class="apply-card-meta" data-i18n="ap_email_meta">Kirim CV & lamaran lengkap. Cocok untuk yang formal.</span>
+        <span class="apply-card-arrow" data-i18n="ap_email_arrow">Kirim email</span>
+      </a>
+
+      <!-- Channel 4: Datang Langsung -->
+      <a href="https://www.google.com/maps/dir/?api=1&destination=-8.6304423,115.1722098" class="apply-card reveal" target="_blank" rel="noopener" data-delay="4">
+        <div class="apply-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <span class="apply-card-tag" data-i18n="ap_loc_tag">Datang Langsung</span>
+        <span class="apply-card-value" data-i18n="ap_loc_value">Datang ke Toko Sinar Nadi</span>
+        <span class="apply-card-meta" data-i18n="ap_loc_meta">Bawa CV & datang ke toko utama Kerobokan. Buka tiap hari, 07.00–21.00 WITA.</span>
+        <span class="apply-card-arrow" data-i18n="ap_loc_arrow">Lihat lokasi</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ MINI ============ -->
+<section class="career-faq">
+  <div class="container">
+    <div class="section-head-narrow">
+      <span class="eyebrow reveal" data-i18n="fq_eyebrow">Pertanyaan Umum</span>
+      <h2 class="reveal" data-delay="1"><span data-i18n="fq_title_1">Yang Sering</span> <span class="accent" data-i18n="fq_title_2">Ditanyakan</span><span data-i18n="fq_title_3">.</span></h2>
+    </div>
+
+    <div class="faq-grid">
+      <details class="faq-item reveal">
+        <summary data-i18n="fq_q1">Apakah saya harus punya pengalaman kerja sebelumnya?</summary>
+        <div class="faq-item-content" data-i18n="fq_a1">
+          Tidak wajib. Untuk posisi kasir, kami terima fresh graduate SMA/SMK. Untuk sopir, kami butuh pengalaman mengemudi minimal 2 tahun. Yang paling penting: jujur, rajin, dan mau belajar.
+        </div>
+      </details>
+      <details class="faq-item reveal" data-delay="1">
+        <summary data-i18n="fq_q2">Lokasi kerja di mana saja?</summary>
+        <div class="faq-item-content" data-i18n="fq_a2">
+          Kami punya beberapa cabang yang tersebar di Bali. Saat melamar, sebutkan domisili Anda — tim HR akan coba arahkan ke cabang terdekat dari rumah.
+        </div>
+      </details>
+      <details class="faq-item reveal" data-delay="2">
+        <summary data-i18n="fq_q3">Berapa gaji yang ditawarkan?</summary>
+        <div class="faq-item-content" data-i18n="fq_a3">
+          Sesuai posisi & pengalaman — minimum UMR Bali, bisa di atas tergantung kualifikasi. Detail gaji akan dibahas saat interview, beserta benefit lain seperti bonus performance dan lembur.
+        </div>
+      </details>
+      <details class="faq-item reveal" data-delay="3">
+        <summary data-i18n="fq_q4">Bagaimana proses melamar?</summary>
+        <div class="faq-item-content" data-i18n="fq_a4">
+          Step 1: Chat WA atau email lamaran. Step 2: Tim HR akan respon dalam 1-3 hari kerja & mengundang interview. Step 3: Interview tatap muka di toko. Step 4: Kalau cocok, langsung mulai kerja dengan training awal.
+        </div>
+      </details>
+      <details class="faq-item reveal" data-delay="4">
+        <summary data-i18n="fq_q5">Posisi yang saya minati tidak ada di list. Apakah saya tetap bisa melamar?</summary>
+        <div class="faq-item-content" data-i18n="fq_a5">
+          Bisa! Kami terus berkembang, jadi sering ada kebutuhan untuk posisi lain seperti admin gudang, helper, supervisor, dll. Kirim CV via WhatsApp atau email — kami simpan dan akan kontak kalau ada posisi yang cocok.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8);" data-i18n="ct_eyebrow">Siap Bergabung?</span>
+      <h2 style="margin-top: 16px;"><span data-i18n="ct_title_1">Mulai karier Anda di</span> <span class="accent" data-i18n="ct_title_2">Sinar Nadi</span> <span data-i18n="ct_title_3">hari ini.</span></h2>
+      <p data-i18n="ct_sub">Posisi yang Anda lihat menarik? Atau ada pertanyaan dulu? Tim HR kami siap respond — silakan hubungi kami melalui channel yang tersedia.</p>
+      <div class="cta-box-actions">
+        <a href="https://wa.me/6281337572288?text=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20pekerjaan%20di%20Sinar%20Nadi.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20posisi%20yang%20tersedia%3F" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="ct_btn_wa">💬 Chat HR via WhatsApp</a>
+        <a href="mailto:admin@sinarnadi.com?subject=Lamaran%20Kerja%20-%20Sinar%20Nadi" class="btn btn-accent" data-i18n="ct_btn_email">✉️ Kirim Email Lamaran</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+        <p data-i18n="footer_brand_desc">CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.</p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://wa.me/6289526262727" class="btn btn-primary" style="padding:10px 18px; font-size:13px;">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_navigasi">Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html" data-i18n="nav_tentang">Tentang</a></li>
+          <li><a href="area-pengiriman.html" data-i18n="nav_area">Area Layanan</a></li>
+          <li><a href="karier.html" data-i18n="nav_karier">Karier</a></li>
+      <li><a href="kontak.html" data-i18n="nav_kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_area">Area Layanan</h4>
+        <ul>
+          <li>📍 Denpasar</li>
+          <li>📍 Badung</li>
+          <li>📍 Canggu · Berawa</li>
+          <li>📍 Munggu</li>
+          <li>📍 Jimbaran · Pecatu</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_kontak">Kontak</h4>
+        <ul>
+          <li>📞 0895-2626-2727</li>
+          <li data-i18n="footer_kontak_wa">💬 WhatsApp aktif</li>
+          <li data-i18n="footer_kontak_jam">🕐 Sen–Min: 07.00–21.00</li>
+          <li>✉️ admin@sinarnadi.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copyright">© 2026 CV Sinar Nadi Group. Semua hak dilindungi.</span>
+      <span data-i18n="footer_made">Made in Bali 🇮🇩</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a href="https://wa.me/6281337572288?text=Halo%20Sinar%20Nadi%2C%20saya%20tertarik%20melamar%20pekerjaan%20di%20Sinar%20Nadi.%20Bisakah%20saya%20mendapatkan%20info%20lebih%20lanjut%20mengenai%20posisi%20yang%20tersedia%3F" class="fab-wa" target="_blank" rel="noopener" aria-label="Lamar via WhatsApp">
+  <span class="fab-wa-label" data-i18n="fab_label">Lamar via WhatsApp</span>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const drawer = document.getElementById('drawer');
+const drawerClose = document.getElementById('drawerClose');
+menuToggle?.addEventListener('click', () => drawer.classList.add('open'));
+drawerClose?.addEventListener('click', () => drawer.classList.remove('open'));
+document.querySelectorAll('.drawer-link').forEach(a => {
+  a.addEventListener('click', () => drawer.classList.remove('open'));
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(r => io.observe(r));
+
+// ===== LANGUAGE TOGGLE (lengkap untuk halaman karier) =====
+(function initLangToggle() {
+  const TRANSLATIONS = {
+    id: {
+      nav_produk: 'Produk', nav_tentang: 'Tentang', nav_area: 'Area Layanan',
+      nav_faq: 'FAQ', nav_kontak: 'Kontak', nav_karier: 'Karier',
+      nav_call: '📞 Telepon', nav_wa: '💬 WhatsApp',
+      bc_home: 'Beranda', bc_karier: 'Karier',
+      ch_eyebrow: 'Bergabung dengan Tim Kami',
+      ch_title_1: 'Kerja di', ch_title_underline: 'Sinar Nadi', ch_title_2: '.',
+      ch_title_3: 'Tumbuh Bersama Kami', ch_title_4: '.',
+      ch_lead: 'Sinar Nadi sedang berkembang. Kami selalu cari talenta baru yang jujur, rajin, dan ingin tumbuh bersama. Mulai dari kasir, sopir, sampai posisi lain — pintu kami terbuka.',
+      ch_meta_1: 'Sedang membuka beberapa posisi',
+      ch_meta_2: 'Beberapa cabang di Bali',
+      ch_meta_3: 'Sejak 2001 — bisnis stabil',
+      ch_btn_jobs: '📋 Lihat Lowongan', ch_btn_wa: '💬 Lamar via WhatsApp',
+      bn_eyebrow: 'Kenapa Kerja di Sini?',
+      bn_title_1: 'Bukan Sekadar', bn_title_2: 'Pekerjaan', bn_title_3: '.',
+      bn_sub: 'Kami percaya tim yang dihargai akan melayani customer dengan baik. Berikut yang bisa Anda dapatkan saat bergabung dengan Sinar Nadi.',
+      bn_1_title: 'Gaji Kompetitif',
+      bn_1_desc: 'UMR Bali atau di atasnya, sesuai posisi & pengalaman. Bayaran rutin, tepat waktu.',
+      bn_2_title: 'Bonus Performance',
+      bn_2_desc: 'Performa bagus = imbalan langsung. Bukan janji kosong, ada bonus rutin sesuai kontribusi Anda.',
+      bn_3_title: 'Lembur Dibayar',
+      bn_3_desc: 'Kerja lebih lama = bayaran lebih. Tidak ada lembur "gratis" — kerja keras Anda dihargai sesuai aturan.',
+      bn_4_title: 'Training & Jenjang Karier',
+      bn_4_desc: 'Mulai dari posisi entry-level, bisa naik ke supervisor atau kepala toko. Kami investasi di karyawan jangka panjang.',
+      js_eyebrow: 'Lowongan Aktif',
+      js_title_1: 'Posisi yang Sedang', js_title_2: 'Kami Cari', js_title_3: '.',
+      js_sub: 'Klik "Lamar Sekarang" pada posisi yang Anda minati — chat WA akan terbuka dengan pesan yang sudah terisi otomatis.',
+      js_status_open: 'Sedang Membuka',
+      js_tag_full: 'Full-Time · Sistem Shift',
+      js_tag_location_kasir: 'Beberapa cabang di Bali',
+      js_tag_location_sopir: 'Beberapa cabang di Bali',
+      job_kasir_title: 'Kasir Toko',
+      job_kasir_desc: 'Bertanggung jawab atas transaksi penjualan, pelayanan customer, dan operasional area kasir. Bekerja dengan sistem shift sesuai jam operasional toko (07.00–21.00 WITA).',
+      job_kasir_resp_title: 'Tanggung Jawab Utama',
+      job_kasir_resp_1: 'Melayani transaksi penjualan dengan akurat & ramah',
+      job_kasir_resp_2: 'Menjaga kerapian dan ketertiban area kasir',
+      job_kasir_resp_3: 'Berkoordinasi dengan tim toko terkait stok & harga',
+      job_kasir_resp_4: 'Membuat laporan harian transaksi',
+      job_kasir_req_title: 'Kualifikasi',
+      job_kasir_req_1: 'Lulusan SMA/SMK (fresh graduate dipersilakan)',
+      job_kasir_req_2: 'Bisa operate komputer adalah nilai plus — kalau belum bisa, akan ditraining',
+      job_kasir_req_3: 'Bersedia bekerja dengan sistem shift',
+      job_kasir_req_4: 'Teliti, ramah, dan komunikatif dengan customer',
+      job_sopir_title: 'Sopir Armada',
+      job_sopir_desc: 'Posisi sopir di Sinar Nadi tidak hanya mengemudi — tugasnya serabutan: bantu loading, kirim barang, sampai bongkar muatan di lokasi customer. Cocok untuk yang fisiknya kuat dan tangguh.',
+      job_sopir_resp_title: 'Tanggung Jawab Utama',
+      job_sopir_resp_1: 'Mengangkat & loading material di gudang',
+      job_sopir_resp_2: 'Mengantar barang ke lokasi customer',
+      job_sopir_resp_3: 'Bongkar muatan saat sampai di tujuan',
+      job_sopir_resp_4: 'Memastikan kendaraan dalam kondisi siap pakai',
+      job_sopir_req_title: 'Kualifikasi',
+      job_sopir_req_1: 'Punya SIM A (mobil) — wajib · SIM B (truk) lebih disukai',
+      job_sopir_req_2: 'Pengalaman bawa kendaraan minimal 2 tahun',
+      job_sopir_req_3: 'Terbiasa membawa material bangunan (berat & besar)',
+      job_sopir_req_4: 'Bisa Google Maps untuk navigasi',
+      job_sopir_req_5: 'Mengerti dasar perawatan kendaraan',
+      job_sopir_req_6: 'Fisik sehat untuk membantu loading & bongkar material',
+      gr_eyebrow: 'Wajib Semua Posisi',
+      gr_title_1: 'Syarat', gr_title_2: 'Umum', gr_title_3: '.',
+      gr_sub: 'Selain kualifikasi teknis per posisi, ada beberapa hal mendasar yang wajib dipenuhi semua pelamar — apapun posisinya.',
+      gr_1_title: 'Jujur adalah Prioritas Utama',
+      gr_1_desc: 'Akan ada evaluasi & pengawasan rutin. Kejujuran tidak bisa dinegosiasikan di Sinar Nadi.',
+      gr_2_title: 'Bersedia Mengikuti SOP Perusahaan',
+      gr_2_desc: 'Kami punya prosedur kerja yang jelas. Pelamar harus siap mengikuti aturan main yang berlaku.',
+      gr_3_title: 'Bersedia Ditempatkan di Cabang Mana Saja',
+      gr_3_desc: 'Bisa di seluruh cabang Sinar Nadi Group — namun akan diusahakan ditempatkan di lokasi terdekat dari tempat tinggal.',
+      gr_4_title: 'Attitude Kerja yang Baik',
+      gr_4_desc: 'Tidak toxic, bisa kerja tim, mau saling bantu antar karyawan. Skill bisa diajarkan, tapi attitude tidak.',
+      gr_5_title: 'Siap Kerja Full-Time',
+      gr_5_desc: 'Mengikuti jam operasional toko (07.00–21.00 WITA). Untuk posisi kasir, ada sistem shift yang akan diatur tim.',
+      gr_6_title: 'Tidak Terlibat Masalah Hukum',
+      gr_6_desc: 'Pelamar harus bersih dari catatan kriminal. Background check akan dilakukan saat proses rekrutmen.',
+      job_btn_apply: '💬 Lamar Sekarang',
+      job_btn_email: '✉️ Lamar via Email',
+      job_action_info: 'Tim HR balas cepat saat jam kerja',
+      ap_eyebrow: 'Cara Melamar',
+      ap_title_1: 'Hubungi Kami', ap_title_2: 'Melalui', ap_title_3: '.',
+      ap_lead: 'Kami terima lamaran lewat berbagai jalur — mulai dari WhatsApp yang paling cepat, sampai datang langsung ke toko Sinar Nadi.',
+      ap_wa_tag: 'Paling Cepat',
+      ap_wa_meta: 'WhatsApp khusus tim HR. Balas cepat saat jam kerja.',
+      ap_wa_arrow: 'Chat sekarang',
+      ap_wa2_tag: 'Tanya Info Dulu',
+      ap_wa2_meta: 'WhatsApp umum kalau mau tanya-tanya dulu sebelum lamar.',
+      ap_wa2_arrow: 'Tanya sekarang',
+      ap_email_tag: 'Email Resmi',
+      ap_email_meta: 'Kirim CV & lamaran lengkap. Cocok untuk yang formal.',
+      ap_email_arrow: 'Kirim email',
+      ap_loc_tag: 'Datang Langsung',
+      ap_loc_value: 'Datang ke Toko Sinar Nadi',
+      ap_loc_meta: 'Bawa CV & datang ke toko utama Kerobokan. Buka tiap hari, 07.00–21.00 WITA.',
+      ap_loc_arrow: 'Lihat lokasi',
+      fq_eyebrow: 'Pertanyaan Umum',
+      fq_title_1: 'Yang Sering', fq_title_2: 'Ditanyakan', fq_title_3: '.',
+      fq_q1: 'Apakah saya harus punya pengalaman kerja sebelumnya?',
+      fq_a1: 'Tidak wajib. Untuk posisi kasir, kami terima fresh graduate SMA/SMK. Untuk sopir, kami butuh pengalaman mengemudi minimal 2 tahun. Yang paling penting: jujur, rajin, dan mau belajar.',
+      fq_q2: 'Lokasi kerja di mana saja?',
+      fq_a2: 'Kami punya beberapa cabang yang tersebar di Bali. Saat melamar, sebutkan domisili Anda — tim HR akan coba arahkan ke cabang terdekat dari rumah.',
+      fq_q3: 'Berapa gaji yang ditawarkan?',
+      fq_a3: 'Sesuai posisi & pengalaman — minimum UMR Bali, bisa di atas tergantung kualifikasi. Detail gaji akan dibahas saat interview, beserta benefit lain seperti bonus performance dan lembur.',
+      fq_q4: 'Bagaimana proses melamar?',
+      fq_a4: 'Step 1: Chat WA atau email lamaran. Step 2: Tim HR akan respon dalam 1-3 hari kerja & mengundang interview. Step 3: Interview tatap muka di toko. Step 4: Kalau cocok, langsung mulai kerja dengan training awal.',
+      fq_q5: 'Posisi yang saya minati tidak ada di list. Apakah saya tetap bisa melamar?',
+      fq_a5: 'Bisa! Kami terus berkembang, jadi sering ada kebutuhan untuk posisi lain seperti admin gudang, helper, supervisor, dll. Kirim CV via WhatsApp atau email — kami simpan dan akan kontak kalau ada posisi yang cocok.',
+      ct_eyebrow: 'Siap Bergabung?',
+      ct_title_1: 'Mulai karier Anda di', ct_title_2: 'Sinar Nadi', ct_title_3: 'hari ini.',
+      ct_sub: 'Posisi yang Anda lihat menarik? Atau ada pertanyaan dulu? Tim HR kami siap respond — silakan hubungi kami melalui channel yang tersedia.',
+      ct_btn_wa: '💬 Chat HR via WhatsApp',
+      ct_btn_email: '✉️ Kirim Email Lamaran',
+      footer_brand_desc: 'CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.',
+      footer_h_navigasi: 'Navigasi',
+      footer_h_area: 'Area Layanan', footer_h_kontak: 'Kontak',
+      footer_kontak_wa: '💬 WhatsApp aktif', footer_kontak_jam: '🕐 Sen–Min: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Semua hak dilindungi.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Lamar via WhatsApp',
+    },
+    en: {
+      nav_produk: 'Products', nav_tentang: 'About', nav_area: 'Service Area',
+      nav_faq: 'FAQ', nav_kontak: 'Contact', nav_karier: 'Careers',
+      nav_call: '📞 Call', nav_wa: '💬 WhatsApp',
+      bc_home: 'Home', bc_karier: 'Careers',
+      ch_eyebrow: 'Join Our Team',
+      ch_title_1: 'Work at', ch_title_underline: 'Sinar Nadi', ch_title_2: '.',
+      ch_title_3: 'Grow With Us', ch_title_4: '.',
+      ch_lead: 'Sinar Nadi is growing. We are always looking for new talent who are honest, hardworking, and ready to grow with us. From cashier, driver, to other positions — our doors are open.',
+      ch_meta_1: 'Several positions open',
+      ch_meta_2: 'Multiple branches across Bali',
+      ch_meta_3: 'Since 2001 — stable business',
+      ch_btn_jobs: '📋 See Open Positions', ch_btn_wa: '💬 Apply via WhatsApp',
+      bn_eyebrow: 'Why Work Here?',
+      bn_title_1: 'More Than Just A', bn_title_2: 'Job', bn_title_3: '.',
+      bn_sub: 'We believe a valued team serves customers well. Here is what you can expect when joining Sinar Nadi.',
+      bn_1_title: 'Competitive Salary',
+      bn_1_desc: 'At or above Bali minimum wage, depending on position & experience. Paid regularly, on time.',
+      bn_2_title: 'Performance Bonus',
+      bn_2_desc: 'Good performance = direct rewards. Not empty promises — we have regular bonuses based on your contribution.',
+      bn_3_title: 'Paid Overtime',
+      bn_3_desc: 'Work longer = earn more. No "free" overtime — your hard work is compensated according to regulations.',
+      bn_4_title: 'Training & Career Path',
+      bn_4_desc: 'Start at entry-level, grow to supervisor or store head. We invest in long-term employees.',
+      js_eyebrow: 'Open Positions',
+      js_title_1: 'Positions We', js_title_2: 'Are Hiring', js_title_3: '.',
+      js_sub: 'Click "Apply Now" on the position you are interested in — WhatsApp chat will open with a pre-filled message.',
+      js_status_open: 'Now Hiring',
+      js_tag_full: 'Full-Time · Shift System',
+      js_tag_location_kasir: 'Multiple branches in Bali',
+      js_tag_location_sopir: 'Multiple branches in Bali',
+      job_kasir_title: 'Store Cashier',
+      job_kasir_desc: 'Responsible for sales transactions, customer service, and cashier area operations. Works on shift system following store hours (07.00–21.00 WITA).',
+      job_kasir_resp_title: 'Main Responsibilities',
+      job_kasir_resp_1: 'Process sales transactions accurately and politely',
+      job_kasir_resp_2: 'Maintain cleanliness and order in cashier area',
+      job_kasir_resp_3: 'Coordinate with store team regarding stock & pricing',
+      job_kasir_resp_4: 'Prepare daily transaction reports',
+      job_kasir_req_title: 'Qualifications',
+      job_kasir_req_1: 'High school graduate (fresh grads welcome)',
+      job_kasir_req_2: 'Computer literacy is a plus — will be trained if not yet able',
+      job_kasir_req_3: 'Willing to work on shift system',
+      job_kasir_req_4: 'Detail-oriented, friendly, and good communicator',
+      job_sopir_title: 'Fleet Driver',
+      job_sopir_desc: 'Driver positions at Sinar Nadi go beyond just driving — duties include loading help, delivery, and unloading at customer sites. Suitable for those physically strong and resilient.',
+      job_sopir_resp_title: 'Main Responsibilities',
+      job_sopir_resp_1: 'Lift & load materials at the warehouse',
+      job_sopir_resp_2: 'Deliver goods to customer locations',
+      job_sopir_resp_3: 'Unload cargo upon arrival at destination',
+      job_sopir_resp_4: 'Ensure vehicle is in ready-to-use condition',
+      job_sopir_req_title: 'Qualifications',
+      job_sopir_req_1: 'SIM A (car license) — required · SIM B (truck) preferred',
+      job_sopir_req_2: 'Minimum 2 years driving experience',
+      job_sopir_req_3: 'Familiar with carrying construction materials (heavy & large)',
+      job_sopir_req_4: 'Able to use Google Maps for navigation',
+      job_sopir_req_5: 'Understands basic vehicle maintenance',
+      job_sopir_req_6: 'Physically fit to assist with material loading & unloading',
+      gr_eyebrow: 'Required for All Positions',
+      gr_title_1: 'General', gr_title_2: 'Requirements', gr_title_3: '.',
+      gr_sub: 'In addition to position-specific qualifications, there are fundamental requirements that all applicants must meet — regardless of position.',
+      gr_1_title: 'Honesty is Top Priority',
+      gr_1_desc: 'There will be regular evaluation & supervision. Honesty is non-negotiable at Sinar Nadi.',
+      gr_2_title: 'Willing to Follow Company SOP',
+      gr_2_desc: 'We have clear work procedures. Applicants must be ready to follow established rules.',
+      gr_3_title: 'Willing to Be Placed in Any Branch',
+      gr_3_desc: 'Can be at any Sinar Nadi Group branch — but we will try to assign you to the location closest to your home.',
+      gr_4_title: 'Good Work Attitude',
+      gr_4_desc: 'Not toxic, can work in a team, willing to help fellow employees. Skills can be taught, attitude cannot.',
+      gr_5_title: 'Ready to Work Full-Time',
+      gr_5_desc: 'Following store operating hours (07.00–21.00 WITA). For cashier positions, there is a shift system arranged by the team.',
+      gr_6_title: 'No Legal Issues',
+      gr_6_desc: 'Applicants must be free from criminal records. Background checks will be conducted during recruitment.',
+      job_btn_apply: '💬 Apply Now',
+      job_btn_email: '✉️ Apply via Email',
+      job_action_info: 'HR team replies quickly during work hours',
+      ap_eyebrow: 'How to Apply',
+      ap_title_1: 'Contact Us', ap_title_2: 'Through', ap_title_3: '.',
+      ap_lead: 'We accept applications through various channels — from the fastest WhatsApp to coming directly to Sinar Nadi store.',
+      ap_wa_tag: 'Fastest',
+      ap_wa_meta: 'WhatsApp dedicated to HR team. Quick reply during work hours.',
+      ap_wa_arrow: 'Chat now',
+      ap_wa2_tag: 'Ask Info First',
+      ap_wa2_meta: 'General WhatsApp if you want to inquire before applying.',
+      ap_wa2_arrow: 'Ask now',
+      ap_email_tag: 'Official Email',
+      ap_email_meta: 'Send CV & full application. Suitable for formal candidates.',
+      ap_email_arrow: 'Send email',
+      ap_loc_tag: 'Visit In Person',
+      ap_loc_value: 'Visit Sinar Nadi Store',
+      ap_loc_meta: 'Bring CV & visit our main store in Kerobokan. Open daily, 07.00–21.00 WITA.',
+      ap_loc_arrow: 'See location',
+      fq_eyebrow: 'Common Questions',
+      fq_title_1: 'Frequently', fq_title_2: 'Asked', fq_title_3: '.',
+      fq_q1: 'Do I need prior work experience?',
+      fq_a1: 'Not required. For cashier, we accept fresh high school graduates. For driver, we need minimum 2 years driving experience. Most important: be honest, hardworking, and willing to learn.',
+      fq_q2: 'Where are the work locations?',
+      fq_a2: 'We have multiple branches across Bali. When applying, mention your location — HR team will try to assign you to the nearest branch.',
+      fq_q3: 'What is the salary offered?',
+      fq_a3: 'Based on position & experience — minimum Bali wage, can be higher depending on qualifications. Salary details discussed during interview, along with other benefits like performance bonus and overtime.',
+      fq_q4: 'How does the application process work?',
+      fq_a4: 'Step 1: Chat WA or email application. Step 2: HR team responds within 1-3 working days & invites for interview. Step 3: In-person interview at the store. Step 4: If suitable, start work with initial training.',
+      fq_q5: 'My desired position is not on the list. Can I still apply?',
+      fq_a5: 'Yes! We are growing, so we often have needs for other positions like warehouse admin, helper, supervisor, etc. Send CV via WhatsApp or email — we keep it on file and contact you when a suitable position opens.',
+      ct_eyebrow: 'Ready to Join?',
+      ct_title_1: 'Start your career at', ct_title_2: 'Sinar Nadi', ct_title_3: 'today.',
+      ct_sub: 'Found a position that interests you? Or have questions first? Our HR team is ready to respond — please contact us through the available channels.',
+      ct_btn_wa: '💬 Chat HR via WhatsApp',
+      ct_btn_email: '✉️ Send Email Application',
+      footer_brand_desc: 'CV Sinar Nadi Group — Trusted building material store in Bali. Complete stock, competitive prices, same day delivery.',
+      footer_h_navigasi: 'Navigation',
+      footer_h_area: 'Service Area', footer_h_kontak: 'Contact',
+      footer_kontak_wa: '💬 WhatsApp active', footer_kontak_jam: '🕐 Mon–Sun: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. All rights reserved.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Apply via WhatsApp',
+    },
+    ru: {
+      nav_produk: 'Товары', nav_tentang: 'О компании', nav_area: 'Зона доставки',
+      nav_faq: 'Вопросы', nav_kontak: 'Контакты', nav_karier: 'Карьера',
+      nav_call: '📞 Позвонить', nav_wa: '💬 WhatsApp',
+      bc_home: 'Главная', bc_karier: 'Карьера',
+      ch_eyebrow: 'Присоединяйтесь к нашей команде',
+      ch_title_1: 'Работа в', ch_title_underline: 'Sinar Nadi', ch_title_2: '.',
+      ch_title_3: 'Растите вместе с нами', ch_title_4: '.',
+      ch_lead: 'Sinar Nadi растёт. Мы всегда ищем новых сотрудников — честных, трудолюбивых и готовых развиваться. От кассира, водителя до других позиций — наши двери открыты.',
+      ch_meta_1: 'Открыто несколько позиций',
+      ch_meta_2: 'Несколько филиалов на Бали',
+      ch_meta_3: 'С 2001 года — стабильный бизнес',
+      ch_btn_jobs: '📋 Открытые вакансии', ch_btn_wa: '💬 Подать заявку в WhatsApp',
+      bn_eyebrow: 'Почему здесь?',
+      bn_title_1: 'Не просто', bn_title_2: 'работа', bn_title_3: '.',
+      bn_sub: 'Мы верим, что ценимая команда хорошо обслуживает клиентов. Вот что вас ждёт в Sinar Nadi.',
+      bn_1_title: 'Конкурентная зарплата',
+      bn_1_desc: 'На уровне или выше минимальной зарплаты Бали, в зависимости от позиции и опыта. Регулярная оплата, вовремя.',
+      bn_2_title: 'Бонусы за результат',
+      bn_2_desc: 'Хорошая работа = прямая награда. Не пустые обещания — есть регулярные бонусы по вкладу.',
+      bn_3_title: 'Оплачиваемые сверхурочные',
+      bn_3_desc: 'Дольше работаешь = больше зарабатываешь. Никаких "бесплатных" сверхурочных — ваша работа оплачивается по правилам.',
+      bn_4_title: 'Обучение и карьерный рост',
+      bn_4_desc: 'Начинайте с начальной позиции, растите до супервайзера или начальника магазина. Мы инвестируем в долгосрочных сотрудников.',
+      js_eyebrow: 'Открытые вакансии',
+      js_title_1: 'Позиции, которые мы', js_title_2: 'ищем', js_title_3: '.',
+      js_sub: 'Нажмите "Подать заявку" на интересующую позицию — откроется WhatsApp с готовым сообщением.',
+      js_status_open: 'Сейчас набираем',
+      js_tag_full: 'Полная занятость · Сменная',
+      js_tag_location_kasir: 'Несколько филиалов на Бали',
+      js_tag_location_sopir: 'Несколько филиалов на Бали',
+      job_kasir_title: 'Кассир магазина',
+      job_kasir_desc: 'Отвечает за торговые операции, обслуживание клиентов и работу кассовой зоны. Работа по сменам в часы работы магазина (07:00–21:00 WITA).',
+      job_kasir_resp_title: 'Основные обязанности',
+      job_kasir_resp_1: 'Обслуживание продаж быстро и вежливо',
+      job_kasir_resp_2: 'Поддержание порядка в кассовой зоне',
+      job_kasir_resp_3: 'Координация с командой по запасам и ценам',
+      job_kasir_resp_4: 'Составление ежедневных отчётов о транзакциях',
+      job_kasir_req_title: 'Квалификация',
+      job_kasir_req_1: 'Среднее образование (выпускники приветствуются)',
+      job_kasir_req_2: 'Умение работать с компьютером — плюс, обучим если нет',
+      job_kasir_req_3: 'Готовность работать по сменному графику',
+      job_kasir_req_4: 'Внимательность, дружелюбие, навыки общения',
+      job_sopir_title: 'Водитель автопарка',
+      job_sopir_desc: 'Должность водителя в Sinar Nadi — это не только вождение: помощь при погрузке, доставка и разгрузка у клиентов. Подходит для физически крепких и выносливых.',
+      job_sopir_resp_title: 'Основные обязанности',
+      job_sopir_resp_1: 'Погрузка материалов на складе',
+      job_sopir_resp_2: 'Доставка товаров клиентам',
+      job_sopir_resp_3: 'Разгрузка груза по прибытии',
+      job_sopir_resp_4: 'Обеспечение готовности транспорта',
+      job_sopir_req_title: 'Квалификация',
+      job_sopir_req_1: 'Права категории A (легковой) — обязательно · B (грузовой) желательно',
+      job_sopir_req_2: 'Опыт вождения от 2 лет',
+      job_sopir_req_3: 'Опыт перевозки стройматериалов (тяжёлых и габаритных)',
+      job_sopir_req_4: 'Умение пользоваться Google Maps для навигации',
+      job_sopir_req_5: 'Понимание базового обслуживания транспорта',
+      job_sopir_req_6: 'Физическая форма для помощи с погрузкой и разгрузкой',
+      gr_eyebrow: 'Обязательно для всех позиций',
+      gr_title_1: 'Общие', gr_title_2: 'требования', gr_title_3: '.',
+      gr_sub: 'Помимо технических требований по позиции, есть базовые требования для всех соискателей — независимо от должности.',
+      gr_1_title: 'Честность — главный приоритет',
+      gr_1_desc: 'Проводится регулярная оценка и контроль. Честность не подлежит обсуждению в Sinar Nadi.',
+      gr_2_title: 'Готовность следовать SOP компании',
+      gr_2_desc: 'У нас есть чёткие рабочие процедуры. Соискатель должен быть готов следовать установленным правилам.',
+      gr_3_title: 'Готовность к работе в любом филиале',
+      gr_3_desc: 'Может быть в любом филиале Sinar Nadi Group — но мы постараемся назначить вас в ближайший к дому.',
+      gr_4_title: 'Хорошее отношение к работе',
+      gr_4_desc: 'Без токсичности, командная работа, готовность помогать коллегам. Навыкам можно научить — отношению нет.',
+      gr_5_title: 'Готовность к полной занятости',
+      gr_5_desc: 'Следование часам работы магазина (07:00–21:00 WITA). Для кассиров — сменный график, организуемый командой.',
+      gr_6_title: 'Отсутствие проблем с законом',
+      gr_6_desc: 'Соискатели должны быть без судимости. Проверка проводится при найме.',
+      job_btn_apply: '💬 Подать заявку',
+      job_btn_email: '✉️ Подать через email',
+      job_action_info: 'HR-команда быстро отвечает в рабочее время',
+      ap_eyebrow: 'Как подать заявку',
+      ap_title_1: 'Свяжитесь с нами', ap_title_2: 'через', ap_title_3: '.',
+      ap_lead: 'Принимаем заявки по разным каналам — от самого быстрого WhatsApp до личного визита в магазин Sinar Nadi.',
+      ap_wa_tag: 'Самый быстрый',
+      ap_wa_meta: 'WhatsApp HR-отдела. Быстрый ответ в рабочее время.',
+      ap_wa_arrow: 'Написать',
+      ap_wa2_tag: 'Сначала спросить',
+      ap_wa2_meta: 'Общий WhatsApp, если хотите узнать подробности перед подачей.',
+      ap_wa2_arrow: 'Спросить',
+      ap_email_tag: 'Официальный email',
+      ap_email_meta: 'Отправьте резюме и полную заявку. Подходит для формального подхода.',
+      ap_email_arrow: 'Отправить email',
+      ap_loc_tag: 'Прийти лично',
+      ap_loc_value: 'Приходите в магазин Sinar Nadi',
+      ap_loc_meta: 'Принесите резюме и приходите в главный магазин в Керобокане. Работаем ежедневно, 07:00–21:00 WITA.',
+      ap_loc_arrow: 'Посмотреть локацию',
+      fq_eyebrow: 'Частые вопросы',
+      fq_title_1: 'Часто', fq_title_2: 'задаваемые', fq_title_3: '.',
+      fq_q1: 'Нужен ли предыдущий опыт работы?',
+      fq_a1: 'Не обязательно. Для кассира принимаем выпускников средней школы. Для водителя нужен опыт от 2 лет. Главное: честность, трудолюбие и желание учиться.',
+      fq_q2: 'Где находятся рабочие места?',
+      fq_a2: 'У нас несколько филиалов на Бали. При подаче укажите ваше местожительство — HR-команда постарается направить в ближайший филиал.',
+      fq_q3: 'Какая зарплата предлагается?',
+      fq_a3: 'По позиции и опыту — минимум зарплата Бали, может быть выше в зависимости от квалификации. Детали зарплаты обсуждаются на собеседовании, вместе с другими бонусами.',
+      fq_q4: 'Как проходит процесс подачи заявки?',
+      fq_a4: 'Шаг 1: Напишите в WA или email. Шаг 2: HR ответит за 1-3 рабочих дня и пригласит на собеседование. Шаг 3: Собеседование в магазине. Шаг 4: Если подходите, начинаете работу с обучения.',
+      fq_q5: 'Моей желаемой позиции нет в списке. Могу ли я подать заявку?',
+      fq_a5: 'Можете! Мы растём, поэтому часто нужны другие позиции — администратор склада, помощник, супервайзер. Отправьте резюме — мы сохраним и свяжемся, когда появится подходящее место.',
+      ct_eyebrow: 'Готовы присоединиться?',
+      ct_title_1: 'Начните карьеру в', ct_title_2: 'Sinar Nadi', ct_title_3: 'сегодня.',
+      ct_sub: 'Нашли интересную позицию? Или есть вопросы? Наша HR-команда готова ответить — пожалуйста, свяжитесь с нами через доступные каналы.',
+      ct_btn_wa: '💬 Написать HR в WhatsApp',
+      ct_btn_email: '✉️ Отправить заявку email',
+      footer_brand_desc: 'CV Sinar Nadi Group — надёжный магазин стройматериалов на Бали. Полный склад, конкурентные цены, доставка сегодня.',
+      footer_h_navigasi: 'Навигация',
+      footer_h_area: 'Зона доставки', footer_h_kontak: 'Контакты',
+      footer_kontak_wa: '💬 WhatsApp активен', footer_kontak_jam: '🕐 Пн–Вс: 07:00–21:00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Все права защищены.',
+      footer_made: 'Сделано на Бали 🇮🇩',
+      fab_label: 'Подать в WhatsApp',
+    }
+  };
+
+  const FLAGS = { id: '🇮🇩', en: '🇬🇧', ru: '🇷🇺' };
+  const LABELS = { id: 'ID', en: 'EN', ru: 'RU' };
+
+  let currentLang = 'id';
+  try {
+    const saved = localStorage.getItem('sinarnadi_lang');
+    if (saved && TRANSLATIONS[saved]) currentLang = saved;
+  } catch (e) {}
+
+  function applyLanguage(lang) {
+    if (!TRANSLATIONS[lang]) return;
+    currentLang = lang;
+    const dict = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    const flagEl = document.getElementById('langFlag');
+    const labelEl = document.getElementById('langLabel');
+    if (flagEl) flagEl.textContent = FLAGS[lang];
+    if (labelEl) labelEl.textContent = LABELS[lang];
+
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    document.querySelectorAll('.drawer-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    try { localStorage.setItem('sinarnadi_lang', lang); } catch (e) {}
+  }
+
+  const langToggle = document.getElementById('langToggle');
+  const langCurrent = document.getElementById('langCurrent');
+  if (langCurrent && langToggle) {
+    langCurrent.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langToggle.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen);
+    });
+    document.addEventListener('click', (e) => {
+      if (!langToggle.contains(e.target)) {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      applyLanguage(opt.dataset.lang);
+      langToggle?.classList.remove('open');
+    });
+  });
+  document.querySelectorAll('.drawer-lang button').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  applyLanguage(currentLang);
+})();
+
+// ===== HAMMER CURSOR =====
+(function initHammerCursor() {
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isTouch || reducedMotion) return;
+
+  const cursor = document.getElementById('hammerCursor');
+  if (!cursor) return;
+  document.body.classList.add('has-hammer');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX, cursorY = mouseY;
+  const lerpFactor = 0.22;
+  let isReady = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    if (!isReady) { isReady = true; cursor.classList.add('ready'); }
+  });
+  document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
+  document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
+
+  function animate() {
+    cursorX += (mouseX - cursorX) * lerpFactor;
+    cursorY += (mouseY - cursorY) * lerpFactor;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  const interactiveSelector = 'a, button, summary, [role="button"]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.add('hover-link');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.remove('hover-link');
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    cursor.classList.remove('striking');
+    void cursor.offsetWidth;
+    cursor.classList.add('striking');
+
+    const impactX = e.clientX, impactY = e.clientY + 8;
+    const ripple = document.createElement('div');
+    ripple.className = 'hammer-impact';
+    ripple.style.left = impactX + 'px';
+    ripple.style.top = impactY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    for (let i = 0; i < 5; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'hammer-spark';
+      const angle = (Math.PI / 5) * i + (Math.PI * 0.05);
+      const distance = 30 + Math.random() * 25;
+      const dx = Math.cos(angle - Math.PI) * distance;
+      const dy = Math.sin(angle - Math.PI) * distance;
+      spark.style.setProperty('--dx', dx + 'px');
+      spark.style.setProperty('--dy', dy + 'px');
+      spark.style.left = impactX + 'px';
+      spark.style.top = impactY + 'px';
+      if (i % 2 === 0) spark.style.background = 'var(--accent)';
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 500);
+    }
+  });
+
+  cursor.addEventListener('animationend', (e) => {
+    if (e.animationName === 'hammerStrike') cursor.classList.remove('striking');
+  });
+})();
+</script>
+
+</body>
+</html>

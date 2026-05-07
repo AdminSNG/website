@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<meta name="theme-color" content="#0F0F0F" />
+
+<!-- ============ SEO ============ -->
+<title>Area Pengiriman — Sinar Nadi | Cek Apakah Daerah Anda Terlayani</title>
+<meta name="description" content="Cek area pengiriman bahan bangunan Sinar Nadi. Free ongkir untuk Denpasar, Badung, Canggu, Berawa, Munggu, Jimbaran, Pecatu. Klik area Anda untuk chat WhatsApp langsung." />
+<meta name="robots" content="index, follow" />
+
+<meta name="geo.region" content="ID-BA" />
+<meta name="geo.placename" content="Bali" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F2;
+  --bg-dark: #0F0F0F;
+  --ink: #0F0F0F;
+  --ink-soft: #4A4A4A;
+  --ink-muted: #8A8A8A;
+  --line: #E8E8E5;
+  --accent: #E14425;
+  --accent-hover: #C5391C;
+  --accent-soft: #FCEAE5;
+  --yellow: #F6B618;
+  --yellow-soft: #FEF7B5;
+  --accent-mid: #F6B618;
+  --sunrise: linear-gradient(135deg, #E14425 0%, #F6B618 100%);
+  --sunrise-soft: linear-gradient(135deg, #FCEAE5 0%, #FEF7B5 100%);
+  --wa: #25D366;
+  --wa-hover: #1EB853;
+  --container: 1240px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.has-hammer, body.has-hammer * { cursor: none !important; }
+  body.has-hammer input, body.has-hammer textarea { cursor: text !important; }
+  body.has-hammer .leaflet-container { cursor: grab !important; }
+  body.has-hammer .leaflet-container:active { cursor: grabbing !important; }
+}
+
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.15rem, 1.8vw, 1.4rem); font-weight: 700; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+}
+.eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 26px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 100px;
+  transition: all 0.25s var(--ease);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary { background: var(--wa); color: white; }
+.btn-primary:hover { background: var(--wa-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.5); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(225, 68, 37, 0.5); }
+
+/* ============================================
+   HAMMER CURSOR (counter-clockwise)
+   ============================================ */
+.hammer-cursor {
+  position: fixed; top: 0; left: 0;
+  width: 44px; height: 44px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s;
+  will-change: transform, left, top;
+  opacity: 0;
+}
+.hammer-cursor.ready { opacity: 1; }
+.hammer-inner {
+  width: 100%; height: 100%;
+  transform: rotate(-25deg);
+  transform-origin: 30% 70%;
+  transition: transform 0.2s var(--ease);
+}
+.hammer-cursor.hover-link .hammer-inner { transform: rotate(-10deg) scale(1.15); }
+.hammer-cursor.striking .hammer-inner {
+  animation: hammerStrike 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes hammerStrike {
+  0%   { transform: rotate(-10deg) scale(1.05); }
+  35%  { transform: rotate(-120deg) scale(1.1); }
+  60%  { transform: rotate(-105deg) scale(1.08); }
+  100% { transform: rotate(-25deg) scale(1); }
+}
+.hammer-cursor svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+.hammer-cursor:not(.striking):not(.hover-link) .hammer-inner { animation: hammerIdle 3.5s ease-in-out infinite; }
+@keyframes hammerIdle {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-30deg); }
+}
+
+.hammer-impact {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  animation: impactRipple 0.55s var(--ease-out) forwards;
+}
+@keyframes impactRipple {
+  0%   { width: 8px; height: 8px; opacity: 1; border-width: 3px; }
+  100% { width: 70px; height: 70px; opacity: 0; border-width: 1px; }
+}
+.hammer-spark {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 4px; height: 4px;
+  background: var(--yellow);
+  border-radius: 50%;
+  animation: sparkFly 0.5s var(--ease-out) forwards;
+}
+@keyframes sparkFly {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900; font-size: 20px;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-mark {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+.logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+.logo-mark img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.logo-text {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+}
+.logo-text .name-1 { color: var(--ink); }
+.logo-text .name-2 {
+  background: var(--sunrise);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { display: flex; gap: 10px; align-items: center; }
+
+/* ============================================
+   LANGUAGE TOGGLE
+   ============================================ */
+.lang-toggle { position: relative; display: flex; align-items: center; }
+.lang-current {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.lang-current:hover { border-color: var(--ink); background: white; }
+.lang-current::after {
+  content: '▾'; font-size: 10px; margin-left: 2px;
+  opacity: 0.6; transition: transform 0.25s;
+}
+.lang-toggle.open .lang-current::after { transform: rotate(180deg); }
+.lang-flag { font-size: 16px; line-height: 1; }
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px); right: 0;
+  min-width: 160px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.15);
+  padding: 6px;
+  opacity: 0; transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 110;
+}
+.lang-toggle.open .lang-dropdown {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.lang-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: 'Archivo';
+  font-size: 13.5px; font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  width: 100%; text-align: left;
+  background: none; border: none;
+  transition: all 0.15s;
+}
+.lang-option:hover { background: var(--bg-soft); color: var(--ink); }
+.lang-option.active { background: var(--ink); color: var(--accent); }
+.lang-option .check {
+  margin-left: auto; opacity: 0;
+  font-size: 14px; color: var(--accent);
+}
+.lang-option.active .check { opacity: 1; }
+
+@media (max-width: 880px) {
+  .lang-toggle.desktop-only { display: none; }
+}
+.drawer-lang {
+  display: none;
+  margin-bottom: 24px; padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 880px) { .drawer-lang { display: flex; gap: 8px; } }
+.drawer-lang button {
+  flex: 1; padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: 'Archivo';
+  font-weight: 600; font-size: 13px;
+  background: white; color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.drawer-lang button.active {
+  background: var(--ink); color: var(--accent);
+  border-color: var(--ink);
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  background: var(--ink);
+  border-radius: 10px; position: relative;
+}
+.menu-toggle span {
+  position: absolute; left: 50%; top: 50%;
+  width: 18px; height: 2px;
+  background: white;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s;
+}
+.menu-toggle span:first-child { transform: translate(-50%, calc(-50% - 5px)); }
+.menu-toggle span:last-child { transform: translate(-50%, calc(-50% + 5px)); }
+
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .nav-cta .btn:not(.btn-primary) { display: none; }
+}
+
+/* ============================================
+   PAGE HERO (mini)
+   ============================================ */
+.page-hero {
+  padding: 140px 0 60px;
+  background: radial-gradient(800px 400px at 20% 0%, rgba(225, 68, 37, 0.08), transparent 60%), var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Archivo';
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.breadcrumb a { color: var(--ink-soft); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span { color: var(--ink); }
+.page-hero h1 .accent { color: var(--accent); font-style: italic; }
+.page-hero p {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  max-width: 640px;
+}
+.page-hero-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  padding-top: 24px;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.page-hero-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--ink-soft);
+}
+.page-hero-meta-item strong { color: var(--ink); font-weight: 700; }
+.dot {
+  width: 8px; height: 8px;
+  background: var(--wa);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 880px) {
+  .page-hero { padding: 110px 0 40px; }
+}
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.map-section { padding: 30px 0 80px; }
+.map-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: stretch;
+}
+.map-container {
+  position: relative;
+  height: 600px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #DDE5EB;
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.12);
+}
+#map { width: 100%; height: 100%; border-radius: var(--radius-lg); }
+
+.map-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.map-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.map-card h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.map-card h3 .num {
+  width: 28px; height: 28px;
+  background: var(--ink); color: var(--accent);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px; font-weight: 800;
+  flex-shrink: 0;
+}
+.map-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.map-card-area {
+  flex: 1;
+  background: var(--ink);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.map-card-area::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: 0.3;
+  filter: blur(30px);
+}
+.map-card-area > * { position: relative; z-index: 1; }
+.map-card-area h3 { color: white; }
+.map-card-area h3 .num { background: var(--accent); color: white; }
+.map-card-area p { color: rgba(255,255,255,0.7); }
+.map-card-area .areas-list {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 14px;
+}
+.map-card-area .area-tag {
+  font-family: 'Archivo';
+  font-size: 12px; font-weight: 600;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.map-card-area .area-tag:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.legend {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 14px;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px;
+}
+.legend-swatch {
+  width: 18px; height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.legend-swatch.zone {
+  background: rgba(37, 211, 102, 0.2);
+  border: 2px solid var(--wa);
+}
+.legend-swatch.pin {
+  background: var(--accent);
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px var(--accent);
+  border-radius: 50%;
+}
+
+/* WA redirect overlay */
+.wa-redirect-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.wa-redirect-overlay.show { opacity: 1; pointer-events: auto; }
+.wa-redirect-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  text-align: center;
+  max-width: 380px;
+  margin: 20px;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.3s var(--ease-out);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+.wa-redirect-overlay.show .wa-redirect-card { transform: scale(1) translateY(0); }
+.wa-redirect-icon {
+  width: 64px; height: 64px;
+  background: var(--wa);
+  color: white;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  margin: 0 auto 18px;
+  position: relative;
+}
+.wa-redirect-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--wa);
+  opacity: 0.5;
+  animation: pingFab 1.5s infinite;
+  z-index: -1;
+}
+.wa-redirect-card h3 {
+  font-family: 'Archivo';
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.wa-redirect-card p {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  margin-bottom: 20px;
+}
+.wa-redirect-card .area-name {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-family: 'Archivo';
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0 4px;
+}
+.wa-cancel {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Info bar */
+.info-bar {
+  margin-top: 24px;
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.info-bar-icon {
+  width: 44px; height: 44px;
+  background: var(--yellow);
+  border-radius: 10px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 22px;
+}
+.info-bar-text strong {
+  font-family: 'Archivo';
+  font-size: 15px;
+  display: block;
+  margin-bottom: 4px;
+}
+.info-bar-text p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ============================================
+   CTA STRIP & FOOTER
+   ============================================ */
+.cta-strip { padding: 80px 0; }
+.cta-box {
+  background: var(--ink);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 60px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(225, 68, 37, 0.3), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(246, 182, 24, 0.15), transparent 40%);
+}
+.cta-box::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-box > * { position: relative; z-index: 1; }
+.cta-box h2 { color: white; max-width: 720px; margin: 0 auto 16px; }
+.cta-box h2 .accent { color: var(--accent); font-style: italic; }
+.cta-box p { color: rgba(255,255,255,0.7); font-size: 16px; max-width: 540px; margin: 0 auto 32px; }
+.cta-box-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 880px) { .cta-box { padding: 48px 24px; } }
+
+.footer {
+  background: var(--bg-soft);
+  padding: 60px 0 28px;
+  border-top: 1px solid var(--line);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 50px;
+}
+.footer-brand p { color: var(--ink-soft); font-size: 14.5px; margin: 16px 0; max-width: 340px; }
+.footer-col h4 {
+  font-family: 'Archivo'; font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 18px; font-weight: 700;
+}
+.footer-col ul { list-style: none; display: grid; gap: 10px; }
+.footer-col li { font-size: 14.5px; color: var(--ink-soft); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+  font-size: 13.5px; color: var(--ink-muted);
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-brand { grid-column: span 2; }
+}
+
+.fab-wa {
+  position: fixed; bottom: 24px; right: 24px;
+  z-index: 90;
+  width: 60px; height: 60px;
+  background: var(--wa); color: white;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 30px;
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: all 0.3s var(--ease);
+  animation: bounce-in 0.6s var(--ease-out) 1s both;
+}
+.fab-wa::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%;
+  background: var(--wa); opacity: 0.4;
+  animation: pingFab 2s infinite;
+  z-index: -1;
+}
+.fab-wa:hover { transform: scale(1.08) rotate(-5deg); background: var(--wa-hover); }
+@keyframes bounce-in {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes pingFab {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.fab-wa-label {
+  position: absolute; right: 70px;
+  background: var(--ink); color: white;
+  padding: 8px 14px; border-radius: 8px;
+  font-family: 'Archivo'; font-size: 13px; font-weight: 600;
+  white-space: nowrap;
+  opacity: 0; transform: translateX(10px);
+  transition: all 0.25s;
+  pointer-events: none;
+}
+.fab-wa:hover .fab-wa-label { opacity: 1; transform: translateX(0); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+
+.drawer {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 200;
+  padding: 24px;
+  transform: translateY(-100%);
+  transition: transform 0.4s var(--ease);
+  display: flex; flex-direction: column;
+}
+.drawer.open { transform: translateY(0); }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.drawer-close {
+  width: 44px; height: 44px;
+  background: var(--ink); color: white;
+  border-radius: 10px; font-size: 24px;
+}
+.drawer-links { list-style: none; display: grid; gap: 4px; }
+.drawer-links a {
+  display: block;
+  font-family: 'Archivo'; font-weight: 700;
+  font-size: 28px; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.drawer-cta { margin-top: auto; display: grid; gap: 12px; }
+
+/* Custom Leaflet pin styles */
+.sn-marker {
+  width: 36px; height: 46px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease);
+}
+.sn-marker:hover { transform: scale(1.15) translateY(-2px); }
+.sn-marker svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+
+.sn-store-marker {
+  width: 48px; height: 60px;
+  position: relative;
+  cursor: pointer;
+}
+.sn-store-marker svg { width: 100%; height: 100%; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35)); }
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(255,255,255,0.85) !important;
+}
+.leaflet-control-zoom a {
+  background: white !important;
+  color: var(--ink) !important;
+  font-family: 'Archivo' !important;
+  font-weight: 700 !important;
+  border: 1px solid var(--line) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: var(--ink) !important;
+  color: var(--accent) !important;
+}
+
+@media (max-width: 980px) {
+  .map-wrapper { grid-template-columns: 1fr; }
+  .map-container { height: 480px; }
+}
+@media (max-width: 600px) {
+  .map-container { height: 400px; }
+  .info-bar { flex-direction: column; gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hammer-cursor, .hammer-impact, .hammer-spark { display: none !important; }
+  body.has-hammer, body.has-hammer * { cursor: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HAMMER CURSOR ============ -->
+<div class="hammer-cursor" id="hammerCursor" aria-hidden="true">
+  <div class="hammer-inner">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect x="29" y="22" width="6" height="38" rx="2" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="1.2"/>
+      <line x1="30" y1="28" x2="30" y2="56" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <line x1="33" y1="26" x2="33" y2="58" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <rect x="28" y="50" width="8" height="10" rx="2" fill="#5C3A1E"/>
+      <path d="M 12 8 L 52 8 L 54 22 L 48 26 L 40 22 L 24 22 L 16 26 L 10 22 Z"
+            fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M 14 10 L 50 10 L 51 14 L 13 14 Z" fill="#6A6A6A" opacity="0.7"/>
+      <rect x="13" y="11" width="38" height="1.5" fill="#FFFFFF" opacity="0.3"/>
+      <path d="M 12 8 L 10 22 L 14 20 L 14 10 Z" fill="#2A2A2A"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span>
+      <span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="tentang.html" data-i18n="nav_tentang">Tentang</a></li>
+      <li><a href="area-pengiriman.html" style="color:var(--ink); font-weight: 700;" data-i18n="nav_area">Area Layanan</a></li>
+      <li><a href="karier.html" data-i18n="nav_karier">Karier</a></li>
+      <li><a href="kontak.html" data-i18n="nav_kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-cta">
+      <!-- Language Toggle -->
+      <div class="lang-toggle desktop-only" id="langToggle">
+        <button class="lang-current" id="langCurrent" aria-label="Pilih bahasa" aria-expanded="false">
+          <span class="lang-flag" id="langFlag">🇮🇩</span>
+          <span id="langLabel">ID</span>
+        </button>
+        <div class="lang-dropdown" role="menu">
+          <button class="lang-option active" data-lang="id" role="menuitem">
+            <span class="lang-flag">🇮🇩</span>
+            <span>Indonesia</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="en" role="menuitem">
+            <span class="lang-flag">🇬🇧</span>
+            <span>English</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="ru" role="menuitem">
+            <span class="lang-flag">🇷🇺</span>
+            <span>Русский</span>
+            <span class="check">✓</span>
+          </button>
+        </div>
+      </div>
+      <a href="tel:+6289526262727" class="btn btn-outline" data-i18n="nav_call">📞 Telepon</a>
+      <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20mau%20tanya%20stok%20bahan%20bangunan" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="nav_wa">💬 WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+    <button class="drawer-close" id="drawerClose" aria-label="Tutup">×</button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="tentang.html" class="drawer-link" data-i18n="nav_tentang">Tentang</a></li>
+    <li><a href="area-pengiriman.html" class="drawer-link" data-i18n="nav_area">Area Layanan</a></li>
+    <li><a href="karier.html" class="drawer-link" data-i18n="nav_karier">Karier</a></li>
+    <li><a href="kontak.html" class="drawer-link" data-i18n="nav_kontak">Kontak</a></li>
+  </ul>
+  <div class="drawer-lang" id="drawerLang">
+    <button data-lang="id" class="active">🇮🇩 ID</button>
+    <button data-lang="en">🇬🇧 EN</button>
+    <button data-lang="ru">🇷🇺 RU</button>
+  </div>
+  <div class="drawer-cta">
+    <a href="https://wa.me/6289526262727" class="btn btn-primary">💬 Chat WhatsApp</a>
+    <a href="tel:+6289526262727" class="btn btn-outline">📞 0895-2626-2727</a>
+  </div>
+</div>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb reveal">
+      <a href="index.html" data-i18n="bc_home">Beranda</a>
+      <span>›</span>
+      <span data-i18n="bc_area">Area Pengiriman</span>
+    </div>
+    <h1 class="reveal" data-delay="1">
+      <span data-i18n="page_hero_title_1">Cek Apakah Daerah Anda</span> <span class="accent" data-i18n="page_hero_title_2">Terlayani</span>.
+    </h1>
+    <p class="reveal" data-delay="2" data-i18n="page_hero_sub">
+      Klik area Anda di map — kami langsung sambungkan ke WhatsApp untuk konfirmasi pengiriman. Free ongkir untuk seluruh area di bawah*
+    </p>
+    <div class="page-hero-meta reveal" data-delay="3">
+      <div class="page-hero-meta-item"><span class="dot"></span> <strong data-i18n="page_hero_meta_online">Online sekarang · balas cepat</strong></div>
+      <div class="page-hero-meta-item">🚚 <strong data-i18n="page_hero_meta_freeship">Free ongkir* seluruh area layanan</strong></div>
+      <div class="page-hero-meta-item">⚡ <strong data-i18n="page_hero_meta_sameday">Same day pesan pagi sampai sore</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MAP SECTION ============ -->
+<section class="map-section">
+  <div class="container">
+    <div class="map-wrapper">
+      <div class="map-container reveal">
+        <div id="map"></div>
+      </div>
+
+      <div class="map-side">
+        <div class="map-card map-card-area reveal" data-delay="1">
+          <h3><span class="num">1</span> <span data-i18n="map_step_1_title">Pilih area Anda</span></h3>
+          <p data-i18n="map_step_1_desc">Klik pin pada map atau tag area di bawah ini untuk langsung chat WhatsApp.</p>
+          <div class="areas-list" id="areaTags"></div>
+        </div>
+        <div class="map-card reveal" data-delay="2">
+          <h3><span class="num">2</span> <span data-i18n="map_step_2_title">Konfirmasi via WA</span></h3>
+          <p data-i18n="map_step_2_desc">Tim kami akan konfirmasi ketersediaan armada & estimasi pengiriman ke titik Anda.</p>
+        </div>
+        <div class="map-card reveal" data-delay="3">
+          <h3 style="margin-bottom: 8px;" data-i18n="map_legend_title">Legenda Map</h3>
+          <div class="legend">
+            <div class="legend-item">
+              <span class="legend-swatch zone"></span>
+              <span data-i18n="map_legend_zone">Zona pengiriman</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-swatch pin"></span>
+              <span data-i18n="map_legend_pin">Pin area · klik untuk chat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-bar reveal" data-delay="2">
+      <div class="info-bar-icon">⚡</div>
+      <div class="info-bar-text">
+        <strong data-i18n="info_bar_title">Free ongkir* — syarat & ketentuan berlaku</strong>
+        <p data-i18n="info_bar_desc">Free ongkir berlaku untuk pembelian di atas minimum tertentu, tergantung jarak & jenis barang. Untuk konfirmasi tarif & syarat, silakan chat WhatsApp tim kami — kami akan kasih estimasi transparan sebelum pengiriman.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8);" data-i18n="page_cta_eyebrow">Tidak Yakin?</span>
+      <h2 style="margin-top: 16px;"><span data-i18n="page_cta_title_1">Area Anda</span> <span class="accent" data-i18n="page_cta_title_accent">tidak ada</span> <span data-i18n="page_cta_title_2">di map?</span></h2>
+      <p data-i18n="page_cta_sub">Tetap chat WA — kami sering melayani area di luar list utama dengan ketentuan tertentu.</p>
+      <div class="cta-box-actions">
+        <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20mau%20tanya%20apakah%20bisa%20kirim%20ke%20daerah%20saya" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="page_cta_btn_wa">
+          💬 Chat WhatsApp
+        </a>
+        <a href="tel:+6289526262727" class="btn btn-accent" data-i18n="page_cta_btn_call">
+          📞 0895-2626-2727
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+        <p data-i18n="footer_brand_desc">CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.</p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://wa.me/6289526262727" class="btn btn-primary" style="padding:10px 18px; font-size:13px;">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_produk">Produk</h4>
+        <ul>
+          <li><a href="index.html#produk">Bahan Bangunan</a></li>
+          <li><a href="index.html#produk">Cat & Finishing</a></li>
+          <li><a href="index.html#produk">Material Listrik</a></li>
+          <li><a href="index.html#produk">Peralatan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_area">Area Layanan</h4>
+        <ul>
+          <li>📍 Denpasar</li>
+          <li>📍 Badung</li>
+          <li>📍 Canggu · Berawa</li>
+          <li>📍 Munggu</li>
+          <li>📍 Jimbaran · Pecatu</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_kontak">Kontak</h4>
+        <ul>
+          <li>📞 0895-2626-2727</li>
+          <li data-i18n="footer_kontak_wa">💬 WhatsApp aktif</li>
+          <li data-i18n="footer_kontak_jam">🕐 Sen–Min: 07.00–21.00</li>
+          <li>🌐 sinarnadi.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copyright">© 2026 CV Sinar Nadi Group. Semua hak dilindungi.</span>
+      <span data-i18n="footer_made">Made in Bali 🇮🇩</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi" class="fab-wa" target="_blank" rel="noopener" aria-label="Chat WhatsApp Sinar Nadi">
+  <span class="fab-wa-label" data-i18n="fab_label">Chat dengan Sinar Nadi</span>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ============ WA REDIRECT OVERLAY ============ -->
+<div class="wa-redirect-overlay" id="waOverlay">
+  <div class="wa-redirect-card">
+    <div class="wa-redirect-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </div>
+    <h3 data-i18n="wa_redirect_title">Membuka WhatsApp</h3>
+    <p><span data-i18n="wa_redirect_desc">Mengarahkan Anda ke chat untuk area</span> <span class="area-name" id="waAreaName">—</span></p>
+    <button class="wa-cancel" id="waCancel" data-i18n="wa_redirect_cancel">Batalkan</button>
+  </div>
+</div>
+
+<!-- ============ LEAFLET LIBRARY ============ -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<!-- ============ MAIN SCRIPT ============ -->
+<script>
+// ===== STICKY NAV =====
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ===== MOBILE DRAWER =====
+const menuToggle = document.getElementById('menuToggle');
+const drawer = document.getElementById('drawer');
+const drawerClose = document.getElementById('drawerClose');
+menuToggle?.addEventListener('click', () => drawer.classList.add('open'));
+drawerClose?.addEventListener('click', () => drawer.classList.remove('open'));
+document.querySelectorAll('.drawer-link').forEach(a => {
+  a.addEventListener('click', () => drawer.classList.remove('open'));
+});
+
+// ===== SCROLL REVEAL =====
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(r => io.observe(r));
+
+// ===== LANGUAGE TOGGLE (ID/EN/RU) =====
+(function initLangToggle() {
+  const TRANSLATIONS = {
+    id: {
+      // Nav
+      nav_produk: 'Produk',
+      nav_tentang: 'Tentang',
+      nav_area: 'Area Layanan',
+      nav_faq: 'FAQ',
+      nav_kontak: 'Kontak', nav_karier: 'Karier', nav_karier: 'Karier',
+      nav_call: '📞 Telepon',
+      nav_wa: '💬 WhatsApp',
+      // Breadcrumb
+      bc_home: 'Beranda',
+      bc_area: 'Area Pengiriman',
+      // Page Hero
+      page_hero_title_1: 'Cek Apakah Daerah Anda',
+      page_hero_title_2: 'Terlayani',
+      page_hero_sub: 'Klik area Anda di map — kami langsung sambungkan ke WhatsApp untuk konfirmasi pengiriman. Free ongkir untuk seluruh area di bawah*',
+      page_hero_meta_online: 'Online sekarang · balas cepat',
+      page_hero_meta_freeship: 'Free ongkir* seluruh area layanan',
+      page_hero_meta_sameday: 'Same day pesan pagi sampai sore',
+      // Map cards
+      map_step_1_title: 'Pilih area Anda',
+      map_step_1_desc: 'Klik pin pada map atau tag area di bawah ini untuk langsung chat WhatsApp.',
+      map_step_2_title: 'Konfirmasi via WA',
+      map_step_2_desc: 'Tim kami akan konfirmasi ketersediaan armada & estimasi pengiriman ke titik Anda.',
+      map_legend_title: 'Legenda Map',
+      map_legend_zone: 'Zona pengiriman',
+      map_legend_pin: 'Pin area · klik untuk chat',
+      // Info bar
+      info_bar_title: 'Free ongkir* — syarat & ketentuan berlaku',
+      info_bar_desc: 'Free ongkir berlaku untuk pembelian di atas minimum tertentu, tergantung jarak & jenis barang. Untuk konfirmasi tarif & syarat, silakan chat WhatsApp tim kami — kami akan kasih estimasi transparan sebelum pengiriman.',
+      // Page CTA
+      page_cta_eyebrow: 'Tidak Yakin?',
+      page_cta_title_1: 'Area Anda',
+      page_cta_title_accent: 'tidak ada',
+      page_cta_title_2: 'di map?',
+      page_cta_sub: 'Tetap chat WA — kami sering melayani area di luar list utama dengan ketentuan tertentu.',
+      page_cta_btn_wa: '💬 Chat WhatsApp',
+      page_cta_btn_call: '📞 0895-2626-2727',
+      // WA overlay
+      wa_redirect_title: 'Membuka WhatsApp',
+      wa_redirect_desc: 'Mengarahkan Anda ke chat untuk area',
+      wa_redirect_cancel: 'Batalkan',
+      // Footer
+      footer_brand_desc: 'CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.',
+      footer_h_produk: 'Produk',
+      footer_h_area: 'Area Layanan',
+      footer_h_kontak: 'Kontak',
+      footer_kontak_wa: '💬 WhatsApp aktif',
+      footer_kontak_jam: '🕐 Sen–Min: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Semua hak dilindungi.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Chat dengan Sinar Nadi',
+    },
+    en: {
+      nav_produk: 'Products',
+      nav_tentang: 'About',
+      nav_area: 'Service Area',
+      nav_faq: 'FAQ',
+      nav_kontak: 'Contact', nav_karier: 'Careers', nav_karier: 'Careers',
+      nav_call: '📞 Call',
+      nav_wa: '💬 WhatsApp',
+      bc_home: 'Home',
+      bc_area: 'Delivery Area',
+      page_hero_title_1: 'Check If Your Area Is',
+      page_hero_title_2: 'Covered',
+      page_hero_sub: 'Click your area on the map — we\'ll connect you directly to WhatsApp for delivery confirmation. Free shipping for all areas below*',
+      page_hero_meta_online: 'Online now · fast reply',
+      page_hero_meta_freeship: 'Free shipping* for all service areas',
+      page_hero_meta_sameday: 'Same day for morning orders',
+      map_step_1_title: 'Pick your area',
+      map_step_1_desc: 'Click a pin on the map or an area tag below to chat WhatsApp directly.',
+      map_step_2_title: 'Confirm via WA',
+      map_step_2_desc: 'Our team will confirm fleet availability & delivery estimate to your location.',
+      map_legend_title: 'Map Legend',
+      map_legend_zone: 'Delivery zone',
+      map_legend_pin: 'Area pin · click to chat',
+      info_bar_title: 'Free shipping* — terms & conditions apply',
+      info_bar_desc: 'Free shipping applies to purchases above a certain minimum, depending on distance & item type. For pricing confirmation, please chat WhatsApp our team — we provide transparent estimates before delivery.',
+      page_cta_eyebrow: 'Not Sure?',
+      page_cta_title_1: 'Your area',
+      page_cta_title_accent: 'not on',
+      page_cta_title_2: 'the map?',
+      page_cta_sub: 'Still chat WA — we often serve areas outside the main list under specific terms.',
+      page_cta_btn_wa: '💬 Chat WhatsApp',
+      page_cta_btn_call: '📞 0895-2626-2727',
+      wa_redirect_title: 'Opening WhatsApp',
+      wa_redirect_desc: 'Redirecting you to chat for area',
+      wa_redirect_cancel: 'Cancel',
+      footer_brand_desc: 'CV Sinar Nadi Group — Trusted building material store in Bali. Complete stock, competitive prices, same day delivery.',
+      footer_h_produk: 'Products',
+      footer_h_area: 'Service Area',
+      footer_h_kontak: 'Contact',
+      footer_kontak_wa: '💬 WhatsApp active',
+      footer_kontak_jam: '🕐 Mon–Sun: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. All rights reserved.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Chat with Sinar Nadi',
+    },
+    ru: {
+      nav_produk: 'Товары',
+      nav_tentang: 'О компании',
+      nav_area: 'Зона доставки',
+      nav_faq: 'Вопросы',
+      nav_kontak: 'Контакты', nav_karier: 'Карьера', nav_karier: 'Карьера',
+      nav_call: '📞 Позвонить',
+      nav_wa: '💬 WhatsApp',
+      bc_home: 'Главная',
+      bc_area: 'Зона доставки',
+      page_hero_title_1: 'Проверьте, обслуживается ли',
+      page_hero_title_2: 'ваш район',
+      page_hero_sub: 'Нажмите на ваш район на карте — мы напрямую направим вас в WhatsApp для подтверждения доставки. Бесплатная доставка по всем районам ниже*',
+      page_hero_meta_online: 'Сейчас онлайн · быстрый ответ',
+      page_hero_meta_freeship: 'Бесплатная доставка* во все зоны',
+      page_hero_meta_sameday: 'Доставка в день при заказе утром',
+      map_step_1_title: 'Выберите район',
+      map_step_1_desc: 'Нажмите на метку на карте или на тег района ниже, чтобы сразу написать в WhatsApp.',
+      map_step_2_title: 'Подтвердите в WA',
+      map_step_2_desc: 'Наша команда подтвердит доступность автопарка и сроки доставки до вашего адреса.',
+      map_legend_title: 'Легенда карты',
+      map_legend_zone: 'Зона доставки',
+      map_legend_pin: 'Метка района · нажмите для чата',
+      info_bar_title: 'Бесплатная доставка* — действуют условия',
+      info_bar_desc: 'Бесплатная доставка действует при заказе выше определённой суммы, в зависимости от расстояния и типа товара. Для уточнения тарифов напишите в WhatsApp — мы дадим прозрачный расчёт до отправки.',
+      page_cta_eyebrow: 'Не уверены?',
+      page_cta_title_1: 'Вашего района',
+      page_cta_title_accent: 'нет',
+      page_cta_title_2: 'на карте?',
+      page_cta_sub: 'Всё равно напишите в WA — мы часто работаем за пределами основной зоны на отдельных условиях.',
+      page_cta_btn_wa: '💬 Написать в WhatsApp',
+      page_cta_btn_call: '📞 0895-2626-2727',
+      wa_redirect_title: 'Открываем WhatsApp',
+      wa_redirect_desc: 'Перенаправляем в чат для района',
+      wa_redirect_cancel: 'Отменить',
+      footer_brand_desc: 'CV Sinar Nadi Group — надёжный магазин стройматериалов на Бали. Полный склад, конкурентные цены, доставка сегодня.',
+      footer_h_produk: 'Товары',
+      footer_h_area: 'Зона доставки',
+      footer_h_kontak: 'Контакты',
+      footer_kontak_wa: '💬 WhatsApp активен',
+      footer_kontak_jam: '🕐 Пн–Вс: 07:00–21:00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Все права защищены.',
+      footer_made: 'Сделано на Бали 🇮🇩',
+      fab_label: 'Написать в Sinar Nadi',
+    }
+  };
+
+  const FLAGS = { id: '🇮🇩', en: '🇬🇧', ru: '🇷🇺' };
+  const LABELS = { id: 'ID', en: 'EN', ru: 'RU' };
+
+  let currentLang = 'id';
+  try {
+    const saved = localStorage.getItem('sinarnadi_lang');
+    if (saved && TRANSLATIONS[saved]) currentLang = saved;
+  } catch (e) { /* fallback */ }
+
+  function applyLanguage(lang) {
+    if (!TRANSLATIONS[lang]) return;
+    currentLang = lang;
+    const dict = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) {
+        el.textContent = dict[key];
+      }
+    });
+
+    const flagEl = document.getElementById('langFlag');
+    const labelEl = document.getElementById('langLabel');
+    if (flagEl) flagEl.textContent = FLAGS[lang];
+    if (labelEl) labelEl.textContent = LABELS[lang];
+
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    document.querySelectorAll('.drawer-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    try {
+      localStorage.setItem('sinarnadi_lang', lang);
+    } catch (e) { /* skip */ }
+  }
+
+  const langToggle = document.getElementById('langToggle');
+  const langCurrent = document.getElementById('langCurrent');
+  if (langCurrent && langToggle) {
+    langCurrent.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langToggle.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen);
+    });
+    document.addEventListener('click', (e) => {
+      if (!langToggle.contains(e.target)) {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      applyLanguage(opt.dataset.lang);
+      langToggle?.classList.remove('open');
+      langCurrent?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.querySelectorAll('.drawer-lang button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLanguage(btn.dataset.lang);
+    });
+  });
+
+  applyLanguage(currentLang);
+})();
+
+// ===== HAMMER CURSOR =====
+(function initHammerCursor() {
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isTouch || reducedMotion) return;
+
+  const cursor = document.getElementById('hammerCursor');
+  if (!cursor) return;
+  document.body.classList.add('has-hammer');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX, cursorY = mouseY;
+  const lerpFactor = 0.22;
+  let isReady = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    if (!isReady) { isReady = true; cursor.classList.add('ready'); }
+  });
+  document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
+  document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
+
+  function animate() {
+    cursorX += (mouseX - cursorX) * lerpFactor;
+    cursorY += (mouseY - cursorY) * lerpFactor;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  const interactiveSelector = 'a, button, .area-tag, .leaflet-marker-icon, .leaflet-control-zoom a, [role="button"]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.add('hover-link');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.remove('hover-link');
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    cursor.classList.remove('striking');
+    void cursor.offsetWidth;
+    cursor.classList.add('striking');
+
+    const impactX = e.clientX, impactY = e.clientY + 8;
+    const ripple = document.createElement('div');
+    ripple.className = 'hammer-impact';
+    ripple.style.left = impactX + 'px';
+    ripple.style.top = impactY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    const sparkCount = 5;
+    for (let i = 0; i < sparkCount; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'hammer-spark';
+      const angle = (Math.PI / sparkCount) * i + (Math.PI * 0.05);
+      const distance = 30 + Math.random() * 25;
+      const dx = Math.cos(angle - Math.PI) * distance;
+      const dy = Math.sin(angle - Math.PI) * distance;
+      spark.style.setProperty('--dx', dx + 'px');
+      spark.style.setProperty('--dy', dy + 'px');
+      spark.style.left = impactX + 'px';
+      spark.style.top = impactY + 'px';
+      if (i % 2 === 0) spark.style.background = 'var(--accent)';
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 500);
+    }
+  });
+
+  cursor.addEventListener('animationend', (e) => {
+    if (e.animationName === 'hammerStrike') cursor.classList.remove('striking');
+  });
+})();
+
+// ============================================
+// LEAFLET MAP
+// ============================================
+
+// ⚠️ AREA & POLYGON DATA
+// Pin area = verified semua di dalam polygon delivery zone
+const AREAS = [
+  // Polygon 1: Kerobokan, Canggu, Berawa, Munggu, Buduk
+  { name: 'Kerobokan', coords: [-8.6630, 115.1620] },
+  { name: 'Canggu',    coords: [-8.6500, 115.1370] },
+  { name: 'Berawa',    coords: [-8.6580, 115.1480] },
+  { name: 'Munggu',    coords: [-8.6280, 115.1140] },
+  { name: 'Buduk',     coords: [-8.6150, 115.1330] },
+  // Polygon 2: Denpasar (area tertentu)
+  { name: 'Denpasar',  coords: [-8.6210, 115.2459] },
+  // Polygon 3: Jimbaran, Pecatu
+  { name: 'Jimbaran',  coords: [-8.7900, 115.1650] },
+  { name: 'Pecatu',    coords: [-8.8240, 115.1100] }
+];
+
+const STORE_LOCATION = [-8.6304423, 115.1722098];
+
+// Multi-polygon delivery zones (digambar oleh Sinar Nadi via geojson.io)
+const DELIVERY_ZONES = [
+  // Polygon 1: Kerobokan, Canggu, Berawa, Munggu
+  [
+    [-8.639343, 115.100340],
+    [-8.646431, 115.117034],
+    [-8.650567, 115.122031],
+    [-8.653613, 115.126569],
+    [-8.658763, 115.130630],
+    [-8.665095, 115.139848],
+    [-8.669663, 115.145732],
+    [-8.673017, 115.147067],
+    [-8.677121, 115.153962],
+    [-8.682294, 115.152915],
+    [-8.682758, 115.157427],
+    [-8.683793, 115.157463],
+    [-8.686612, 115.155225],
+    [-8.691027, 115.157805],
+    [-8.688776, 115.167488],
+    [-8.688373, 115.168983],
+    [-8.689280, 115.172176],
+    [-8.687937, 115.177918],
+    [-8.685418, 115.178224],
+    [-8.685015, 115.177443],
+    [-8.681757, 115.177545],
+    [-8.681320, 115.176254],
+    [-8.680716, 115.174996],
+    [-8.680514, 115.174045],
+    [-8.679137, 115.174555],
+    [-8.676954, 115.174521],
+    [-8.676834, 115.173352],
+    [-8.675164, 115.172402],
+    [-8.674955, 115.172683],
+    [-8.673390, 115.172824],
+    [-8.672068, 115.172472],
+    [-8.672138, 115.173493],
+    [-8.673842, 115.176835],
+    [-8.673842, 115.179088],
+    [-8.673494, 115.180917],
+    [-8.673114, 115.182571],
+    [-8.670826, 115.183154],
+    [-8.668533, 115.190532],
+    [-8.669392, 115.205590],
+    [-8.655172, 115.210349],
+    [-8.652071, 115.200349],
+    [-8.651661, 115.195377],
+    [-8.649264, 115.195201],
+    [-8.637067, 115.196908],
+    [-8.633020, 115.198169],
+    [-8.631974, 115.198100],
+    [-8.619001, 115.190661],
+    [-8.617119, 115.195158],
+    [-8.615517, 115.193886],
+    [-8.612731, 115.192827],
+    [-8.611756, 115.194099],
+    [-8.609457, 115.193467],
+    [-8.603399, 115.188811],
+    [-8.600062, 115.181330],
+    [-8.608622, 115.178742],
+    [-8.605559, 115.175987],
+    [-8.597974, 115.177033],
+    [-8.593310, 115.167881],
+    [-8.600614, 115.160072],
+    [-8.603398, 115.158031],
+    [-8.605972, 115.152820],
+    [-8.603392, 115.149579],
+    [-8.606037, 115.136253],
+    [-8.602065, 115.133858],
+    [-8.613288, 115.114579],
+    [-8.620334, 115.118113],
+    [-8.624032, 115.115500],
+    [-8.627102, 115.114793],
+    [-8.628919, 115.112598],
+    [-8.629339, 115.110620],
+    [-8.630596, 115.109347],
+    [-8.636188, 115.105590],
+    [-8.639343, 115.100340]
+  ],
+  // Polygon 2: Denpasar specific
+  [
+    [-8.600247, 115.225931],
+    [-8.599927, 115.224438],
+    [-8.604790, 115.223539],
+    [-8.605000, 115.219731],
+    [-8.610333, 115.219043],
+    [-8.618281, 115.221528],
+    [-8.619588, 115.220788],
+    [-8.622098, 115.222427],
+    [-8.625811, 115.222533],
+    [-8.625811, 115.225918],
+    [-8.633289, 115.228298],
+    [-8.637158, 115.228562],
+    [-8.641656, 115.229567],
+    [-8.649552, 115.229302],
+    [-8.648820, 115.240833],
+    [-8.645683, 115.247391],
+    [-8.651174, 115.251464],
+    [-8.649657, 115.253686],
+    [-8.650389, 115.257759],
+    [-8.649501, 115.266963],
+    [-8.648717, 115.272729],
+    [-8.646416, 115.276855],
+    [-8.643173, 115.278071],
+    [-8.637630, 115.275796],
+    [-8.638571, 115.272041],
+    [-8.636166, 115.272199],
+    [-8.633080, 115.271564],
+    [-8.631197, 115.273786],
+    [-8.626857, 115.273150],
+    [-8.627223, 115.277699],
+    [-8.624902, 115.277918],
+    [-8.620837, 115.277793],
+    [-8.614227, 115.274429],
+    [-8.614802, 115.256032],
+    [-8.608725, 115.255201],
+    [-8.608890, 115.250177],
+    [-8.609423, 115.244903],
+    [-8.612215, 115.245858],
+    [-8.614063, 115.246606],
+    [-8.614063, 115.244612],
+    [-8.605810, 115.242370],
+    [-8.605687, 115.240501],
+    [-8.606180, 115.240418],
+    [-8.605975, 115.238508],
+    [-8.603717, 115.238633],
+    [-8.602115, 115.239339],
+    [-8.597736, 115.239858],
+    [-8.598490, 115.232060],
+    [-8.598131, 115.231842],
+    [-8.598418, 115.229993],
+    [-8.600856, 115.229920],
+    [-8.600856, 115.228143],
+    [-8.600247, 115.225931]
+  ],
+  // Polygon 3: Jimbaran, Pecatu
+  [
+    [-8.826807, 115.087274],
+    [-8.831066, 115.088457],
+    [-8.836408, 115.094084],
+    [-8.838572, 115.099016],
+    [-8.839241, 115.106081],
+    [-8.839031, 115.113756],
+    [-8.843377, 115.114556],
+    [-8.844573, 115.123952],
+    [-8.841793, 115.125122],
+    [-8.845265, 115.131403],
+    [-8.842544, 115.133121],
+    [-8.838885, 115.133467],
+    [-8.839227, 115.135381],
+    [-8.842886, 115.135309],
+    [-8.845613, 115.143246],
+    [-8.845969, 115.150645],
+    [-8.840403, 115.151600],
+    [-8.839590, 115.157283],
+    [-8.835322, 115.159129],
+    [-8.835320, 115.161865],
+    [-8.834781, 115.168577],
+    [-8.829299, 115.168367],
+    [-8.829706, 115.171928],
+    [-8.827676, 115.173294],
+    [-8.822129, 115.175138],
+    [-8.817530, 115.175345],
+    [-8.816177, 115.170688],
+    [-8.814622, 115.162886],
+    [-8.810496, 115.161864],
+    [-8.806161, 115.166805],
+    [-8.807585, 115.175150],
+    [-8.805418, 115.179130],
+    [-8.798099, 115.181616],
+    [-8.792472, 115.184368],
+    [-8.787045, 115.179443],
+    [-8.788271, 115.169976],
+    [-8.790110, 115.167637],
+    [-8.787945, 115.156810],
+    [-8.787745, 115.147698],
+    [-8.794237, 115.141668],
+    [-8.801554, 115.142560],
+    [-8.801823, 115.137626],
+    [-8.798707, 115.135707],
+    [-8.796066, 115.133514],
+    [-8.798707, 115.130842],
+    [-8.803516, 115.130706],
+    [-8.806834, 115.125772],
+    [-8.818612, 115.133597],
+    [-8.818478, 115.129006],
+    [-8.826723, 115.128471],
+    [-8.826048, 115.126005],
+    [-8.818546, 115.125578],
+    [-8.812048, 115.126458],
+    [-8.810490, 115.124195],
+    [-8.809678, 115.119539],
+    [-8.812861, 115.118785],
+    [-8.813741, 115.122006],
+    [-8.817193, 115.121393],
+    [-8.820034, 115.121954],
+    [-8.813944, 115.114125],
+    [-8.819833, 115.110505],
+    [-8.827136, 115.114223],
+    [-8.831386, 115.122726],
+    [-8.828960, 115.114774],
+    [-8.823212, 115.110733],
+    [-8.820308, 115.101999],
+    [-8.821391, 115.096654],
+    [-8.820646, 115.090970],
+    [-8.824235, 115.088297],
+    [-8.826807, 115.087274]
+  ]
+];
+
+const BALI_BOUNDS = [
+  [-8.95, 114.42],
+  [-8.05, 115.72]
+];
+
+const map = L.map('map', {
+  center: STORE_LOCATION,
+  zoom: 11,
+  minZoom: 9,
+  maxZoom: 17,
+  maxBounds: BALI_BOUNDS,
+  maxBoundsViscosity: 0.9,
+  zoomControl: true,
+  attributionControl: true,
+  scrollWheelZoom: true
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+// Render multi-polygon delivery zones dengan warna brand sunrise
+const zonePolygons = DELIVERY_ZONES.map(zone => L.polygon(zone, {
+  color: '#E14425',
+  weight: 2.5,
+  opacity: 0.85,
+  fillColor: '#E14425',
+  fillOpacity: 0.10,
+  className: 'delivery-zone'
+}).addTo(map));
+
+function buildWaUrl(areaName) {
+  const phone = '6289526262727';
+  const message = `Halo Sinar Nadi, apakah bisa kirim ke daerah ${areaName}?`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+}
+
+const areaIcon = L.divIcon({
+  className: 'sn-marker',
+  html: `
+    <svg viewBox="0 0 36 46" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 18 0 C 8 0 0 8 0 18 C 0 30 18 46 18 46 C 18 46 36 30 36 18 C 36 8 28 0 18 0 Z"
+            fill="#E14425" stroke="#0F0F0F" stroke-width="2"/>
+      <circle cx="18" cy="18" r="7" fill="white"/>
+      <circle cx="18" cy="18" r="3.5" fill="#E14425"/>
+    </svg>
+  `,
+  iconSize: [36, 46],
+  iconAnchor: [18, 46],
+  popupAnchor: [0, -46]
+});
+
+const storeIcon = L.divIcon({
+  className: 'sn-store-marker',
+  html: `
+    <svg viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 24 0 C 11 0 0 11 0 24 C 0 40 24 60 24 60 C 24 60 48 40 48 24 C 48 11 37 0 24 0 Z"
+            fill="#0F0F0F" stroke="#E14425" stroke-width="2.5"/>
+      <circle cx="24" cy="22" r="11" fill="#E14425"/>
+      <text x="24" y="27" text-anchor="middle" font-family="Archivo, sans-serif" font-size="11" font-weight="900" fill="white">SN</text>
+    </svg>
+  `,
+  iconSize: [48, 60],
+  iconAnchor: [24, 60],
+  popupAnchor: [0, -60]
+});
+
+const waOverlay = document.getElementById('waOverlay');
+const waAreaName = document.getElementById('waAreaName');
+const waCancel = document.getElementById('waCancel');
+let waTimeoutId = null;
+let pendingWaUrl = null;
+
+function showWaRedirect(areaName) {
+  waAreaName.textContent = areaName;
+  pendingWaUrl = buildWaUrl(areaName);
+  waOverlay.classList.add('show');
+
+  waTimeoutId = setTimeout(() => {
+    if (pendingWaUrl) {
+      window.open(pendingWaUrl, '_blank', 'noopener');
+      hideWaOverlay();
+    }
+  }, 1200);
+}
+
+function hideWaOverlay() {
+  waOverlay.classList.remove('show');
+  if (waTimeoutId) {
+    clearTimeout(waTimeoutId);
+    waTimeoutId = null;
+  }
+  pendingWaUrl = null;
+}
+
+waCancel.addEventListener('click', hideWaOverlay);
+waOverlay.addEventListener('click', (e) => {
+  if (e.target === waOverlay) hideWaOverlay();
+});
+
+AREAS.forEach((area) => {
+  const marker = L.marker(area.coords, {
+    icon: areaIcon,
+    title: area.name,
+    riseOnHover: true,
+    keyboard: true,
+    alt: `Pin area ${area.name}`
+  }).addTo(map);
+
+  marker.bindTooltip(area.name, {
+    permanent: false,
+    direction: 'top',
+    offset: [0, -42]
+  });
+
+  marker.on('click', () => {
+    showWaRedirect(area.name);
+  });
+});
+
+L.marker(STORE_LOCATION, {
+  icon: storeIcon,
+  title: 'Toko Sinar Nadi',
+  zIndexOffset: 1000
+}).addTo(map)
+  .bindTooltip('Toko Utama Sinar Nadi', {
+    permanent: false,
+    direction: 'top',
+    offset: [0, -56]
+  });
+
+// Combine bounds dari semua polygon untuk auto-fit map
+const combinedBounds = L.latLngBounds([]);
+zonePolygons.forEach(poly => combinedBounds.extend(poly.getBounds()));
+map.fitBounds(combinedBounds, { padding: [40, 40] });
+
+// AREA TAG BUTTONS di sidebar
+const areaTagsContainer = document.getElementById('areaTags');
+AREAS.forEach((area) => {
+  const tag = document.createElement('button');
+  tag.className = 'area-tag';
+  tag.textContent = area.name;
+  tag.addEventListener('click', () => {
+    map.flyTo(area.coords, 13, { duration: 0.8 });
+    setTimeout(() => showWaRedirect(area.name), 850);
+  });
+  areaTagsContainer.appendChild(tag);
+});
+</script>
+
+</body>
+</html>

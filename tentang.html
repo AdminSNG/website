@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<meta name="theme-color" content="#0F0F0F" />
+
+<!-- ============ SEO ============ -->
+<title>Tentang Kami — Sinar Nadi | 20+ Tahun Membangun Bali</title>
+<meta name="description" content="CV Sinar Nadi Group — toko bahan bangunan terpercaya di Bali, lebih dari 20 tahun melayani kontraktor & rumah tangga. Stok ribuan item, melayani kontraktor & rumah tangga di Denpasar, Badung, Canggu, dan sekitarnya." />
+<meta name="robots" content="index, follow" />
+<meta name="geo.region" content="ID-BA" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F2;
+  --bg-dark: #0F0F0F;
+  --ink: #0F0F0F;
+  --ink-soft: #4A4A4A;
+  --ink-muted: #8A8A8A;
+  --line: #E8E8E5;
+  --accent: #E14425;
+  --accent-hover: #C5391C;
+  --accent-soft: #FCEAE5;
+  --yellow: #F6B618;
+  --yellow-soft: #FEF7B5;
+  --accent-mid: #F6B618;
+  --sunrise: linear-gradient(135deg, #E14425 0%, #F6B618 100%);
+  --sunrise-soft: linear-gradient(135deg, #FCEAE5 0%, #FEF7B5 100%);
+  --wa: #25D366;
+  --wa-hover: #1EB853;
+  --container: 1240px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.has-hammer, body.has-hammer * { cursor: none !important; }
+  body.has-hammer input, body.has-hammer textarea { cursor: text !important; }
+}
+
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 700; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+}
+.eyebrow::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 16px 26px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 15px;
+  border-radius: 100px;
+  transition: all 0.25s var(--ease);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--wa); color: white; }
+.btn-primary:hover { background: var(--wa-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.5); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(225, 68, 37, 0.5); }
+
+/* HAMMER CURSOR */
+.hammer-cursor {
+  position: fixed; top: 0; left: 0;
+  width: 44px; height: 44px;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s;
+  will-change: transform, left, top;
+  opacity: 0;
+}
+.hammer-cursor.ready { opacity: 1; }
+.hammer-inner {
+  width: 100%; height: 100%;
+  transform: rotate(-25deg);
+  transform-origin: 30% 70%;
+  transition: transform 0.2s var(--ease);
+}
+.hammer-cursor.hover-link .hammer-inner { transform: rotate(-10deg) scale(1.15); }
+.hammer-cursor.striking .hammer-inner {
+  animation: hammerStrike 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes hammerStrike {
+  0%   { transform: rotate(-10deg) scale(1.05); }
+  35%  { transform: rotate(-120deg) scale(1.1); }
+  60%  { transform: rotate(-105deg) scale(1.08); }
+  100% { transform: rotate(-25deg) scale(1); }
+}
+.hammer-cursor svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+.hammer-cursor:not(.striking):not(.hover-link) .hammer-inner { animation: hammerIdle 3.5s ease-in-out infinite; }
+@keyframes hammerIdle {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-30deg); }
+}
+.hammer-impact {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  animation: impactRipple 0.55s var(--ease-out) forwards;
+}
+@keyframes impactRipple {
+  0%   { width: 8px; height: 8px; opacity: 1; border-width: 3px; }
+  100% { width: 70px; height: 70px; opacity: 0; border-width: 1px; }
+}
+.hammer-spark {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 4px; height: 4px;
+  background: var(--yellow); border-radius: 50%;
+  animation: sparkFly 0.5s var(--ease-out) forwards;
+}
+@keyframes sparkFly {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900; font-size: 20px;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-mark {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+.logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+.logo-mark img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.logo-text {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+}
+.logo-text .name-1 { color: var(--ink); }
+.logo-text .name-2 {
+  background: var(--sunrise);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { display: flex; gap: 10px; align-items: center; }
+
+/* LANG TOGGLE */
+.lang-toggle { position: relative; display: flex; align-items: center; }
+.lang-current {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.lang-current:hover { border-color: var(--ink); background: white; }
+.lang-current::after {
+  content: '▾'; font-size: 10px; margin-left: 2px;
+  opacity: 0.6; transition: transform 0.25s;
+}
+.lang-toggle.open .lang-current::after { transform: rotate(180deg); }
+.lang-flag { font-size: 16px; line-height: 1; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  min-width: 160px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.15);
+  padding: 6px;
+  opacity: 0; transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 110;
+}
+.lang-toggle.open .lang-dropdown { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.lang-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: 'Archivo';
+  font-size: 13.5px; font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  width: 100%; text-align: left;
+  background: none; border: none;
+  transition: all 0.15s;
+}
+.lang-option:hover { background: var(--bg-soft); color: var(--ink); }
+.lang-option.active { background: var(--ink); color: var(--accent); }
+.lang-option .check { margin-left: auto; opacity: 0; font-size: 14px; color: var(--accent); }
+.lang-option.active .check { opacity: 1; }
+
+@media (max-width: 880px) { .lang-toggle.desktop-only { display: none; } }
+.drawer-lang { display: none; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+@media (max-width: 880px) { .drawer-lang { display: flex; gap: 8px; } }
+.drawer-lang button {
+  flex: 1; padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: 'Archivo';
+  font-weight: 600; font-size: 13px;
+  background: white; color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.drawer-lang button.active { background: var(--ink); color: var(--accent); border-color: var(--ink); }
+
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  background: var(--ink);
+  border-radius: 10px; position: relative;
+}
+.menu-toggle span {
+  position: absolute; left: 50%; top: 50%;
+  width: 18px; height: 2px;
+  background: white;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s;
+}
+.menu-toggle span:first-child { transform: translate(-50%, calc(-50% - 5px)); }
+.menu-toggle span:last-child { transform: translate(-50%, calc(-50% + 5px)); }
+
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .nav-cta .btn:not(.btn-primary) { display: none; }
+}
+
+/* ============================================
+   PAGE HERO — Tentang Kami
+   ============================================ */
+.about-hero {
+  padding: 140px 0 60px;
+  background: radial-gradient(900px 500px at 80% 0%, rgba(225, 68, 37, 0.07), transparent 60%), var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.about-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.about-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Archivo';
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.breadcrumb a { color: var(--ink-soft); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span { color: var(--ink); }
+
+.about-hero h1 {
+  margin-bottom: 20px;
+}
+.about-hero h1 .accent { color: var(--accent); font-style: italic; }
+.about-hero h1 .years {
+  display: inline-block;
+  position: relative;
+}
+.about-hero h1 .years::after {
+  content: '';
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: 4px;
+  height: 14px;
+  background: var(--yellow);
+  z-index: -1;
+  border-radius: 2px;
+  transform: skew(-2deg);
+}
+.about-hero p.lead {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 540px;
+  margin-bottom: 32px;
+}
+.about-hero-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.about-hero-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--ink-soft);
+}
+.about-hero-meta-item strong { color: var(--ink); font-weight: 700; }
+.dot {
+  width: 8px; height: 8px;
+  background: var(--wa);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+
+/* Hero visual: gambar toko + badge floating */
+.about-hero-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.25);
+}
+.about-hero-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.hero-floating-badge {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  background: white;
+  padding: 16px 22px;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px -10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-floating-badge-icon {
+  width: 44px; height: 44px;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 22px;
+}
+.hero-floating-badge-text strong {
+  display: block;
+  font-family: 'Archivo';
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.hero-floating-badge-text span {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 980px) {
+  .about-hero { padding: 110px 0 40px; }
+  .about-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-hero-visual { aspect-ratio: 4/3; max-width: 600px; margin: 0 auto; }
+}
+
+/* ============================================
+   STATS STRIP
+   ============================================ */
+.stats-strip {
+  background: var(--ink);
+  color: white;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+.stats-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(225, 68, 37, 0.18), transparent 35%),
+    radial-gradient(circle at 85% 50%, rgba(246, 182, 24, 0.1), transparent 40%);
+}
+.stats-strip::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.stats-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.stat-item {
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+}
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 20%;
+  width: 1px; height: 60%;
+  background: rgba(255,255,255,0.1);
+}
+.stat-num {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  letter-spacing: -0.04em;
+  color: white;
+  line-height: 1;
+}
+.stat-num .accent { color: var(--accent); }
+.stat-num .suffix {
+  font-size: 0.6em;
+  color: var(--accent);
+  vertical-align: super;
+}
+.stat-label {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
+  .stat-item:not(:last-child)::after { display: none; }
+  .stat-item:nth-child(odd)::after {
+    content: ''; position: absolute; right: -10px; top: 20%;
+    width: 1px; height: 60%; background: rgba(255,255,255,0.1);
+    display: block;
+  }
+}
+
+/* ============================================
+   "3 HAL YANG BIKIN BEDA" SECTION
+   ============================================ */
+.differentiators {
+  padding: 100px 0;
+  background: var(--bg);
+}
+.section-head-narrow {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+.section-head-narrow h2 {
+  margin-top: 16px;
+}
+.section-head-narrow h2 .accent { color: var(--accent); font-style: italic; }
+.section-head-narrow p {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.diff-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 340px;
+}
+.diff-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.diff-card:hover {
+  background: white;
+  border-color: var(--ink);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -15px rgba(0,0,0,0.12);
+}
+.diff-card:hover::before { opacity: 1; }
+.diff-card > * { position: relative; z-index: 1; }
+
+.diff-num {
+  font-family: 'Archivo';
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.diff-icon {
+  width: 64px; height: 64px;
+  background: var(--ink);
+  color: var(--accent);
+  border-radius: 16px;
+  display: grid; place-items: center;
+  transition: all 0.3s var(--ease);
+}
+.diff-icon svg { width: 32px; height: 32px; }
+.diff-card:hover .diff-icon {
+  background: var(--sunrise);
+  color: white;
+  transform: rotate(-8deg) scale(1.05);
+  box-shadow: 0 10px 24px -6px rgba(225, 68, 37, 0.5);
+}
+.diff-card h3 {
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+.diff-card p {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.55;
+  flex: 1;
+}
+.diff-bg-icon {
+  position: absolute;
+  bottom: -25px; right: -25px;
+  width: 160px; height: 160px;
+  color: var(--ink);
+  opacity: 0.04;
+  pointer-events: none;
+  transition: all 0.4s var(--ease);
+  z-index: 0;
+}
+.diff-card:hover .diff-bg-icon {
+  opacity: 0.12;
+  color: var(--accent);
+  transform: scale(1.1) rotate(-6deg);
+}
+.diff-bg-icon svg { width: 100%; height: 100%; }
+
+@media (max-width: 880px) {
+  .diff-grid { grid-template-columns: 1fr; gap: 16px; }
+  .diff-card { min-height: auto; }
+}
+
+/* ============================================
+   STORE PHOTOS + INFO
+   ============================================ */
+.store-section {
+  padding: 100px 0;
+  background: var(--bg-soft);
+}
+.store-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.store-images {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  height: 500px;
+}
+.store-img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink);
+  position: relative;
+}
+.store-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.store-img:hover img { transform: scale(1.06); }
+.store-img:nth-child(1) { grid-row: 1 / 3; }
+.store-img:nth-child(2) { grid-column: 2; grid-row: 1; }
+.store-img:nth-child(3) { grid-column: 2; grid-row: 2; }
+
+.store-content h2 .accent { color: var(--accent); font-style: italic; }
+.store-content p {
+  color: var(--ink-soft);
+  margin-top: 18px;
+  font-size: 1.05rem;
+}
+.store-info-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+.store-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: all 0.25s var(--ease);
+}
+.store-info-item:hover {
+  border-color: var(--ink);
+  transform: translateX(4px);
+}
+.store-info-icon {
+  width: 38px; height: 38px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 10px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.store-info-icon svg { width: 18px; height: 18px; }
+.store-info-text strong {
+  display: block;
+  font-family: 'Archivo';
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.store-info-text span {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.store-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 980px) {
+  .store-grid { grid-template-columns: 1fr; gap: 40px; }
+  .store-images { height: 400px; }
+}
+@media (max-width: 600px) {
+  .store-images {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px 180px 180px;
+  }
+  .store-img:nth-child(1) { grid-row: 1; grid-column: 1; }
+  .store-img:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .store-img:nth-child(3) { grid-column: 1; grid-row: 3; }
+}
+
+/* ============================================
+   FINAL CTA
+   ============================================ */
+.cta-strip { padding: 80px 0; }
+.cta-box {
+  background: var(--ink);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 60px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(225, 68, 37, 0.3), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(246, 182, 24, 0.15), transparent 40%);
+}
+.cta-box::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-box > * { position: relative; z-index: 1; }
+.cta-box h2 { color: white; max-width: 720px; margin: 0 auto 16px; }
+.cta-box h2 .accent { color: var(--accent); font-style: italic; }
+.cta-box p { color: rgba(255,255,255,0.7); font-size: 16px; max-width: 540px; margin: 0 auto 32px; }
+.cta-box-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 880px) { .cta-box { padding: 48px 24px; } }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg-soft);
+  padding: 60px 0 28px;
+  border-top: 1px solid var(--line);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 50px;
+}
+.footer-brand p { color: var(--ink-soft); font-size: 14.5px; margin: 16px 0; max-width: 340px; }
+.footer-col h4 {
+  font-family: 'Archivo'; font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 18px; font-weight: 700;
+}
+.footer-col ul { list-style: none; display: grid; gap: 10px; }
+.footer-col li { font-size: 14.5px; color: var(--ink-soft); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+  font-size: 13.5px; color: var(--ink-muted);
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-brand { grid-column: span 2; }
+}
+
+/* FAB */
+.fab-wa {
+  position: fixed; bottom: 24px; right: 24px;
+  z-index: 90;
+  width: 60px; height: 60px;
+  background: var(--wa); color: white;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 30px;
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: all 0.3s var(--ease);
+  animation: bounce-in 0.6s var(--ease-out) 1s both;
+}
+.fab-wa::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%;
+  background: var(--wa); opacity: 0.4;
+  animation: pingFab 2s infinite;
+  z-index: -1;
+}
+.fab-wa:hover { transform: scale(1.08) rotate(-5deg); background: var(--wa-hover); }
+@keyframes bounce-in {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes pingFab {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.fab-wa-label {
+  position: absolute; right: 70px;
+  background: var(--ink); color: white;
+  padding: 8px 14px; border-radius: 8px;
+  font-family: 'Archivo'; font-size: 13px; font-weight: 600;
+  white-space: nowrap;
+  opacity: 0; transform: translateX(10px);
+  transition: all 0.25s;
+  pointer-events: none;
+}
+.fab-wa:hover .fab-wa-label { opacity: 1; transform: translateX(0); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+.reveal[data-delay="4"] { transition-delay: 0.4s; }
+
+.drawer {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 200;
+  padding: 24px;
+  transform: translateY(-100%);
+  transition: transform 0.4s var(--ease);
+  display: flex; flex-direction: column;
+}
+.drawer.open { transform: translateY(0); }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.drawer-close {
+  width: 44px; height: 44px;
+  background: var(--ink); color: white;
+  border-radius: 10px; font-size: 24px;
+}
+.drawer-links { list-style: none; display: grid; gap: 4px; }
+.drawer-links a {
+  display: block;
+  font-family: 'Archivo'; font-weight: 700;
+  font-size: 28px; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.drawer-cta { margin-top: auto; display: grid; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hammer-cursor, .hammer-impact, .hammer-spark { display: none !important; }
+  body.has-hammer, body.has-hammer * { cursor: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HAMMER CURSOR ============ -->
+<div class="hammer-cursor" id="hammerCursor" aria-hidden="true">
+  <div class="hammer-inner">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect x="29" y="22" width="6" height="38" rx="2" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="1.2"/>
+      <line x1="30" y1="28" x2="30" y2="56" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <line x1="33" y1="26" x2="33" y2="58" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <rect x="28" y="50" width="8" height="10" rx="2" fill="#5C3A1E"/>
+      <path d="M 12 8 L 52 8 L 54 22 L 48 26 L 40 22 L 24 22 L 16 26 L 10 22 Z"
+            fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M 14 10 L 50 10 L 51 14 L 13 14 Z" fill="#6A6A6A" opacity="0.7"/>
+      <rect x="13" y="11" width="38" height="1.5" fill="#FFFFFF" opacity="0.3"/>
+      <path d="M 12 8 L 10 22 L 14 20 L 14 10 Z" fill="#2A2A2A"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span>
+      <span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="tentang.html" style="color:var(--ink); font-weight: 700;" data-i18n="nav_tentang">Tentang</a></li>
+      <li><a href="area-pengiriman.html" data-i18n="nav_area">Area Layanan</a></li>
+      <li><a href="karier.html" data-i18n="nav_karier">Karier</a></li>
+      <li><a href="kontak.html" data-i18n="nav_kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle desktop-only" id="langToggle">
+        <button class="lang-current" id="langCurrent" aria-label="Pilih bahasa" aria-expanded="false">
+          <span class="lang-flag" id="langFlag">🇮🇩</span>
+          <span id="langLabel">ID</span>
+        </button>
+        <div class="lang-dropdown" role="menu">
+          <button class="lang-option active" data-lang="id" role="menuitem">
+            <span class="lang-flag">🇮🇩</span>
+            <span>Indonesia</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="en" role="menuitem">
+            <span class="lang-flag">🇬🇧</span>
+            <span>English</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="ru" role="menuitem">
+            <span class="lang-flag">🇷🇺</span>
+            <span>Русский</span>
+            <span class="check">✓</span>
+          </button>
+        </div>
+      </div>
+      <a href="tel:+6289526262727" class="btn btn-outline" data-i18n="nav_call">📞 Telepon</a>
+      <a href="https://wa.me/6289526262727" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="nav_wa">💬 WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+    <button class="drawer-close" id="drawerClose" aria-label="Tutup">×</button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="tentang.html" class="drawer-link" data-i18n="nav_tentang">Tentang</a></li>
+    <li><a href="area-pengiriman.html" class="drawer-link" data-i18n="nav_area">Area Layanan</a></li>
+    <li><a href="karier.html" class="drawer-link" data-i18n="nav_karier">Karier</a></li>
+    <li><a href="kontak.html" class="drawer-link" data-i18n="nav_kontak">Kontak</a></li>
+  </ul>
+  <div class="drawer-lang" id="drawerLang">
+    <button data-lang="id" class="active">🇮🇩 ID</button>
+    <button data-lang="en">🇬🇧 EN</button>
+    <button data-lang="ru">🇷🇺 RU</button>
+  </div>
+  <div class="drawer-cta">
+    <a href="https://wa.me/6289526262727" class="btn btn-primary">💬 Chat WhatsApp</a>
+    <a href="tel:+6289526262727" class="btn btn-outline">📞 0895-2626-2727</a>
+  </div>
+</div>
+
+<!-- ============ ABOUT HERO ============ -->
+<header class="about-hero">
+  <div class="container about-hero-inner">
+    <div>
+      <div class="breadcrumb reveal">
+        <a href="index.html" data-i18n="bc_home">Beranda</a>
+        <span>›</span>
+        <span data-i18n="bc_about">Tentang Kami</span>
+      </div>
+      <span class="eyebrow reveal" data-delay="1" data-i18n="ah_eyebrow">Tentang CV Sinar Nadi Group</span>
+      <h1 class="reveal" data-delay="2" style="margin-top: 20px;">
+        <span class="years" data-i18n="ah_years">20+ Tahun</span> <span data-i18n="ah_title_1">Membangun</span> <span class="accent" data-i18n="ah_title_2">Bali</span><span data-i18n="ah_title_3">.</span>
+      </h1>
+      <p class="lead reveal" data-delay="3" data-i18n="ah_lead">
+        Toko bahan bangunan terpercaya yang melayani kontraktor, developer, hingga rumah tangga di seluruh Bali. Stok ribuan item, armada sendiri, kirim hari ini.
+      </p>
+      <div class="about-hero-meta reveal" data-delay="4">
+        <div class="about-hero-meta-item"><span class="dot"></span> <strong data-i18n="ah_meta_1">Online sekarang · siap melayani</strong></div>
+        <div class="about-hero-meta-item">📍 <strong data-i18n="ah_meta_2">Kerobokan, Badung — Bali</strong></div>
+      </div>
+    </div>
+    <div class="about-hero-visual reveal" data-delay="2">
+      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80" alt="Toko Sinar Nadi di Bali" />
+      <div class="hero-floating-badge">
+        <div class="hero-floating-badge-icon">⚡</div>
+        <div class="hero-floating-badge-text">
+          <strong data-i18n="ah_badge_title">Same Day Delivery</strong>
+          <span data-i18n="ah_badge_sub">7 area di Bali Selatan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS STRIP ============ -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="accent">20</span><span class="suffix">+</span></div>
+        <div class="stat-label" data-i18n="st_label_1">Tahun Pengalaman</div>
+      </div>
+      <div class="stat-item reveal" data-delay="1">
+        <div class="stat-num">7</div>
+        <div class="stat-label" data-i18n="st_label_2">Area Layanan</div>
+      </div>
+      <div class="stat-item reveal" data-delay="2">
+        <div class="stat-num">5.000<span class="suffix">+</span></div>
+        <div class="stat-label" data-i18n="st_label_3">Item Stok Aktif</div>
+      </div>
+      <div class="stat-item reveal" data-delay="3">
+        <div class="stat-num">20<span class="suffix">+</span></div>
+        <div class="stat-label" data-i18n="st_label_4">Brand Resmi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFFERENTIATORS ============ -->
+<section class="differentiators">
+  <div class="container">
+    <div class="section-head-narrow">
+      <span class="eyebrow reveal" data-i18n="diff_eyebrow">Yang Bikin Beda</span>
+      <h2 class="reveal" data-delay="1"><span data-i18n="diff_title_1">Kenapa</span> <span class="accent" data-i18n="diff_title_2">Sinar Nadi</span><span data-i18n="diff_title_3">?</span></h2>
+      <p class="reveal" data-delay="2" data-i18n="diff_sub">
+        Kami bukan toko bangunan biasa. 20+ tahun pengalaman terkonsolidasi jadi tiga hal yang membuat customer kembali.
+      </p>
+    </div>
+
+    <div class="diff-grid">
+      <!-- Card 1: Stok Lengkap -->
+      <div class="diff-card reveal" data-delay="1">
+        <div class="diff-num">01</div>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+            <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3 data-i18n="diff_1_title">Stok Ribuan Item, Satu Tempat.</h3>
+        <p data-i18n="diff_1_desc">Bahan bangunan, cat, listrik, keramik, sanitary, peralatan — semua kebutuhan proyek dari pondasi sampai finishing tersedia di satu lokasi.</p>
+        <div class="diff-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+            <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2: Pengiriman Cepat -->
+      <div class="diff-card reveal" data-delay="2">
+        <div class="diff-num">02</div>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="1" y="3" width="15" height="13"/>
+            <polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="diff_2_title">Pengiriman Same Day, Armada Sendiri.</h3>
+        <p data-i18n="diff_2_desc">Pickup, colt diesel, sampai truk besar — semua armada milik sendiri. Pesan pagi, sampai sore di proyek Anda. Tidak tergantung kurir luar.</p>
+        <div class="diff-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="1" y="3" width="15" height="13"/>
+            <polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 3: Tim Berpengalaman -->
+      <div class="diff-card reveal" data-delay="3">
+        <div class="diff-num">03</div>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 00-3-3.87"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <h3 data-i18n="diff_3_title">Tim yang Ngerti Material.</h3>
+        <p data-i18n="diff_3_desc">Bukan sekadar kasir. Tim kami sudah puluhan tahun di industri — siap konsultasi, hitung kebutuhan, kasih rekomendasi yang cocok untuk proyek Anda.</p>
+        <div class="diff-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 00-3-3.87"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORE SECTION ============ -->
+<section class="store-section">
+  <div class="container">
+    <div class="store-grid">
+      <div class="store-images reveal">
+        <div class="store-img"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80" alt="Toko Sinar Nadi di Kerobokan, Badung Bali"/></div>
+        <div class="store-img"><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&q=80" alt="Gudang material Sinar Nadi"/></div>
+        <div class="store-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Armada pengiriman Sinar Nadi"/></div>
+      </div>
+
+      <div class="store-content reveal" data-delay="1">
+        <span class="eyebrow" data-i18n="store_eyebrow">Lokasi Kami</span>
+        <h2 style="margin-top: 16px;"><span data-i18n="store_title_1">Toko Bangunan</span> <span class="accent" data-i18n="store_title_2">Sinar Nadi</span><span data-i18n="store_title_3">.</span></h2>
+        <p data-i18n="store_desc">Showroom luas, gudang besar, parkir aman. Datang langsung untuk lihat barang, konsultasi tatap muka, atau langsung beli & bawa pulang.</p>
+
+        <div class="store-info-list">
+          <div class="store-info-item">
+            <div class="store-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="store-info-text">
+              <strong data-i18n="store_info_addr_label">Alamat</strong>
+              <span data-i18n="store_info_addr">Jl. Tegal Permai No.1 A, Kerobokan Kaja, Kuta Utara, Badung — Bali 80361</span>
+            </div>
+          </div>
+          <div class="store-info-item">
+            <div class="store-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+            </div>
+            <div class="store-info-text">
+              <strong data-i18n="store_info_hours_label">Jam Buka</strong>
+              <span data-i18n="store_info_hours">Setiap hari, 07.00 – 21.00 WITA · Termasuk hari libur</span>
+            </div>
+          </div>
+          <div class="store-info-item">
+            <div class="store-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,8 12,12 14,14"/>
+                <path d="M16 16l-4-4M12 8L8 12"/>
+              </svg>
+            </div>
+            <div class="store-info-text">
+              <strong data-i18n="store_info_serve_label">Melayani</strong>
+              <span data-i18n="store_info_serve">Kontraktor · Developer · Renovasi rumah · Proyek villa & hotel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="store-actions">
+          <a href="kontak.html" class="btn btn-accent" data-i18n="store_btn_contact">📞 Lihat Kontak Lengkap</a>
+          <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20mau%20datang%20ke%20toko" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="store_btn_wa">💬 Konfirmasi Kunjungan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8);" data-i18n="cta_eyebrow">Siap Bantu</span>
+      <h2 style="margin-top: 16px;"><span data-i18n="cta_title_1">Mau mulai proyek Anda</span> <span class="accent" data-i18n="cta_title_accent">hari ini</span><span data-i18n="cta_title_2">?</span></h2>
+      <p data-i18n="cta_sub">Chat WhatsApp untuk daftar harga, cek stok real-time, atau konsultasi material proyek Anda.</p>
+      <div class="cta-box-actions">
+        <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20mau%20mulai%20proyek" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="cta_btn_wa">💬 Chat WhatsApp</a>
+        <a href="tel:+6289526262727" class="btn btn-accent" data-i18n="cta_btn_call">📞 0895-2626-2727</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+        <p data-i18n="footer_brand_desc">CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.</p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://wa.me/6289526262727" class="btn btn-primary" style="padding:10px 18px; font-size:13px;">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_produk">Produk</h4>
+        <ul>
+          <li><a href="index.html#produk">Bahan Bangunan</a></li>
+          <li><a href="index.html#produk">Cat & Finishing</a></li>
+          <li><a href="index.html#produk">Material Listrik</a></li>
+          <li><a href="index.html#produk">Peralatan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_area">Area Layanan</h4>
+        <ul>
+          <li>📍 Denpasar</li>
+          <li>📍 Badung</li>
+          <li>📍 Canggu · Berawa</li>
+          <li>📍 Munggu</li>
+          <li>📍 Jimbaran · Pecatu</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_kontak">Kontak</h4>
+        <ul>
+          <li>📞 0895-2626-2727</li>
+          <li data-i18n="footer_kontak_wa">💬 WhatsApp aktif</li>
+          <li data-i18n="footer_kontak_jam">🕐 Sen–Min: 07.00–21.00</li>
+          <li>✉️ admin@sinarnadi.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copyright">© 2026 CV Sinar Nadi Group. Semua hak dilindungi.</span>
+      <span data-i18n="footer_made">Made in Bali 🇮🇩</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi" class="fab-wa" target="_blank" rel="noopener" aria-label="Chat WhatsApp Sinar Nadi">
+  <span class="fab-wa-label" data-i18n="fab_label">Chat dengan Sinar Nadi</span>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ============ MAIN SCRIPT ============ -->
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const drawer = document.getElementById('drawer');
+const drawerClose = document.getElementById('drawerClose');
+menuToggle?.addEventListener('click', () => drawer.classList.add('open'));
+drawerClose?.addEventListener('click', () => drawer.classList.remove('open'));
+document.querySelectorAll('.drawer-link').forEach(a => {
+  a.addEventListener('click', () => drawer.classList.remove('open'));
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(r => io.observe(r));
+
+// ===== LANGUAGE TOGGLE =====
+(function initLangToggle() {
+  const TRANSLATIONS = {
+    id: {
+      nav_produk: 'Produk', nav_tentang: 'Tentang', nav_area: 'Area Layanan',
+      nav_faq: 'FAQ', nav_kontak: 'Kontak', nav_karier: 'Karier', nav_call: '📞 Telepon', nav_wa: '💬 WhatsApp',
+      bc_home: 'Beranda', bc_about: 'Tentang Kami',
+      ah_eyebrow: 'Tentang CV Sinar Nadi Group',
+      ah_years: '20+ Tahun', ah_title_1: 'Membangun', ah_title_2: 'Bali', ah_title_3: '.',
+      ah_lead: 'Toko bahan bangunan terpercaya yang melayani kontraktor, developer, hingga rumah tangga di seluruh Bali. Stok ribuan item, armada sendiri, kirim hari ini.',
+      ah_meta_1: 'Online sekarang · siap melayani',
+      ah_meta_2: 'Kerobokan, Badung — Bali',
+      ah_badge_title: 'Same Day Delivery',
+      ah_badge_sub: '7 area di Bali Selatan',
+      st_label_1: 'Tahun Pengalaman',
+      st_label_2: 'Area Layanan',
+      st_label_3: 'Item Stok Aktif',
+      st_label_4: 'Brand Resmi',
+      diff_eyebrow: 'Yang Bikin Beda',
+      diff_title_1: 'Kenapa', diff_title_2: 'Sinar Nadi', diff_title_3: '?',
+      diff_sub: 'Kami bukan toko bangunan biasa. 20+ tahun pengalaman terkonsolidasi jadi tiga hal yang membuat customer kembali.',
+      diff_1_title: 'Stok Ribuan Item, Satu Tempat.',
+      diff_1_desc: 'Bahan bangunan, cat, listrik, keramik, sanitary, peralatan — semua kebutuhan proyek dari pondasi sampai finishing tersedia di satu lokasi.',
+      diff_2_title: 'Pengiriman Same Day, Armada Sendiri.',
+      diff_2_desc: 'Pickup, colt diesel, sampai truk besar — semua armada milik sendiri. Pesan pagi, sampai sore di proyek Anda. Tidak tergantung kurir luar.',
+      diff_3_title: 'Tim yang Ngerti Material.',
+      diff_3_desc: 'Bukan sekadar kasir. Tim kami sudah puluhan tahun di industri — siap konsultasi, hitung kebutuhan, kasih rekomendasi yang cocok untuk proyek Anda.',
+      store_eyebrow: 'Lokasi Kami',
+      store_title_1: 'Toko Bangunan', store_title_2: 'Sinar Nadi', store_title_3: '.',
+      store_desc: 'Showroom luas, gudang besar, parkir aman. Datang langsung untuk lihat barang, konsultasi tatap muka, atau langsung beli & bawa pulang.',
+      store_info_addr_label: 'Alamat',
+      store_info_addr: 'Jl. Tegal Permai No.1 A, Kerobokan Kaja, Kuta Utara, Badung — Bali 80361',
+      store_info_hours_label: 'Jam Buka',
+      store_info_hours: 'Setiap hari, 07.00 – 21.00 WITA · Termasuk hari libur',
+      store_info_serve_label: 'Melayani',
+      store_info_serve: 'Kontraktor · Developer · Renovasi rumah · Proyek villa & hotel',
+      store_btn_contact: '📞 Lihat Kontak Lengkap',
+      store_btn_wa: '💬 Konfirmasi Kunjungan',
+      cta_eyebrow: 'Siap Bantu',
+      cta_title_1: 'Mau mulai proyek Anda', cta_title_accent: 'hari ini', cta_title_2: '?',
+      cta_sub: 'Chat WhatsApp untuk daftar harga, cek stok real-time, atau konsultasi material proyek Anda.',
+      cta_btn_wa: '💬 Chat WhatsApp',
+      cta_btn_call: '📞 0895-2626-2727',
+      footer_brand_desc: 'CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.',
+      footer_h_produk: 'Produk', footer_h_area: 'Area Layanan', footer_h_kontak: 'Kontak',
+      footer_kontak_wa: '💬 WhatsApp aktif', footer_kontak_jam: '🕐 Sen–Min: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Semua hak dilindungi.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Chat dengan Sinar Nadi',
+    },
+    en: {
+      nav_produk: 'Products', nav_tentang: 'About', nav_area: 'Service Area',
+      nav_faq: 'FAQ', nav_kontak: 'Contact', nav_karier: 'Careers', nav_call: '📞 Call', nav_wa: '💬 WhatsApp',
+      bc_home: 'Home', bc_about: 'About Us',
+      ah_eyebrow: 'About CV Sinar Nadi Group',
+      ah_years: '20+ Years', ah_title_1: 'Building', ah_title_2: 'Bali', ah_title_3: '.',
+      ah_lead: 'Trusted building material store serving contractors, developers, and homeowners across Bali. Thousands of items in stock, our own fleet, same day delivery.',
+      ah_meta_1: 'Online now · ready to serve',
+      ah_meta_2: 'Kerobokan, Badung — Bali',
+      ah_badge_title: 'Same Day Delivery',
+      ah_badge_sub: '7 areas in South Bali',
+      st_label_1: 'Years of Experience',
+      st_label_2: 'Service Areas',
+      st_label_3: 'Active Stock Items',
+      st_label_4: 'Official Brands',
+      diff_eyebrow: 'What Makes Us Different',
+      diff_title_1: 'Why', diff_title_2: 'Sinar Nadi', diff_title_3: '?',
+      diff_sub: 'We are not your average building supply store. 20+ years of experience consolidated into three things that bring customers back.',
+      diff_1_title: 'Thousands of Items, One Place.',
+      diff_1_desc: 'Building materials, paint, electrical, ceramics, sanitary, tools — all project needs from foundation to finishing available in one location.',
+      diff_2_title: 'Same Day Delivery, Our Own Fleet.',
+      diff_2_desc: 'Pickup trucks, colt diesels, large trucks — all our own fleet. Order morning, arrive afternoon at your site. No dependence on third-party couriers.',
+      diff_3_title: 'A Team That Understands Materials.',
+      diff_3_desc: 'Not just cashiers. Our team has decades of industry experience — ready to consult, calculate needs, recommend what fits your project.',
+      store_eyebrow: 'Our Location',
+      store_title_1: 'Sinar Nadi', store_title_2: 'Building Store', store_title_3: '.',
+      store_desc: 'Spacious showroom, large warehouse, secure parking. Visit us to see products in person, consult face-to-face, or buy & take home directly.',
+      store_info_addr_label: 'Address',
+      store_info_addr: 'Jl. Tegal Permai No.1 A, Kerobokan Kaja, Kuta Utara, Badung — Bali 80361',
+      store_info_hours_label: 'Opening Hours',
+      store_info_hours: 'Every day, 07.00 – 21.00 WITA · Including holidays',
+      store_info_serve_label: 'Serving',
+      store_info_serve: 'Contractors · Developers · Home renovations · Villa & hotel projects',
+      store_btn_contact: '📞 See Full Contact',
+      store_btn_wa: '💬 Confirm Visit',
+      cta_eyebrow: 'Ready to Help',
+      cta_title_1: 'Want to start your project', cta_title_accent: 'today', cta_title_2: '?',
+      cta_sub: 'Chat WhatsApp for price list, real-time stock check, or consultation for your project materials.',
+      cta_btn_wa: '💬 Chat WhatsApp',
+      cta_btn_call: '📞 0895-2626-2727',
+      footer_brand_desc: 'CV Sinar Nadi Group — Trusted building material store in Bali. Complete stock, competitive prices, same day delivery.',
+      footer_h_produk: 'Products', footer_h_area: 'Service Area', footer_h_kontak: 'Contact',
+      footer_kontak_wa: '💬 WhatsApp active', footer_kontak_jam: '🕐 Mon–Sun: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. All rights reserved.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Chat with Sinar Nadi',
+    },
+    ru: {
+      nav_produk: 'Товары', nav_tentang: 'О компании', nav_area: 'Зона доставки',
+      nav_faq: 'Вопросы', nav_kontak: 'Контакты', nav_karier: 'Карьера', nav_call: '📞 Позвонить', nav_wa: '💬 WhatsApp',
+      bc_home: 'Главная', bc_about: 'О нас',
+      ah_eyebrow: 'О компании CV Sinar Nadi Group',
+      ah_years: '20+ лет', ah_title_1: 'строим', ah_title_2: 'Бали', ah_title_3: '.',
+      ah_lead: 'Надёжный магазин стройматериалов, обслуживающий подрядчиков, девелоперов и частных клиентов по всему Бали. Тысячи товаров в наличии, собственный автопарк, доставка в день заказа.',
+      ah_meta_1: 'Сейчас онлайн · готовы помочь',
+      ah_meta_2: 'Керобокан, Бадунг — Бали',
+      ah_badge_title: 'Доставка в день заказа',
+      ah_badge_sub: '7 районов на юге Бали',
+      st_label_1: 'Лет опыта',
+      st_label_2: 'Зон обслуживания',
+      st_label_3: 'Активных товаров',
+      st_label_4: 'Официальных брендов',
+      diff_eyebrow: 'Что отличает нас',
+      diff_title_1: 'Почему', diff_title_2: 'Sinar Nadi', diff_title_3: '?',
+      diff_sub: 'Мы не обычный строительный магазин. 20+ лет опыта сводятся к трём вещам, благодаря которым клиенты возвращаются.',
+      diff_1_title: 'Тысячи товаров в одном месте.',
+      diff_1_desc: 'Стройматериалы, краска, электрика, керамика, сантехника, инструменты — всё для проекта от фундамента до отделки в одном месте.',
+      diff_2_title: 'Доставка в день, свой автопарк.',
+      diff_2_desc: 'Пикапы, грузовики Colt Diesel, большегрузы — весь автопарк наш. Заказ утром — доставка днём на ваш объект. Без зависимости от сторонних курьеров.',
+      diff_3_title: 'Команда, понимающая материалы.',
+      diff_3_desc: 'Не просто продавцы. У нашей команды десятилетия опыта в отрасли — готовы консультировать, рассчитывать объёмы, рекомендовать подходящие материалы для вашего проекта.',
+      store_eyebrow: 'Наша локация',
+      store_title_1: 'Магазин', store_title_2: 'Sinar Nadi', store_title_3: '.',
+      store_desc: 'Просторный шоурум, большой склад, охраняемая парковка. Приезжайте — посмотрите товары вживую, проконсультируйтесь лично или купите и заберите сразу.',
+      store_info_addr_label: 'Адрес',
+      store_info_addr: 'Jl. Tegal Permai No.1 A, Керобокан Каджа, Кута Утара, Бадунг — Бали 80361',
+      store_info_hours_label: 'Часы работы',
+      store_info_hours: 'Ежедневно, 07:00 – 21:00 WITA · Включая праздники',
+      store_info_serve_label: 'Работаем с',
+      store_info_serve: 'Подрядчиками · Девелоперами · Ремонтом домов · Проектами вилл и отелей',
+      store_btn_contact: '📞 Все контакты',
+      store_btn_wa: '💬 Подтвердить визит',
+      cta_eyebrow: 'Готовы помочь',
+      cta_title_1: 'Хотите начать проект', cta_title_accent: 'сегодня', cta_title_2: '?',
+      cta_sub: 'Напишите в WhatsApp — пришлём прайс, проверим наличие, поможем подобрать материалы.',
+      cta_btn_wa: '💬 Написать в WhatsApp',
+      cta_btn_call: '📞 0895-2626-2727',
+      footer_brand_desc: 'CV Sinar Nadi Group — надёжный магазин стройматериалов на Бали. Полный склад, конкурентные цены, доставка сегодня.',
+      footer_h_produk: 'Товары', footer_h_area: 'Зона доставки', footer_h_kontak: 'Контакты',
+      footer_kontak_wa: '💬 WhatsApp активен', footer_kontak_jam: '🕐 Пн–Вс: 07:00–21:00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Все права защищены.',
+      footer_made: 'Сделано на Бали 🇮🇩',
+      fab_label: 'Написать в Sinar Nadi',
+    }
+  };
+
+  const FLAGS = { id: '🇮🇩', en: '🇬🇧', ru: '🇷🇺' };
+  const LABELS = { id: 'ID', en: 'EN', ru: 'RU' };
+
+  let currentLang = 'id';
+  try {
+    const saved = localStorage.getItem('sinarnadi_lang');
+    if (saved && TRANSLATIONS[saved]) currentLang = saved;
+  } catch (e) {}
+
+  function applyLanguage(lang) {
+    if (!TRANSLATIONS[lang]) return;
+    currentLang = lang;
+    const dict = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    const flagEl = document.getElementById('langFlag');
+    const labelEl = document.getElementById('langLabel');
+    if (flagEl) flagEl.textContent = FLAGS[lang];
+    if (labelEl) labelEl.textContent = LABELS[lang];
+
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    document.querySelectorAll('.drawer-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    try { localStorage.setItem('sinarnadi_lang', lang); } catch (e) {}
+  }
+
+  const langToggle = document.getElementById('langToggle');
+  const langCurrent = document.getElementById('langCurrent');
+  if (langCurrent && langToggle) {
+    langCurrent.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langToggle.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen);
+    });
+    document.addEventListener('click', (e) => {
+      if (!langToggle.contains(e.target)) {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      applyLanguage(opt.dataset.lang);
+      langToggle?.classList.remove('open');
+    });
+  });
+  document.querySelectorAll('.drawer-lang button').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  applyLanguage(currentLang);
+})();
+
+// ===== HAMMER CURSOR =====
+(function initHammerCursor() {
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isTouch || reducedMotion) return;
+
+  const cursor = document.getElementById('hammerCursor');
+  if (!cursor) return;
+  document.body.classList.add('has-hammer');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX, cursorY = mouseY;
+  const lerpFactor = 0.22;
+  let isReady = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    if (!isReady) { isReady = true; cursor.classList.add('ready'); }
+  });
+  document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
+  document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
+
+  function animate() {
+    cursorX += (mouseX - cursorX) * lerpFactor;
+    cursorY += (mouseY - cursorY) * lerpFactor;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  const interactiveSelector = 'a, button, [role="button"]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.add('hover-link');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.remove('hover-link');
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    cursor.classList.remove('striking');
+    void cursor.offsetWidth;
+    cursor.classList.add('striking');
+
+    const impactX = e.clientX, impactY = e.clientY + 8;
+    const ripple = document.createElement('div');
+    ripple.className = 'hammer-impact';
+    ripple.style.left = impactX + 'px';
+    ripple.style.top = impactY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    for (let i = 0; i < 5; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'hammer-spark';
+      const angle = (Math.PI / 5) * i + (Math.PI * 0.05);
+      const distance = 30 + Math.random() * 25;
+      const dx = Math.cos(angle - Math.PI) * distance;
+      const dy = Math.sin(angle - Math.PI) * distance;
+      spark.style.setProperty('--dx', dx + 'px');
+      spark.style.setProperty('--dy', dy + 'px');
+      spark.style.left = impactX + 'px';
+      spark.style.top = impactY + 'px';
+      if (i % 2 === 0) spark.style.background = 'var(--accent)';
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 500);
+    }
+  });
+
+  cursor.addEventListener('animationend', (e) => {
+    if (e.animationName === 'hammerStrike') cursor.classList.remove('striking');
+  });
+})();
+</script>
+
+</body>
+</html>

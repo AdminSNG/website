@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<meta name="theme-color" content="#0F0F0F" />
+
+<!-- ============ SEO ============ -->
+<title>Kontak — Sinar Nadi | Toko Bahan Bangunan Bali (Kerobokan, Badung)</title>
+<meta name="description" content="Hubungi CV Sinar Nadi Group — toko bahan bangunan terpercaya di Kerobokan, Badung. WhatsApp 0895-2626-2727, B2B 081337572288. Buka setiap hari 07.00–21.00." />
+<meta name="robots" content="index, follow" />
+
+<meta name="geo.region" content="ID-BA" />
+<meta name="geo.placename" content="Kerobokan Kaja, Kuta Utara, Badung, Bali" />
+<meta name="geo.position" content="-8.6304423;115.1722098" />
+<meta name="ICBM" content="-8.6304423, 115.1722098" />
+
+<!-- Schema.org LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HardwareStore",
+  "name": "CV Sinar Nadi Group",
+  "alternateName": "Sinar Nadi",
+  "description": "Toko bahan bangunan terpercaya di Bali. Stok lengkap semen, cat, listrik, keramik, peralatan. Pengiriman same day untuk area Denpasar, Badung, Canggu, Berawa, Munggu, Jimbaran, Pecatu.",
+  "url": "https://sinarnadi.com",
+  "telephone": "+6289526262727",
+  "email": "admin@sinarnadi.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Tegal Permai No.1 A",
+    "addressLocality": "Kerobokan Kaja",
+    "addressRegion": "Bali",
+    "postalCode": "80361",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -8.6304423,
+    "longitude": 115.1722098
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "07:00",
+    "closes": "21:00"
+  }],
+  "priceRange": "$$",
+  "paymentAccepted": "Cash, Bank Transfer, QRIS, Debit Card",
+  "areaServed": [
+    {"@type": "Place", "name": "Denpasar"},
+    {"@type": "Place", "name": "Badung"},
+    {"@type": "Place", "name": "Canggu"},
+    {"@type": "Place", "name": "Berawa"},
+    {"@type": "Place", "name": "Munggu"},
+    {"@type": "Place", "name": "Jimbaran"},
+    {"@type": "Place", "name": "Pecatu"}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F2;
+  --bg-dark: #0F0F0F;
+  --ink: #0F0F0F;
+  --ink-soft: #4A4A4A;
+  --ink-muted: #8A8A8A;
+  --line: #E8E8E5;
+  --accent: #E14425;
+  --accent-hover: #C5391C;
+  --accent-soft: #FCEAE5;
+  --yellow: #F6B618;
+  --yellow-soft: #FEF7B5;
+  --accent-mid: #F6B618;
+  --sunrise: linear-gradient(135deg, #E14425 0%, #F6B618 100%);
+  --sunrise-soft: linear-gradient(135deg, #FCEAE5 0%, #FEF7B5 100%);
+  --wa: #25D366;
+  --wa-hover: #1EB853;
+  --container: 1240px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.has-hammer, body.has-hammer * { cursor: none !important; }
+  body.has-hammer input, body.has-hammer textarea, body.has-hammer select { cursor: text !important; }
+  body.has-hammer .leaflet-container { cursor: grab !important; }
+  body.has-hammer .leaflet-container:active { cursor: grabbing !important; }
+}
+
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+h1 { font-size: clamp(2.2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 700; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+}
+.eyebrow::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 16px 26px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 15px;
+  border-radius: 100px;
+  transition: all 0.25s var(--ease);
+  white-space: nowrap;
+  position: relative; overflow: hidden;
+}
+.btn-primary { background: var(--wa); color: white; }
+.btn-primary:hover { background: var(--wa-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.5); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-outline:hover { background: var(--ink); color: white; }
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(225, 68, 37, 0.5); }
+.btn-dark { background: var(--ink); color: white; }
+.btn-dark:hover { background: #1A1A1A; transform: translateY(-2px); }
+
+/* HAMMER CURSOR */
+.hammer-cursor {
+  position: fixed; top: 0; left: 0;
+  width: 44px; height: 44px;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s;
+  will-change: transform, left, top;
+  opacity: 0;
+}
+.hammer-cursor.ready { opacity: 1; }
+.hammer-inner {
+  width: 100%; height: 100%;
+  transform: rotate(-25deg);
+  transform-origin: 30% 70%;
+  transition: transform 0.2s var(--ease);
+}
+.hammer-cursor.hover-link .hammer-inner { transform: rotate(-10deg) scale(1.15); }
+.hammer-cursor.striking .hammer-inner {
+  animation: hammerStrike 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes hammerStrike {
+  0%   { transform: rotate(-10deg) scale(1.05); }
+  35%  { transform: rotate(-120deg) scale(1.1); }
+  60%  { transform: rotate(-105deg) scale(1.08); }
+  100% { transform: rotate(-25deg) scale(1); }
+}
+.hammer-cursor svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+.hammer-cursor:not(.striking):not(.hover-link) .hammer-inner { animation: hammerIdle 3.5s ease-in-out infinite; }
+@keyframes hammerIdle {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(-30deg); }
+}
+.hammer-impact {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%);
+  animation: impactRipple 0.55s var(--ease-out) forwards;
+}
+@keyframes impactRipple {
+  0%   { width: 8px; height: 8px; opacity: 1; border-width: 3px; }
+  100% { width: 70px; height: 70px; opacity: 0; border-width: 1px; }
+}
+.hammer-spark {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 4px; height: 4px;
+  background: var(--yellow); border-radius: 50%;
+  animation: sparkFly 0.5s var(--ease-out) forwards;
+}
+@keyframes sparkFly {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900; font-size: 20px;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-mark {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+.logo:hover .logo-mark { transform: rotate(-8deg) scale(1.05); }
+.logo-mark img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.logo-text {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+}
+.logo-text .name-1 { color: var(--ink); }
+.logo-text .name-2 {
+  background: var(--sunrise);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { display: flex; gap: 10px; align-items: center; }
+
+/* LANGUAGE TOGGLE */
+.lang-toggle { position: relative; display: flex; align-items: center; }
+.lang-current {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600; font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.lang-current:hover { border-color: var(--ink); background: white; }
+.lang-current::after {
+  content: '▾'; font-size: 10px; margin-left: 2px;
+  opacity: 0.6; transition: transform 0.25s;
+}
+.lang-toggle.open .lang-current::after { transform: rotate(180deg); }
+.lang-flag { font-size: 16px; line-height: 1; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  min-width: 160px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.15);
+  padding: 6px;
+  opacity: 0; transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 110;
+}
+.lang-toggle.open .lang-dropdown {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.lang-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: 'Archivo';
+  font-size: 13.5px; font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  width: 100%; text-align: left;
+  background: none; border: none;
+  transition: all 0.15s;
+}
+.lang-option:hover { background: var(--bg-soft); color: var(--ink); }
+.lang-option.active { background: var(--ink); color: var(--accent); }
+.lang-option .check {
+  margin-left: auto; opacity: 0;
+  font-size: 14px; color: var(--accent);
+}
+.lang-option.active .check { opacity: 1; }
+
+@media (max-width: 880px) {
+  .lang-toggle.desktop-only { display: none; }
+}
+.drawer-lang {
+  display: none;
+  margin-bottom: 24px; padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 880px) { .drawer-lang { display: flex; gap: 8px; } }
+.drawer-lang button {
+  flex: 1; padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: 'Archivo';
+  font-weight: 600; font-size: 13px;
+  background: white; color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.drawer-lang button.active {
+  background: var(--ink); color: var(--accent);
+  border-color: var(--ink);
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px; height: 44px;
+  background: var(--ink);
+  border-radius: 10px; position: relative;
+}
+.menu-toggle span {
+  position: absolute; left: 50%; top: 50%;
+  width: 18px; height: 2px;
+  background: white;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s;
+}
+.menu-toggle span:first-child { transform: translate(-50%, calc(-50% - 5px)); }
+.menu-toggle span:last-child { transform: translate(-50%, calc(-50% + 5px)); }
+
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .nav-cta .btn:not(.btn-primary) { display: none; }
+}
+
+/* PAGE HERO */
+.page-hero {
+  padding: 140px 0 60px;
+  background: radial-gradient(800px 400px at 20% 0%, rgba(225, 68, 37, 0.08), transparent 60%), var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 80%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Archivo';
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.breadcrumb a { color: var(--ink-soft); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent); }
+.breadcrumb span { color: var(--ink); }
+.page-hero h1 .accent { color: var(--accent); font-style: italic; }
+.page-hero p {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  max-width: 640px;
+}
+.page-hero-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  padding-top: 24px;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.page-hero-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: var(--ink-soft);
+}
+.page-hero-meta-item strong { color: var(--ink); font-weight: 700; }
+.dot {
+  width: 8px; height: 8px;
+  background: var(--wa);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 880px) {
+  .page-hero { padding: 110px 0 40px; }
+}
+
+/* ============================================
+   CONTACT CARDS GRID
+   ============================================ */
+.contact-section { padding: 30px 0 80px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 50px;
+}
+.contact-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+}
+.contact-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.contact-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.12);
+}
+.contact-card:hover::before { opacity: 1; }
+.contact-card > * { position: relative; z-index: 1; }
+
+/* Highlight card khusus untuk WA — primary action */
+.contact-card.is-primary {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.contact-card.is-primary::before {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.25), transparent 65%);
+  opacity: 1;
+}
+.contact-card.is-primary .card-tag { color: rgba(255,255,255,0.6); }
+.contact-card.is-primary .card-meta { color: rgba(255,255,255,0.65); }
+.contact-card.is-primary:hover { transform: translateY(-4px); }
+
+.contact-card .card-icon {
+  width: 52px; height: 52px;
+  background: var(--ink);
+  border-radius: 12px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  color: var(--accent);
+  transition: all 0.3s var(--ease);
+  position: relative;
+  z-index: 2;
+}
+.contact-card.is-primary .card-icon {
+  background: var(--wa);
+  color: white;
+}
+.contact-card .card-icon svg { width: 26px; height: 26px; }
+.contact-card:hover .card-icon {
+  background: var(--sunrise);
+  color: white;
+  transform: rotate(-8deg) scale(1.05);
+  box-shadow: 0 8px 20px -6px rgba(225, 68, 37, 0.5);
+}
+.contact-card.is-primary:hover .card-icon {
+  background: var(--wa);
+  color: white;
+  box-shadow: 0 8px 20px -6px rgba(37, 211, 102, 0.5);
+}
+
+/* Big background icon di pojok kanan bawah — watermark visual */
+.card-bg-icon {
+  position: absolute;
+  bottom: -18px;
+  right: -18px;
+  width: 130px;
+  height: 130px;
+  color: var(--ink);
+  opacity: 0.06;
+  pointer-events: none;
+  transition: all 0.4s var(--ease);
+  z-index: 0;
+}
+.contact-card.is-primary .card-bg-icon {
+  color: white;
+  opacity: 0.08;
+}
+.card-bg-icon svg { width: 100%; height: 100%; }
+.contact-card:hover .card-bg-icon {
+  opacity: 0.16;
+  color: var(--accent);
+  transform: scale(1.08) rotate(-6deg);
+  bottom: -10px;
+  right: -10px;
+}
+.contact-card.is-primary:hover .card-bg-icon {
+  color: var(--wa);
+  opacity: 0.22;
+}
+.contact-card .card-tag {
+  font-family: 'Archivo';
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+.contact-card .card-value {
+  font-family: 'Archivo';
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  word-break: break-all;
+}
+.contact-card.is-primary .card-value { color: white; }
+.contact-card .card-meta {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.contact-card .card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Archivo';
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: auto;
+  padding-top: 6px;
+  color: var(--accent);
+  transition: gap 0.3s;
+}
+.contact-card.is-primary .card-action { color: var(--wa); }
+.contact-card .card-action::after { content: '→'; transition: transform 0.3s; }
+.contact-card:hover .card-action::after { transform: translateX(4px); }
+
+@media (max-width: 880px) {
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   MAP + ADDRESS COMBO
+   ============================================ */
+.location-section { padding: 80px 0; background: var(--bg-soft); }
+.location-wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+.location-map-container {
+  position: relative;
+  min-height: 480px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #DDE5EB;
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.12);
+}
+#kontakMap { width: 100%; height: 100%; min-height: 480px; }
+
+.location-info {
+  background: var(--ink);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 40px 38px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.location-info::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: 0.25;
+  filter: blur(40px);
+}
+.location-info > * { position: relative; z-index: 1; }
+.location-info .eyebrow {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  align-self: flex-start;
+}
+.location-info h2 {
+  color: white;
+  margin: 16px 0 8px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+.location-info .sub {
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+.address-block {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.address-block h3 {
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.address-block h3 .icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.address-block p {
+  color: rgba(255,255,255,0.85);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.location-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.location-actions .btn { padding: 14px 22px; font-size: 14px; }
+
+/* Hours block */
+.hours-block {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.hours-block h3 {
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.hours-block h3 .icon {
+  width: 22px; height: 22px;
+  background: var(--yellow); color: var(--ink);
+  border-radius: 6px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.hours-list {
+  display: grid;
+  gap: 6px;
+}
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 4px 0;
+}
+.hours-row .day { color: rgba(255,255,255,0.7); }
+.hours-row .time { color: white; font-weight: 600; font-family: 'Archivo'; }
+.hours-row.is-today {
+  background: rgba(37, 211, 102, 0.1);
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin: 0 -8px;
+}
+.hours-row.is-today .day { color: var(--wa); font-weight: 700; }
+
+@media (max-width: 980px) {
+  .location-wrapper { grid-template-columns: 1fr; }
+  .location-map-container { min-height: 380px; }
+  #kontakMap { min-height: 380px; }
+}
+
+/* ============================================
+   CONTACT FORM (submit ke WhatsApp)
+   ============================================ */
+.form-section { padding: 80px 0; }
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  align-items: start;
+}
+.form-intro h2 .accent { color: var(--accent); font-style: italic; }
+.form-intro p {
+  margin-top: 18px;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+}
+.form-bullets {
+  list-style: none;
+  margin-top: 28px;
+  display: grid;
+  gap: 14px;
+}
+.form-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+}
+.form-bullets li::before {
+  content: '';
+  width: 18px; height: 18px;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 6l2 2 4-4' stroke='%23E14425' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.contact-form {
+  background: var(--bg-soft);
+  border-radius: var(--radius-lg);
+  padding: 36px 36px;
+  display: grid;
+  gap: 18px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field label {
+  font-family: 'Archivo';
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.form-field label .req { color: var(--accent); }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 13px 16px;
+  font-family: 'Inter Tight', system-ui;
+  font-size: 15px;
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 4px rgba(15, 15, 15, 0.05);
+}
+.form-field textarea {
+  min-height: 110px;
+  resize: vertical;
+  font-family: inherit;
+}
+.form-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* Chevron kecil & minimalis: stroke tipis, ukuran kompak */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238A8A8A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 10px 6px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.form-field select:hover {
+  border-color: var(--ink-soft);
+}
+.form-field select:focus {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%230F0F0F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.form-submit {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+.form-submit .btn { flex: 1; min-width: 200px; }
+.form-note {
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  margin-top: 4px;
+}
+
+@media (max-width: 880px) {
+  .form-wrapper { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 24px; }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg-soft);
+  padding: 60px 0 28px;
+  border-top: 1px solid var(--line);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 50px;
+}
+.footer-brand p { color: var(--ink-soft); font-size: 14.5px; margin: 16px 0; max-width: 340px; }
+.footer-col h4 {
+  font-family: 'Archivo'; font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 18px; font-weight: 700;
+}
+.footer-col ul { list-style: none; display: grid; gap: 10px; }
+.footer-col li { font-size: 14.5px; color: var(--ink-soft); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+  font-size: 13.5px; color: var(--ink-muted);
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-brand { grid-column: span 2; }
+}
+
+/* FAB */
+.fab-wa {
+  position: fixed; bottom: 24px; right: 24px;
+  z-index: 90;
+  width: 60px; height: 60px;
+  background: var(--wa); color: white;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 30px;
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
+  transition: all 0.3s var(--ease);
+  animation: bounce-in 0.6s var(--ease-out) 1s both;
+}
+.fab-wa::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%;
+  background: var(--wa); opacity: 0.4;
+  animation: pingFab 2s infinite;
+  z-index: -1;
+}
+.fab-wa:hover { transform: scale(1.08) rotate(-5deg); background: var(--wa-hover); }
+@keyframes bounce-in {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes pingFab {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.fab-wa-label {
+  position: absolute; right: 70px;
+  background: var(--ink); color: white;
+  padding: 8px 14px; border-radius: 8px;
+  font-family: 'Archivo'; font-size: 13px; font-weight: 600;
+  white-space: nowrap;
+  opacity: 0; transform: translateX(10px);
+  transition: all 0.25s;
+  pointer-events: none;
+}
+.fab-wa:hover .fab-wa-label { opacity: 1; transform: translateX(0); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+.reveal[data-delay="4"] { transition-delay: 0.4s; }
+.reveal[data-delay="5"] { transition-delay: 0.5s; }
+.reveal[data-delay="6"] { transition-delay: 0.6s; }
+
+.drawer {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 200;
+  padding: 24px;
+  transform: translateY(-100%);
+  transition: transform 0.4s var(--ease);
+  display: flex; flex-direction: column;
+}
+.drawer.open { transform: translateY(0); }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.drawer-close {
+  width: 44px; height: 44px;
+  background: var(--ink); color: white;
+  border-radius: 10px; font-size: 24px;
+}
+.drawer-links { list-style: none; display: grid; gap: 4px; }
+.drawer-links a {
+  display: block;
+  font-family: 'Archivo'; font-weight: 700;
+  font-size: 28px; padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.drawer-cta { margin-top: auto; display: grid; gap: 12px; }
+
+/* Custom Leaflet pin */
+.sn-store-marker {
+  width: 56px; height: 70px;
+  position: relative;
+  cursor: pointer;
+}
+.sn-store-marker svg { width: 100%; height: 100%; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4)); }
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(255,255,255,0.85) !important;
+}
+.leaflet-control-zoom a {
+  background: white !important;
+  color: var(--ink) !important;
+  font-family: 'Archivo' !important;
+  font-weight: 700 !important;
+  border: 1px solid var(--line) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: var(--ink) !important;
+  color: var(--accent) !important;
+}
+
+/* Toast notification (saat form submit success) */
+.toast {
+  position: fixed;
+  bottom: 100px; right: 24px;
+  z-index: 95;
+  background: var(--ink);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Archivo';
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 16px 40px -10px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s var(--ease-out);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast .toast-icon {
+  width: 24px; height: 24px;
+  background: var(--wa);
+  color: white;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hammer-cursor, .hammer-impact, .hammer-spark { display: none !important; }
+  body.has-hammer, body.has-hammer * { cursor: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HAMMER CURSOR ============ -->
+<div class="hammer-cursor" id="hammerCursor" aria-hidden="true">
+  <div class="hammer-inner">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect x="29" y="22" width="6" height="38" rx="2" fill="#8B5A2B" stroke="#5C3A1E" stroke-width="1.2"/>
+      <line x1="30" y1="28" x2="30" y2="56" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <line x1="33" y1="26" x2="33" y2="58" stroke="#5C3A1E" stroke-width="0.5" opacity="0.5"/>
+      <rect x="28" y="50" width="8" height="10" rx="2" fill="#5C3A1E"/>
+      <path d="M 12 8 L 52 8 L 54 22 L 48 26 L 40 22 L 24 22 L 16 26 L 10 22 Z"
+            fill="#3D3D3D" stroke="#1A1A1A" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M 14 10 L 50 10 L 51 14 L 13 14 Z" fill="#6A6A6A" opacity="0.7"/>
+      <rect x="13" y="11" width="38" height="1.5" fill="#FFFFFF" opacity="0.3"/>
+      <path d="M 12 8 L 10 22 L 14 20 L 14 10 Z" fill="#2A2A2A"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span>
+      <span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="tentang.html" data-i18n="nav_tentang">Tentang</a></li>
+      <li><a href="area-pengiriman.html" data-i18n="nav_area">Area Layanan</a></li>
+      <li><a href="karier.html" data-i18n="nav_karier">Karier</a></li>
+      <li><a href="kontak.html" style="color:var(--ink); font-weight: 700;" data-i18n="nav_kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-cta">
+      <div class="lang-toggle desktop-only" id="langToggle">
+        <button class="lang-current" id="langCurrent" aria-label="Pilih bahasa" aria-expanded="false">
+          <span class="lang-flag" id="langFlag">🇮🇩</span>
+          <span id="langLabel">ID</span>
+        </button>
+        <div class="lang-dropdown" role="menu">
+          <button class="lang-option active" data-lang="id" role="menuitem">
+            <span class="lang-flag">🇮🇩</span>
+            <span>Indonesia</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="en" role="menuitem">
+            <span class="lang-flag">🇬🇧</span>
+            <span>English</span>
+            <span class="check">✓</span>
+          </button>
+          <button class="lang-option" data-lang="ru" role="menuitem">
+            <span class="lang-flag">🇷🇺</span>
+            <span>Русский</span>
+            <span class="check">✓</span>
+          </button>
+        </div>
+      </div>
+      <a href="tel:+6289526262727" class="btn btn-outline" data-i18n="nav_call">📞 Telepon</a>
+      <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20mau%20tanya%20stok%20bahan%20bangunan" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="nav_wa">💬 WhatsApp</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+    <button class="drawer-close" id="drawerClose" aria-label="Tutup">×</button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="tentang.html" class="drawer-link" data-i18n="nav_tentang">Tentang</a></li>
+    <li><a href="area-pengiriman.html" class="drawer-link" data-i18n="nav_area">Area Layanan</a></li>
+    <li><a href="karier.html" class="drawer-link" data-i18n="nav_karier">Karier</a></li>
+    <li><a href="kontak.html" class="drawer-link" data-i18n="nav_kontak">Kontak</a></li>
+  </ul>
+  <div class="drawer-lang" id="drawerLang">
+    <button data-lang="id" class="active">🇮🇩 ID</button>
+    <button data-lang="en">🇬🇧 EN</button>
+    <button data-lang="ru">🇷🇺 RU</button>
+  </div>
+  <div class="drawer-cta">
+    <a href="https://wa.me/6289526262727" class="btn btn-primary">💬 Chat WhatsApp</a>
+    <a href="tel:+6289526262727" class="btn btn-outline">📞 0895-2626-2727</a>
+  </div>
+</div>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb reveal">
+      <a href="index.html" data-i18n="bc_home">Beranda</a>
+      <span>›</span>
+      <span data-i18n="bc_kontak">Kontak</span>
+    </div>
+    <h1 class="reveal" data-delay="1">
+      <span data-i18n="ph_title_1">Mari</span> <span class="accent" data-i18n="ph_title_2">Bicara</span><span data-i18n="ph_title_3">.</span>
+    </h1>
+    <p class="reveal" data-delay="2" data-i18n="ph_sub">
+      Tim kami siap bantu — dari konsultasi material, perhitungan kebutuhan, sampai pesan langsung. Pilih channel yang paling nyaman buat Anda.
+    </p>
+    <div class="page-hero-meta reveal" data-delay="3">
+      <div class="page-hero-meta-item"><span class="dot"></span> <strong data-i18n="ph_meta_online">Online sekarang · balas cepat</strong></div>
+      <div class="page-hero-meta-item">🕐 <strong data-i18n="ph_meta_hours">Buka setiap hari 07.00 – 21.00</strong></div>
+      <div class="page-hero-meta-item">📍 <strong data-i18n="ph_meta_loc">Kerobokan, Badung</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CONTACT CARDS ============ -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- WA Umum (Primary) -->
+      <a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi%2C%20saya%20mau%20tanya%20bahan%20bangunan" class="contact-card is-primary reveal" target="_blank" rel="noopener" data-delay="1">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="card-tag" data-i18n="cc_wa_tag">Channel Utama</div>
+        <div class="card-value">0895-2626-2727</div>
+        <div class="card-meta" data-i18n="cc_wa_meta">WhatsApp untuk semua pertanyaan: stok, harga, pengiriman.</div>
+        <span class="card-action" data-i18n="cc_wa_action">Chat sekarang</span>
+        <!-- Bg watermark icon: WhatsApp logo -->
+        <div class="card-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+      </a>
+
+      <!-- Telepon -->
+      <a href="tel:+6289526262727" class="contact-card reveal" data-delay="2">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <div class="card-tag" data-i18n="cc_tel_tag">Telepon Langsung</div>
+        <div class="card-value">0895-2626-2727</div>
+        <div class="card-meta" data-i18n="cc_tel_meta">Untuk pertanyaan urgent atau kebutuhan mendesak.</div>
+        <span class="card-action" data-i18n="cc_tel_action">Telepon sekarang</span>
+        <!-- Bg watermark icon: Phone -->
+        <div class="card-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- B2B Contact -->
+      <a href="https://wa.me/6281337572288?text=Halo%2C%20saya%20mau%20tanya%20harga%20kontraktor%2Fproyek" class="contact-card reveal" target="_blank" rel="noopener" data-delay="3">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+            <path d="M20 8v6M23 11h-6"/>
+          </svg>
+        </div>
+        <div class="card-tag" data-i18n="cc_b2b_tag">B2B / Kontraktor</div>
+        <div class="card-value">0813-3757-2288</div>
+        <div class="card-meta" data-i18n="cc_b2b_meta">Khusus kontraktor, developer, dan pembelian volume besar.</div>
+        <span class="card-action" data-i18n="cc_b2b_action">Hubungi tim B2B</span>
+        <!-- Bg watermark icon: Building / handshake (briefcase) -->
+        <div class="card-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+            <line x1="2" y1="13" x2="22" y2="13"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:admin@sinarnadi.com" class="contact-card reveal" data-delay="4">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="card-tag" data-i18n="cc_email_tag">Email Resmi</div>
+        <div class="card-value">admin@sinarnadi.com</div>
+        <div class="card-meta" data-i18n="cc_email_meta">Untuk invoice, dokumen resmi, atau pertanyaan formal.</div>
+        <span class="card-action" data-i18n="cc_email_action">Kirim email</span>
+        <!-- Bg watermark icon: Email envelope -->
+        <div class="card-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Lokasi/Direction -->
+      <a href="https://www.google.com/maps/dir/?api=1&destination=-8.6304423,115.1722098" class="contact-card reveal" target="_blank" rel="noopener" data-delay="5">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="card-tag" data-i18n="cc_loc_tag">Datang Langsung</div>
+        <div class="card-value" data-i18n="cc_loc_value">Toko Bangunan Sinar Nadi</div>
+        <div class="card-meta" data-i18n="cc_loc_meta">Showroom luas, gudang besar, parkir aman. Buka tiap hari.</div>
+        <span class="card-action" data-i18n="cc_loc_action">Buka Google Maps</span>
+        <!-- Bg watermark icon: Storefront -->
+        <div class="card-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M3 9l1-5h16l1 5"/>
+            <path d="M3 9v11a1 1 0 001 1h16a1 1 0 001-1V9"/>
+            <path d="M3 9c0 1.5 1.5 3 3 3s3-1.5 3-3c0 1.5 1.5 3 3 3s3-1.5 3-3c0 1.5 1.5 3 3 3s3-1.5 3-3"/>
+            <rect x="9" y="14" width="6" height="7"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Jam Buka -->
+      <div class="contact-card reveal" data-delay="6" style="cursor: default;">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+        <div class="card-tag" data-i18n="cc_hours_tag">Jam Buka</div>
+        <div class="card-value" data-i18n="cc_hours_value">07.00 – 21.00 WITA</div>
+        <div class="card-meta" data-i18n="cc_hours_meta">Setiap hari, termasuk Sabtu, Minggu, dan hari libur nasional.</div>
+        <span class="card-action" id="hoursStatus" data-i18n="cc_hours_action">Status real-time</span>
+        <!-- Bg watermark icon: Clock -->
+        <div class="card-bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAP + LOCATION INFO ============ -->
+<section class="location-section">
+  <div class="container">
+    <div class="location-wrapper">
+      <div class="location-map-container reveal">
+        <div id="kontakMap"></div>
+      </div>
+
+      <div class="location-info reveal" data-delay="1">
+        <span class="eyebrow" data-i18n="loc_eyebrow">Kunjungi Toko</span>
+        <h2 data-i18n="loc_title">Datang Langsung ke Showroom Kami.</h2>
+        <p class="sub" data-i18n="loc_sub">Lihat barang langsung, konsultasi tatap muka dengan tim ahli kami, atau langsung beli & bawa pulang.</p>
+
+        <div class="address-block">
+          <h3><span class="icon">📍</span> <span data-i18n="loc_addr_title">Alamat</span></h3>
+          <p data-i18n="loc_addr">Jl. Tegal Permai No.1 A, Kerobokan Kaja, Kec. Kuta Utara, Kabupaten Badung, Bali 80361</p>
+        </div>
+
+        <div class="hours-block">
+          <h3><span class="icon">🕐</span> <span data-i18n="loc_hours_title">Jam Operasional</span></h3>
+          <div class="hours-list" id="hoursList">
+            <!-- Diisi via JS -->
+          </div>
+        </div>
+
+        <div class="location-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=-8.6304423,115.1722098" class="btn btn-accent" target="_blank" rel="noopener" data-i18n="loc_btn_dir">
+            🗺️ Buka di Google Maps
+          </a>
+          <a href="https://wa.me/6289526262727?text=Halo%2C%20saya%20mau%20datang%20ke%20toko" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="loc_btn_wa">
+            💬 Konfirmasi via WA
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT FORM ============ -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="form-intro reveal">
+        <span class="eyebrow" data-i18n="form_eyebrow">Form Kontak</span>
+        <h2 style="margin-top: 16px;"><span data-i18n="form_title_1">Atau kirim</span> <span class="accent" data-i18n="form_title_2">pesan</span> <span data-i18n="form_title_3">via form.</span></h2>
+        <p data-i18n="form_intro">Form ini akan langsung membuka WhatsApp dengan pesan yang sudah terisi. Kami siap balas dalam hitungan menit.</p>
+        <ul class="form-bullets">
+          <li data-i18n="form_bullet_1">Tidak perlu register atau buat akun</li>
+          <li data-i18n="form_bullet_2">Pesan otomatis terisi di WhatsApp</li>
+          <li data-i18n="form_bullet_3">Riwayat chat tersimpan di HP Anda</li>
+          <li data-i18n="form_bullet_4">Bisa lanjut chat langsung di WhatsApp</li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal" data-delay="1" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fName"><span data-i18n="form_label_name">Nama</span> <span class="req">*</span></label>
+            <input type="text" id="fName" name="name" required placeholder="Nama lengkap" />
+          </div>
+          <div class="form-field">
+            <label for="fPhone"><span data-i18n="form_label_phone">No. WhatsApp</span></label>
+            <input type="tel" id="fPhone" name="phone" placeholder="08xxx (opsional)" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fTopic"><span data-i18n="form_label_topic">Topik</span> <span class="req">*</span></label>
+            <select id="fTopic" name="topic" required>
+              <option value="" data-i18n="form_topic_placeholder">— Pilih topik —</option>
+              <option value="Tanya Stok & Harga" data-i18n="form_topic_1">Tanya Stok & Harga</option>
+              <option value="Pesan Bahan Bangunan" data-i18n="form_topic_2">Pesan Bahan Bangunan</option>
+              <option value="Konsultasi Material" data-i18n="form_topic_3">Konsultasi Material</option>
+              <option value="Penawaran Kontraktor / B2B" data-i18n="form_topic_4">Penawaran Kontraktor / B2B</option>
+              <option value="Cek Area Pengiriman" data-i18n="form_topic_5">Cek Area Pengiriman</option>
+              <option value="Lainnya" data-i18n="form_topic_6">Lainnya</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="fArea"><span data-i18n="form_label_area">Area Anda</span></label>
+            <select id="fArea" name="area">
+              <option value="" data-i18n="form_area_placeholder">— Pilih area —</option>
+              <option value="Denpasar">Denpasar</option>
+              <option value="Badung">Badung</option>
+              <option value="Canggu">Canggu</option>
+              <option value="Berawa">Berawa</option>
+              <option value="Munggu">Munggu</option>
+              <option value="Jimbaran">Jimbaran</option>
+              <option value="Pecatu">Pecatu</option>
+              <option value="Lainnya" data-i18n="form_area_other">Lainnya</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="fMessage"><span data-i18n="form_label_message">Pesan</span> <span class="req">*</span></label>
+          <textarea id="fMessage" name="message" required placeholder="Tulis kebutuhan Anda — daftar barang, kuantitas, lokasi proyek, dll." data-i18n-placeholder="form_message_placeholder"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary" data-i18n="form_submit">
+            💬 Kirim via WhatsApp
+          </button>
+          <button type="button" class="btn btn-outline" id="formClear" data-i18n="form_clear">Reset</button>
+        </div>
+        <p class="form-note" data-i18n="form_note">* Setelah klik kirim, WhatsApp akan terbuka dengan pesan yang sudah terisi. Anda tinggal tap "Kirim".</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-mark"><img src="assets/sinarnadi-logo.png" alt="Sinar Nadi"></span><span class="logo-text"><span class="name-1">Sinar</span><span class="name-2">Nadi</span></span></a>
+        <p data-i18n="footer_brand_desc">CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.</p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://wa.me/6289526262727" class="btn btn-primary" style="padding:10px 18px; font-size:13px;">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_produk">Produk</h4>
+        <ul>
+          <li><a href="index.html#produk">Bahan Bangunan</a></li>
+          <li><a href="index.html#produk">Cat & Finishing</a></li>
+          <li><a href="index.html#produk">Material Listrik</a></li>
+          <li><a href="index.html#produk">Peralatan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_area">Area Layanan</h4>
+        <ul>
+          <li>📍 Denpasar</li>
+          <li>📍 Badung</li>
+          <li>📍 Canggu · Berawa</li>
+          <li>📍 Munggu</li>
+          <li>📍 Jimbaran · Pecatu</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_h_kontak">Kontak</h4>
+        <ul>
+          <li>📞 0895-2626-2727</li>
+          <li data-i18n="footer_kontak_wa">💬 WhatsApp aktif</li>
+          <li data-i18n="footer_kontak_jam">🕐 Sen–Min: 07.00–21.00</li>
+          <li>✉️ admin@sinarnadi.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer_copyright">© 2026 CV Sinar Nadi Group. Semua hak dilindungi.</span>
+      <span data-i18n="footer_made">Made in Bali 🇮🇩</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<a href="https://wa.me/6289526262727?text=Halo%20Sinar%20Nadi" class="fab-wa" target="_blank" rel="noopener" aria-label="Chat WhatsApp Sinar Nadi">
+  <span class="fab-wa-label" data-i18n="fab_label">Chat dengan Sinar Nadi</span>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✓</span>
+  <span id="toastMsg" data-i18n="toast_msg">WhatsApp sedang dibuka...</span>
+</div>
+
+<!-- ============ LIBRARIES ============ -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<!-- ============ MAIN SCRIPT ============ -->
+<script>
+const STORE_LOCATION = [-8.6304423, 115.1722098];
+const PHONE_WA = '6289526262727';
+const PHONE_B2B = '6281337572288';
+
+// ===== STICKY NAV =====
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ===== MOBILE DRAWER =====
+const menuToggle = document.getElementById('menuToggle');
+const drawer = document.getElementById('drawer');
+const drawerClose = document.getElementById('drawerClose');
+menuToggle?.addEventListener('click', () => drawer.classList.add('open'));
+drawerClose?.addEventListener('click', () => drawer.classList.remove('open'));
+document.querySelectorAll('.drawer-link').forEach(a => {
+  a.addEventListener('click', () => drawer.classList.remove('open'));
+});
+
+// ===== SCROLL REVEAL =====
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(r => io.observe(r));
+
+// ===== LANGUAGE TOGGLE =====
+(function initLangToggle() {
+  const TRANSLATIONS = {
+    id: {
+      nav_produk: 'Produk', nav_tentang: 'Tentang', nav_area: 'Area Layanan',
+      nav_faq: 'FAQ', nav_kontak: 'Kontak', nav_karier: 'Karier', nav_call: '📞 Telepon', nav_wa: '💬 WhatsApp',
+      bc_home: 'Beranda', bc_kontak: 'Kontak',
+      ph_title_1: 'Mari', ph_title_2: 'Bicara', ph_title_3: '.',
+      ph_sub: 'Tim kami siap bantu — dari konsultasi material, perhitungan kebutuhan, sampai pesan langsung. Pilih channel yang paling nyaman buat Anda.',
+      ph_meta_online: 'Online sekarang · balas cepat',
+      ph_meta_hours: 'Buka setiap hari 07.00 – 21.00',
+      ph_meta_loc: 'Kerobokan, Badung',
+      cc_wa_tag: 'Channel Utama', cc_wa_meta: 'WhatsApp untuk semua pertanyaan: stok, harga, pengiriman.', cc_wa_action: 'Chat sekarang',
+      cc_tel_tag: 'Telepon Langsung', cc_tel_meta: 'Untuk pertanyaan urgent atau kebutuhan mendesak.', cc_tel_action: 'Telepon sekarang',
+      cc_b2b_tag: 'B2B / Kontraktor', cc_b2b_meta: 'Khusus kontraktor, developer, dan pembelian volume besar.', cc_b2b_action: 'Hubungi tim B2B',
+      cc_email_tag: 'Email Resmi', cc_email_meta: 'Untuk invoice, dokumen resmi, atau pertanyaan formal.', cc_email_action: 'Kirim email',
+      cc_loc_tag: 'Datang Langsung', cc_loc_value: 'Toko Bangunan Sinar Nadi', cc_loc_meta: 'Showroom luas, gudang besar, parkir aman. Buka tiap hari.', cc_loc_action: 'Buka Google Maps',
+      cc_hours_tag: 'Jam Buka', cc_hours_value: '07.00 – 21.00 WITA', cc_hours_meta: 'Setiap hari, termasuk Sabtu, Minggu, dan hari libur nasional.', cc_hours_action: 'Status real-time',
+      loc_eyebrow: 'Kunjungi Toko', loc_title: 'Datang Langsung ke Showroom Kami.', loc_sub: 'Lihat barang langsung, konsultasi tatap muka dengan tim ahli kami, atau langsung beli & bawa pulang.',
+      loc_addr_title: 'Alamat',
+      loc_addr: 'Jl. Tegal Permai No.1 A, Kerobokan Kaja, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
+      loc_hours_title: 'Jam Operasional',
+      loc_btn_dir: '🗺️ Buka di Google Maps', loc_btn_wa: '💬 Konfirmasi via WA',
+      form_eyebrow: 'Form Kontak', form_title_1: 'Atau kirim', form_title_2: 'pesan', form_title_3: 'via form.',
+      form_intro: 'Form ini akan langsung membuka WhatsApp dengan pesan yang sudah terisi. Kami siap balas dalam hitungan menit.',
+      form_bullet_1: 'Tidak perlu register atau buat akun',
+      form_bullet_2: 'Pesan otomatis terisi di WhatsApp',
+      form_bullet_3: 'Riwayat chat tersimpan di HP Anda',
+      form_bullet_4: 'Bisa lanjut chat langsung di WhatsApp',
+      form_label_name: 'Nama', form_label_phone: 'No. WhatsApp', form_label_topic: 'Topik', form_label_area: 'Area Anda', form_label_message: 'Pesan',
+      form_topic_placeholder: '— Pilih topik —',
+      form_topic_1: 'Tanya Stok & Harga', form_topic_2: 'Pesan Bahan Bangunan', form_topic_3: 'Konsultasi Material',
+      form_topic_4: 'Penawaran Kontraktor / B2B', form_topic_5: 'Cek Area Pengiriman', form_topic_6: 'Lainnya',
+      form_area_placeholder: '— Pilih area —', form_area_other: 'Lainnya',
+      form_message_placeholder: 'Tulis kebutuhan Anda — daftar barang, kuantitas, lokasi proyek, dll.',
+      form_submit: '💬 Kirim via WhatsApp', form_clear: 'Reset',
+      form_note: '* Setelah klik kirim, WhatsApp akan terbuka dengan pesan yang sudah terisi. Anda tinggal tap "Kirim".',
+      toast_msg: 'WhatsApp sedang dibuka...',
+      hours_open: 'BUKA SEKARANG',
+      hours_closed: 'TUTUP SEKARANG',
+      day_mon: 'Senin', day_tue: 'Selasa', day_wed: 'Rabu', day_thu: 'Kamis', day_fri: 'Jumat', day_sat: 'Sabtu', day_sun: 'Minggu',
+      footer_brand_desc: 'CV Sinar Nadi Group — Toko bahan bangunan terpercaya di Bali. Stok lengkap, harga bersaing, kirim hari ini.',
+      footer_h_produk: 'Produk', footer_h_area: 'Area Layanan', footer_h_kontak: 'Kontak',
+      footer_kontak_wa: '💬 WhatsApp aktif', footer_kontak_jam: '🕐 Sen–Min: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Semua hak dilindungi.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Chat dengan Sinar Nadi',
+    },
+    en: {
+      nav_produk: 'Products', nav_tentang: 'About', nav_area: 'Service Area',
+      nav_faq: 'FAQ', nav_kontak: 'Contact', nav_karier: 'Careers', nav_call: '📞 Call', nav_wa: '💬 WhatsApp',
+      bc_home: 'Home', bc_kontak: 'Contact',
+      ph_title_1: 'Let\'s', ph_title_2: 'Talk', ph_title_3: '.',
+      ph_sub: 'Our team is ready to help — from material consultation, quantity calculations, to direct ordering. Pick the channel that\'s most convenient for you.',
+      ph_meta_online: 'Online now · fast reply',
+      ph_meta_hours: 'Open daily 07.00 – 21.00',
+      ph_meta_loc: 'Kerobokan, Badung',
+      cc_wa_tag: 'Main Channel', cc_wa_meta: 'WhatsApp for all questions: stock, pricing, delivery.', cc_wa_action: 'Chat now',
+      cc_tel_tag: 'Direct Call', cc_tel_meta: 'For urgent questions or immediate needs.', cc_tel_action: 'Call now',
+      cc_b2b_tag: 'B2B / Contractors', cc_b2b_meta: 'Special line for contractors, developers, and bulk purchases.', cc_b2b_action: 'Contact B2B team',
+      cc_email_tag: 'Official Email', cc_email_meta: 'For invoices, official documents, or formal inquiries.', cc_email_action: 'Send email',
+      cc_loc_tag: 'Visit Us', cc_loc_value: 'Sinar Nadi Building Materials Store', cc_loc_meta: 'Spacious showroom, large warehouse, secure parking. Open every day.', cc_loc_action: 'Open Google Maps',
+      cc_hours_tag: 'Opening Hours', cc_hours_value: '07.00 – 21.00 WITA', cc_hours_meta: 'Every day, including Saturday, Sunday, and national holidays.', cc_hours_action: 'Real-time status',
+      loc_eyebrow: 'Visit Our Store', loc_title: 'Come Directly to Our Showroom.', loc_sub: 'See products in person, consult face-to-face with our expert team, or buy & take home directly.',
+      loc_addr_title: 'Address',
+      loc_addr: 'Jl. Tegal Permai No.1 A, Kerobokan Kaja, Kuta Utara, Badung Regency, Bali 80361',
+      loc_hours_title: 'Operating Hours',
+      loc_btn_dir: '🗺️ Open in Google Maps', loc_btn_wa: '💬 Confirm via WhatsApp',
+      form_eyebrow: 'Contact Form', form_title_1: 'Or send a', form_title_2: 'message', form_title_3: 'via form.',
+      form_intro: 'This form will open WhatsApp directly with a pre-filled message. We typically reply within minutes.',
+      form_bullet_1: 'No registration or account needed',
+      form_bullet_2: 'Message auto-filled in WhatsApp',
+      form_bullet_3: 'Chat history saved on your phone',
+      form_bullet_4: 'Continue chatting directly in WhatsApp',
+      form_label_name: 'Name', form_label_phone: 'WhatsApp Number', form_label_topic: 'Topic', form_label_area: 'Your Area', form_label_message: 'Message',
+      form_topic_placeholder: '— Select topic —',
+      form_topic_1: 'Ask Stock & Price', form_topic_2: 'Order Building Materials', form_topic_3: 'Material Consultation',
+      form_topic_4: 'Contractor / B2B Quote', form_topic_5: 'Check Delivery Area', form_topic_6: 'Other',
+      form_area_placeholder: '— Select area —', form_area_other: 'Other',
+      form_message_placeholder: 'Write your needs — item list, quantities, project location, etc.',
+      form_submit: '💬 Send via WhatsApp', form_clear: 'Reset',
+      form_note: '* After clicking send, WhatsApp will open with the message pre-filled. Just tap "Send".',
+      toast_msg: 'Opening WhatsApp...',
+      hours_open: 'OPEN NOW',
+      hours_closed: 'CLOSED NOW',
+      day_mon: 'Monday', day_tue: 'Tuesday', day_wed: 'Wednesday', day_thu: 'Thursday', day_fri: 'Friday', day_sat: 'Saturday', day_sun: 'Sunday',
+      footer_brand_desc: 'CV Sinar Nadi Group — Trusted building material store in Bali. Complete stock, competitive prices, same day delivery.',
+      footer_h_produk: 'Products', footer_h_area: 'Service Area', footer_h_kontak: 'Contact',
+      footer_kontak_wa: '💬 WhatsApp active', footer_kontak_jam: '🕐 Mon–Sun: 07.00–21.00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. All rights reserved.',
+      footer_made: 'Made in Bali 🇮🇩',
+      fab_label: 'Chat with Sinar Nadi',
+    },
+    ru: {
+      nav_produk: 'Товары', nav_tentang: 'О компании', nav_area: 'Зона доставки',
+      nav_faq: 'Вопросы', nav_kontak: 'Контакты', nav_karier: 'Карьера', nav_call: '📞 Позвонить', nav_wa: '💬 WhatsApp',
+      bc_home: 'Главная', bc_kontak: 'Контакты',
+      ph_title_1: 'Давайте', ph_title_2: 'поговорим', ph_title_3: '.',
+      ph_sub: 'Наша команда готова помочь — от консультации по материалам и расчёта количества до оформления заказа. Выберите удобный для вас канал связи.',
+      ph_meta_online: 'Сейчас онлайн · быстрый ответ',
+      ph_meta_hours: 'Открыты ежедневно 07:00 – 21:00',
+      ph_meta_loc: 'Керобокан, Бадунг',
+      cc_wa_tag: 'Основной канал', cc_wa_meta: 'WhatsApp для любых вопросов: наличие, цены, доставка.', cc_wa_action: 'Написать сейчас',
+      cc_tel_tag: 'Прямой звонок', cc_tel_meta: 'Для срочных вопросов или экстренных потребностей.', cc_tel_action: 'Позвонить',
+      cc_b2b_tag: 'B2B / Подрядчики', cc_b2b_meta: 'Отдельная линия для подрядчиков, девелоперов и крупных заказов.', cc_b2b_action: 'Связаться с B2B',
+      cc_email_tag: 'Официальный email', cc_email_meta: 'Для счетов, официальных документов или формальных запросов.', cc_email_action: 'Написать email',
+      cc_loc_tag: 'Приезжайте в магазин', cc_loc_value: 'Магазин стройматериалов Sinar Nadi', cc_loc_meta: 'Просторный шоурум, большой склад, охраняемая парковка. Открыты ежедневно.', cc_loc_action: 'Открыть Google Maps',
+      cc_hours_tag: 'Часы работы', cc_hours_value: '07:00 – 21:00 WITA', cc_hours_meta: 'Ежедневно, включая субботу, воскресенье и национальные праздники.', cc_hours_action: 'Текущий статус',
+      loc_eyebrow: 'Посетите магазин', loc_title: 'Приезжайте к нам в шоурум.', loc_sub: 'Посмотрите товары вживую, проконсультируйтесь с нашей командой экспертов или купите и заберите сразу.',
+      loc_addr_title: 'Адрес',
+      loc_addr: 'Jl. Tegal Permai No.1 A, Керобокан Каджа, Кута Утара, Бадунг, Бали 80361',
+      loc_hours_title: 'Часы работы',
+      loc_btn_dir: '🗺️ Открыть в Google Maps', loc_btn_wa: '💬 Подтвердить в WhatsApp',
+      form_eyebrow: 'Форма контакта', form_title_1: 'Или отправьте', form_title_2: 'сообщение', form_title_3: 'через форму.',
+      form_intro: 'Эта форма откроет WhatsApp с уже заполненным сообщением. Мы обычно отвечаем в течение минут.',
+      form_bullet_1: 'Не нужна регистрация или аккаунт',
+      form_bullet_2: 'Сообщение автозаполнится в WhatsApp',
+      form_bullet_3: 'История чата сохраняется на телефоне',
+      form_bullet_4: 'Можно продолжать общение в WhatsApp',
+      form_label_name: 'Имя', form_label_phone: 'Номер WhatsApp', form_label_topic: 'Тема', form_label_area: 'Ваш район', form_label_message: 'Сообщение',
+      form_topic_placeholder: '— Выберите тему —',
+      form_topic_1: 'Узнать наличие и цену', form_topic_2: 'Заказать стройматериалы', form_topic_3: 'Консультация по материалам',
+      form_topic_4: 'Расчёт для подрядчиков / B2B', form_topic_5: 'Проверить зону доставки', form_topic_6: 'Другое',
+      form_area_placeholder: '— Выберите район —', form_area_other: 'Другой',
+      form_message_placeholder: 'Опишите ваши потребности — список товаров, количество, адрес объекта и т.д.',
+      form_submit: '💬 Отправить в WhatsApp', form_clear: 'Сбросить',
+      form_note: '* После нажатия "отправить" откроется WhatsApp с готовым сообщением. Просто нажмите "Отправить".',
+      toast_msg: 'Открываем WhatsApp...',
+      hours_open: 'СЕЙЧАС ОТКРЫТО',
+      hours_closed: 'СЕЙЧАС ЗАКРЫТО',
+      day_mon: 'Понедельник', day_tue: 'Вторник', day_wed: 'Среда', day_thu: 'Четверг', day_fri: 'Пятница', day_sat: 'Суббота', day_sun: 'Воскресенье',
+      footer_brand_desc: 'CV Sinar Nadi Group — надёжный магазин стройматериалов на Бали. Полный склад, конкурентные цены, доставка сегодня.',
+      footer_h_produk: 'Товары', footer_h_area: 'Зона доставки', footer_h_kontak: 'Контакты',
+      footer_kontak_wa: '💬 WhatsApp активен', footer_kontak_jam: '🕐 Пн–Вс: 07:00–21:00',
+      footer_copyright: '© 2026 CV Sinar Nadi Group. Все права защищены.',
+      footer_made: 'Сделано на Бали 🇮🇩',
+      fab_label: 'Написать в Sinar Nadi',
+    }
+  };
+
+  const FLAGS = { id: '🇮🇩', en: '🇬🇧', ru: '🇷🇺' };
+  const LABELS = { id: 'ID', en: 'EN', ru: 'RU' };
+
+  let currentLang = 'id';
+  try {
+    const saved = localStorage.getItem('sinarnadi_lang');
+    if (saved && TRANSLATIONS[saved]) currentLang = saved;
+  } catch (e) {}
+
+  window.SN_TRANSLATIONS = TRANSLATIONS;
+  window.SN_CURRENT_LANG = currentLang;
+
+  function applyLanguage(lang) {
+    if (!TRANSLATIONS[lang]) return;
+    currentLang = lang;
+    window.SN_CURRENT_LANG = lang;
+    const dict = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.placeholder = dict[key];
+    });
+
+    const flagEl = document.getElementById('langFlag');
+    const labelEl = document.getElementById('langLabel');
+    if (flagEl) flagEl.textContent = FLAGS[lang];
+    if (labelEl) labelEl.textContent = LABELS[lang];
+
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    document.querySelectorAll('.drawer-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    try { localStorage.setItem('sinarnadi_lang', lang); } catch (e) {}
+
+    // Re-render hours list saat ganti bahasa
+    renderHoursList();
+    updateHoursStatus();
+  }
+
+  window.SN_APPLY_LANG = applyLanguage;
+
+  const langToggle = document.getElementById('langToggle');
+  const langCurrent = document.getElementById('langCurrent');
+  if (langCurrent && langToggle) {
+    langCurrent.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langToggle.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen);
+    });
+    document.addEventListener('click', (e) => {
+      if (!langToggle.contains(e.target)) {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langToggle.classList.remove('open');
+        langCurrent.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      applyLanguage(opt.dataset.lang);
+      langToggle?.classList.remove('open');
+    });
+  });
+  document.querySelectorAll('.drawer-lang button').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  applyLanguage(currentLang);
+})();
+
+// ===== JAM OPERASIONAL — render & status real-time =====
+function getCurrentDayKey() {
+  // Convert dari Sunday=0 ke Monday=0 supaya sesuai array kita
+  const jsDay = new Date().getDay(); // 0 = Sunday, 1 = Monday, ...
+  return jsDay === 0 ? 6 : jsDay - 1; // Convert: Mon=0, Tue=1, ..., Sun=6
+}
+
+function isCurrentlyOpen() {
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+  const minutes = hour * 60 + minute;
+  const openMin = 7 * 60;     // 07:00
+  const closeMin = 21 * 60;   // 21:00
+  return minutes >= openMin && minutes < closeMin;
+}
+
+function renderHoursList() {
+  const dict = window.SN_TRANSLATIONS?.[window.SN_CURRENT_LANG] || {};
+  const days = [
+    { key: 'day_mon', short: 'Mon' },
+    { key: 'day_tue', short: 'Tue' },
+    { key: 'day_wed', short: 'Wed' },
+    { key: 'day_thu', short: 'Thu' },
+    { key: 'day_fri', short: 'Fri' },
+    { key: 'day_sat', short: 'Sat' },
+    { key: 'day_sun', short: 'Sun' }
+  ];
+
+  const todayIndex = getCurrentDayKey();
+  const list = document.getElementById('hoursList');
+  if (!list) return;
+
+  list.innerHTML = days.map((d, i) => {
+    const isToday = i === todayIndex;
+    const dayName = dict[d.key] || d.short;
+    return `
+      <div class="hours-row${isToday ? ' is-today' : ''}">
+        <span class="day">${dayName}${isToday ? ' ·' : ''}</span>
+        <span class="time">07:00 – 21:00</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateHoursStatus() {
+  const dict = window.SN_TRANSLATIONS?.[window.SN_CURRENT_LANG] || {};
+  const statusEl = document.getElementById('hoursStatus');
+  if (!statusEl) return;
+
+  const open = isCurrentlyOpen();
+  if (open) {
+    statusEl.textContent = '🟢 ' + (dict.hours_open || 'OPEN NOW');
+    statusEl.style.color = 'var(--wa)';
+  } else {
+    statusEl.textContent = '🔴 ' + (dict.hours_closed || 'CLOSED NOW');
+    statusEl.style.color = '#D43F3F';
+  }
+}
+
+renderHoursList();
+updateHoursStatus();
+// Update status setiap menit
+setInterval(updateHoursStatus, 60000);
+
+// ===== HAMMER CURSOR =====
+(function initHammerCursor() {
+  const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isTouch || reducedMotion) return;
+
+  const cursor = document.getElementById('hammerCursor');
+  if (!cursor) return;
+  document.body.classList.add('has-hammer');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX, cursorY = mouseY;
+  const lerpFactor = 0.22;
+  let isReady = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    if (!isReady) { isReady = true; cursor.classList.add('ready'); }
+  });
+  document.addEventListener('mouseleave', () => cursor.classList.remove('ready'));
+  document.addEventListener('mouseenter', () => cursor.classList.add('ready'));
+
+  function animate() {
+    cursorX += (mouseX - cursorX) * lerpFactor;
+    cursorY += (mouseY - cursorY) * lerpFactor;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  const interactiveSelector = 'a, button, input, select, textarea, .leaflet-marker-icon, [role="button"]';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.add('hover-link');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest && e.target.closest(interactiveSelector)) {
+      cursor.classList.remove('hover-link');
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    cursor.classList.remove('striking');
+    void cursor.offsetWidth;
+    cursor.classList.add('striking');
+
+    const impactX = e.clientX, impactY = e.clientY + 8;
+    const ripple = document.createElement('div');
+    ripple.className = 'hammer-impact';
+    ripple.style.left = impactX + 'px';
+    ripple.style.top = impactY + 'px';
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    for (let i = 0; i < 5; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'hammer-spark';
+      const angle = (Math.PI / 5) * i + (Math.PI * 0.05);
+      const distance = 30 + Math.random() * 25;
+      const dx = Math.cos(angle - Math.PI) * distance;
+      const dy = Math.sin(angle - Math.PI) * distance;
+      spark.style.setProperty('--dx', dx + 'px');
+      spark.style.setProperty('--dy', dy + 'px');
+      spark.style.left = impactX + 'px';
+      spark.style.top = impactY + 'px';
+      if (i % 2 === 0) spark.style.background = 'var(--accent)';
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 500);
+    }
+  });
+
+  cursor.addEventListener('animationend', (e) => {
+    if (e.animationName === 'hammerStrike') cursor.classList.remove('striking');
+  });
+})();
+
+// ===== LEAFLET MAP =====
+const map = L.map('kontakMap', {
+  center: STORE_LOCATION,
+  zoom: 16,
+  minZoom: 12,
+  maxZoom: 19,
+  zoomControl: true,
+  attributionControl: true,
+  scrollWheelZoom: false  // Disable scroll wheel zoom supaya tidak konflik saat scroll page
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+// Enable scroll zoom hanya saat user click di map (UX standard)
+map.on('focus', () => map.scrollWheelZoom.enable());
+map.on('blur', () => map.scrollWheelZoom.disable());
+
+const storeIcon = L.divIcon({
+  className: 'sn-store-marker',
+  html: `
+    <svg viewBox="0 0 56 70" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 28 0 C 13 0 0 13 0 28 C 0 47 28 70 28 70 C 28 70 56 47 56 28 C 56 13 43 0 28 0 Z"
+            fill="#0F0F0F" stroke="#E14425" stroke-width="3"/>
+      <circle cx="28" cy="26" r="13" fill="#E14425"/>
+      <text x="28" y="32" text-anchor="middle" font-family="Archivo, sans-serif" font-size="13" font-weight="900" fill="white">SN</text>
+    </svg>
+  `,
+  iconSize: [56, 70],
+  iconAnchor: [28, 70],
+  popupAnchor: [0, -70]
+});
+
+const storeMarker = L.marker(STORE_LOCATION, {
+  icon: storeIcon,
+  title: 'CV Sinar Nadi Group'
+}).addTo(map);
+
+storeMarker.bindPopup(`
+  <div style="font-family: 'Inter Tight', sans-serif; padding: 4px;">
+    <strong style="font-family: 'Archivo'; font-size: 14px; color: #0F0F0F;">CV Sinar Nadi Group</strong>
+    <p style="font-size: 12px; color: #4A4A4A; margin-top: 4px; line-height: 1.4;">
+      Jl. Tegal Permai No.1 A,<br/>Kerobokan Kaja, Badung
+    </p>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=-8.6304423,115.1722098"
+       target="_blank" rel="noopener"
+       style="display: inline-block; margin-top: 8px; padding: 6px 12px; background: #E14425; color: white; border-radius: 100px; font-family: 'Archivo'; font-size: 12px; font-weight: 600; text-decoration: none;">
+      🗺️ Petunjuk Arah
+    </a>
+  </div>
+`);
+
+// ===== CONTACT FORM — submit ke WhatsApp =====
+const contactForm = document.getElementById('contactForm');
+const formClear = document.getElementById('formClear');
+const toast = document.getElementById('toast');
+
+function showToast() {
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fd = new FormData(contactForm);
+  const name = fd.get('name')?.trim();
+  const phone = fd.get('phone')?.trim();
+  const topic = fd.get('topic')?.trim();
+  const area = fd.get('area')?.trim();
+  const message = fd.get('message')?.trim();
+
+  // Basic validation
+  if (!name || !topic || !message) {
+    // Highlight fields yang kosong
+    if (!name) document.getElementById('fName').focus();
+    else if (!topic) document.getElementById('fTopic').focus();
+    else if (!message) document.getElementById('fMessage').focus();
+    return;
+  }
+
+  // Build WhatsApp message
+  let waMsg = `Halo Sinar Nadi,\n\n`;
+  waMsg += `Nama: ${name}\n`;
+  if (phone) waMsg += `WA: ${phone}\n`;
+  waMsg += `Topik: ${topic}\n`;
+  if (area) waMsg += `Area: ${area}\n`;
+  waMsg += `\nPesan:\n${message}`;
+
+  // B2B topic → kirim ke nomor B2B
+  const targetPhone = topic.toLowerCase().includes('b2b') || topic.toLowerCase().includes('kontraktor')
+    ? PHONE_B2B
+    : PHONE_WA;
+
+  const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(waMsg)}`;
+
+  showToast();
+
+  // Buka WhatsApp setelah 600ms (kasih waktu user lihat toast)
+  setTimeout(() => {
+    window.open(waUrl, '_blank', 'noopener');
+  }, 600);
+});
+
+formClear?.addEventListener('click', () => {
+  contactForm.reset();
+});
+</script>
+
+</body>
+</html>
