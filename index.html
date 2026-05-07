@@ -856,18 +856,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   opacity: 1;
   transform: translateY(-3px);
 }
-/* Brand logo images — actual brand logos */
+/* Brand logo images — actual brand logos, full color */
 .brand-logo-img {
   width: 64px;
   height: 64px;
   object-fit: contain;
   flex-shrink: 0;
-  transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
-  filter: grayscale(0.15);
+  transition: transform 0.3s var(--ease);
 }
 .brand-item:hover .brand-logo-img {
   transform: scale(1.1);
-  filter: grayscale(0);
 }
 .brand-logo::after {
   content: '';
@@ -882,19 +880,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
 }
 /* Saat upload logo asli, ganti div.brand-logo dengan:
    <img class="brand-logo-img" src="logo-tigaroda.png" alt="Tiga Roda"/> */
-.brand-logo-img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: grayscale(1);
-  opacity: 0.85;
-  transition: all 0.3s;
-}
-.brand-item:hover .brand-logo-img {
-  filter: none;
-  opacity: 1;
-}
 .brand-name {
   font-family: 'Archivo', sans-serif;
   font-weight: 700;
@@ -953,16 +938,14 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
-/* Client logo images — actual klien logos */
+/* Client logo images — actual klien logos, full color */
 .client-logo-img {
   max-width: 75%;
   max-height: 70%;
   object-fit: contain;
-  filter: grayscale(0.6) opacity(0.75);
-  transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: transform 0.3s var(--ease);
 }
 .client-card:hover .client-logo-img {
-  filter: grayscale(0) opacity(1);
   transform: scale(1.05);
 }
 
@@ -994,18 +977,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
 }
 /* Saat user upload logo asli, ganti text dengan <img>:
    <div class="client-card"><img src="logo.png" alt="Nama Klien"/></div> */
-.client-card img {
-  max-width: 100%;
-  max-height: 70%;
-  object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: all 0.3s;
-}
-.client-card:hover img {
-  filter: none;
-  opacity: 1;
-}
 
 /* Mobile: card lebih kecil supaya tidak terlalu memakan space */
 @media (max-width: 600px) {
