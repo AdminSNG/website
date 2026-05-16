@@ -928,10 +928,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
 }
 /* Direction: right (kiri ke kanan) — pakai animation berlawanan */
 .client-marquee[data-direction="right"] .client-marquee-track {
-  animation: marqueeRight 250s linear infinite;
+  animation: marqueeRight 205s linear infinite;
 }
 .client-marquee[data-direction="left"] .client-marquee-track {
-  animation: marqueeLeft 250s linear infinite;
+  animation: marqueeLeft 205s linear infinite;
 }
 .client-marquee:hover .client-marquee-track {
   animation-play-state: paused;
@@ -944,42 +944,32 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   from { transform: translateX(-75%); }
   to { transform: translateX(0); }
 }
-/* Client logo images — actual klien logos, full color */
+/* Client logo images — actual klien logos, full color, fit besar */
 .client-logo-img {
-  max-width: 75%;
-  max-height: 70%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s var(--ease);
 }
 .client-card:hover .client-logo-img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-/* Client card — placeholder yang enak dipandang, tinggi medium */
+/* Client card — transparent, logo saja yang terlihat */
 .client-card {
-  width: 200px;
-  height: 100px;
-  background: var(--bg-soft);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  width: 160px;
+  height: 80px;
+  background: transparent;
+  border: none;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  font-family: 'Archivo', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--ink-muted);
-  text-align: center;
-  padding: 16px;
-  transition: all 0.3s var(--ease);
+  padding: 8px;
+  transition: transform 0.3s var(--ease);
   cursor: default;
 }
 .client-card:hover {
-  background: white;
-  border-color: var(--ink);
-  color: var(--ink);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 /* Saat user upload logo asli, ganti text dengan <img>:
    <div class="client-card"><img src="logo.png" alt="Nama Klien"/></div> */
@@ -990,7 +980,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
   .brand-logo, .brand-logo-img { width: 44px; height: 44px; font-size: 18px; }
   .brand-item { min-width: 100px; gap: 8px; }
   .brand-marquee-track { gap: 24px; }
-  .client-card { width: 150px; height: 80px; font-size: 12px; }
+  .client-card { width: 120px; height: 64px; padding: 6px; }
   .client-marquee-track { gap: 16px; }
 }
 
